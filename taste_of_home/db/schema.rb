@@ -11,45 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602212503) do
+ActiveRecord::Schema.define(version: 20160602230720) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "store_tags", force: :cascade do |t|
     t.integer  "store_id"
-    t.integer  "tag_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "store_tags", ["store_id"], name: "index_store_tags_on_store_id", using: :btree
+  add_index "store_tags", ["user_id"], name: "index_store_tags_on_user_id", using: :btree
+
   create_table "store_users", force: :cascade do |t|
-    t.integer  "user_id"
     t.integer  "store_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "store_users", ["store_id"], name: "index_store_users_on_store_id", using: :btree
+  add_index "store_users", ["user_id"], name: "index_store_users_on_user_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.string   "name",        null: false
-    t.string   "description"
+    t.text     "description"
     t.string   "address",     null: false
-    t.string   "phone"
+    t.integer  "phone"
     t.string   "email"
-    t.string   "reviews"
+    t.text     "reviews"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
+    t.string   "username",   null: false
+    t.string   "password",   null: false
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "store_tags", "stores"
+  add_foreign_key "store_tags", "users"
+  add_foreign_key "store_users", "stores"
+  add_foreign_key "store_users", "users"
 end

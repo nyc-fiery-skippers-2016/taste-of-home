@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Save a Place</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        width:70%;
+        display:inline-block;
+      }
+      #content{
+        width:30%;
+        height:100%;
+        position: relative;
+        float:right;
+        display:inline-block;
+        text-align: center;
+        /* So padding doesn't affect size */
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+        padding:1em;
+      }
+      #search{
+        width:90%;
+        line-height:2em;
+        float:left;
+      }
+      #searchSubmit{
+        width:8%;
+        height:2em; /* Doesn't work */
+        float:right;
+      }
+      #contentFooter{
+        position: absolute;
+        bottom: 0;
+      }
+      ul{
+        padding-left:0;
+      }
+      li{
+        list-style: none;
+      }
+    </style>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: {lat: -33.8666, lng: 151.1958}
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="content">
+      <input type="text" id="search", placeholder="Search">
+      <input type="submit" id="searchSubmit" value="Go">
+      <br>
+      <br>
+      <hr>
+      <ul>
+        <%@stores.each do |store|%>
+          <li><a href="#"><%=store.name%></a></li>
+        <%end%>
+      </ul>
+      <div id="contentFooter">
+        <p><a href="#">Log In</a> | <a href="#">Sign Up</a></p>
+      </div>
+    </div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM&callback=initMap">
+    </script>
+  </body>
+</html>
