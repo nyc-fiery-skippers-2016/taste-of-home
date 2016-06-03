@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Taste of Home Home Page</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM&sensor=false" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+    <div id="map_canvas"></div>
+    <div id="control_container"></div>
+
+    <div id="map_search">
+      <form>
+        <input type="text" name="term" id="search-term", placeholder="Search">
+        <input type="text" name="location" id="search-location">
+        <a href="#" id="map_search_submit">Search</a>
+      </form>
+
+      <br>
+      <br>
+      <hr>
+      <ul>
+        <%@stores.each do |store|%>
+          <li><a href="/stores/<%=store.id%>"><%=store.name%></a></li>
+        <%end%>
+      </ul>
+      <div id="contentFooter">
+        <% if logged_in? %>
+          <p>Welcome <%= current_user.username %>!</p>
+          <%= link_to "Home", root_path %>
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Sign Up", '/'%>
+          <%= link_to "Login", '/' %>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -32,10 +32,18 @@ gem 'faker', '~> 1.6.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Env token integration
+gem 'slim'
+gem 'dotenv-rails'
+
+# Yelp gem!
+gem 'yelp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+
 end
 
 group :development do
