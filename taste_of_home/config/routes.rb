@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-
-
-
-
-
-
-
   get '/' => 'stores#index'
 
   get '/users/:id' => 'users#show'
