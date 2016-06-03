@@ -68,7 +68,7 @@
       <hr>
       <ul>
         <%@stores.each do |store|%>
-          <li><a href="#"><%=store.name%></a></li>
+          <li><a href="/stores/<%=store.id%>"><%=store.name%></a></li>
         <%end%>
       </ul>
       <div id="contentFooter">
