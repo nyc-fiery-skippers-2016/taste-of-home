@@ -72,7 +72,14 @@
         <%end%>
       </ul>
       <div id="contentFooter">
-        <p><a href="#">Log In</a> | <a href="#">Sign Up</a></p>
+        <% if logged_in? %>
+          <p>Welcome <%= current_user.username %>!</p>
+          <%= link_to "Home", root_path %>
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Sign Up", '/'%> <!-- check routes once they are created -->
+          <%= link_to "Login", '/' %>
+        <% end %>
       </div>
     </div>
     <script async defer
