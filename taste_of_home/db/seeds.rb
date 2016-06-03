@@ -22,4 +22,3 @@ Tag.create!(description: 'French')
 Tag.create!(description: 'bread')
 Tag.create!(description: 'Brazil')
 Tag.create!(description: 'New Zealand')
-
