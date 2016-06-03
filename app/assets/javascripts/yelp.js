@@ -18,7 +18,7 @@
 var markersArray = [];
 var NY_LAT = 40.706059;
 var NY_LNG = -74.009082;
-var QUERY_DELAY = 400;
+var QUERY_DELAY = 1500;
 var inactive = false;
 
 $(document).ready(function() {
@@ -97,6 +97,7 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
 
+      // debugger;
     // iterate through each business in the response capture the data
     // within a closure.
     data['businesses'].forEach(function(business, index) {
@@ -123,7 +124,7 @@ var capture = function(i, map, business) {
     $('#results').append(build_results_container(business));
 
     // get the geocoded address for the business's location
-    geocode_address(map, business['name'], business['location']);
+    geocode_address(map, business);
   }, QUERY_DELAY * i); // the delay on the timeout
 };
 
@@ -153,25 +154,36 @@ var build_results_container = function(business) {
  *               over the dropped marker
  * param: location_object - an object of the businesses address
  */
-var geocode_address = function(map, name, location_object) {
+var geocode_address = function(map, business) {
   var geocoder = new google.maps.Geocoder();
 
   var address = [
-    location_object['address'][0],
-    location_object['city'],
-    location_object['country_code']
+    business['location']['address'][0],
+    business['location']['city'],
+    business['location']['country_code']
   ].join(', ');
 
   // geocode the address and get the lat/lng
   geocoder.geocode({address: address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
 
+      var content = "<b>"+business['name']+"</b><br>"
+      if(business['image_url'] !== undefined)
+        content += "<img src=\""+business['image_url']+"\">"
+
+      var infowindow = new google.maps.InfoWindow({
+        content: content
+      });
       // create a marker and drop it on the name on the geocoded location
       var marker = new google.maps.Marker({
         animation: google.maps.Animation.DROP,
         map: map,
         position: results[0].geometry.location,
-        title: name
+        title: business['name']
+      });
+
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
       });
 
       // save the marker object so we can delete it later
