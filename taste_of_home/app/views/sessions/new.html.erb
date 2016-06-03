@@ -1,7 +1,7 @@
 <h1>Login</h1>
 
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= if @errors %>
+  <%= form_for(:session, url: login_path) do |f| %>
+  <% if @errors %>
     <div id="error_explanation">
       <h2><%= pluralize(@errors.count, "error") %> prohibited this user from being saved:</h2>
         <ul>
@@ -25,4 +25,5 @@
     <div class="actions">
       <%= f.submit 'Login' %>
     </div>
+
   <% end %>
