@@ -16,8 +16,8 @@
 //= require_tree .
 
 var markersArray = [];
-var NY_LAT = ;
-var NY_LNG = ;
+var NY_LAT = 40.706059;
+var NY_LNG = -74.009082;
 var QUERY_DELAY = 400;
 var inactive = false;
 
@@ -84,14 +84,13 @@ var bind_controls = function(map) {
  * param: map - the Google map object
  */
 var search = function(map) {
-  var searchTerm = $('#map_search input[type=text]').val();
-
-  if (inactive === true) { return };
 
   // post to the search with the search term, take the response data
   // and process it
-  $.post('/search', { term: searchTerm }, function(data) {
-    inactive = true;
+
+  // TODO TODO TODO do not hard code location, get it from a zip code field
+  $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
+    console.log(data)
 
     // do some clean up
     $('#results').show();
