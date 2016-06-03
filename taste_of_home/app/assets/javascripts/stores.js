@@ -85,10 +85,8 @@ function setMap(pos){
 
 function addClickListener(marker){
   marker.addListener('click', function() {
-    debugger;
     var content = "<b>"+marker.title+"</b><br>";
-    new google.maps.InfoWindow({
-      content: content
-    }).open(map, marker);
+    $('#content ul').html('');
+    $('#content ul').append(content);
   });
 }
