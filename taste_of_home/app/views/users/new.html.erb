@@ -1,5 +1,9 @@
 <h1> Sign Up </h1>
 
+<div>
+  <%= link_to "Home", root_path %>
+</div>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
