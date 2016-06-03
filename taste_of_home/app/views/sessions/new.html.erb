@@ -1,4 +1,7 @@
 <h1>Login</h1>
+<div>
+  <%= link_to "Home", root_path %>
+</div>
 
   <%= form_for(:session, url: login_path) do |f| %>
   <% if @errors %>
