@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM&sensor=true" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
@@ -18,11 +18,14 @@
       <form>
         <input type="text" name="term" id="search-term", placeholder="Food Search">
         <input type="text" name="location" placeholder="Location Search" id="search-location">
-        <a href="#" id="map_search_submit">Search</a>
+        <input type="hidden" name="category_filter" value="Food" id="search-term">
+        <a href="/" id="map_search_submit">Search</a>
       </form>
 
       <br>
-      <div id="results"></div>
+      <div id="results">
+      </div>
+
       <br>
       <hr>
       <ul>
