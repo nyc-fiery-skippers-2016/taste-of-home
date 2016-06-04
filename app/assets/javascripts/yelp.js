@@ -17,14 +17,16 @@
 
 var markersArray = [];
 var lastOpenedWindow;
-var NY_LAT = 40.706059;
-var NY_LNG = -74.009082;
 var QUERY_DELAY = 1500;
 var inactive = false;
+var mapCreated = false;
 
 $(document).ready(function() {
   // initialize the map on load
-  initialize();
+  if(!mapCreated){
+    initialize(); //can happen twice and create more than one map.
+    mapCreated = true;
+  }
 });
 
 /**
@@ -33,8 +35,8 @@ $(document).ready(function() {
 var initialize = function() {
   // Define some options for the map
   var mapOptions = {
-    center: new google.maps.LatLng(NY_LAT, NY_LNG),
-    zoom: 12,
+    center: new google.maps.LatLng(0, 0),
+    zoom: 1,
 
     // hide controls
     panControl: false,
@@ -48,9 +50,34 @@ var initialize = function() {
     }
   };
 
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      mapOptions.center = new google.maps.LatLng(pos.lat, pos.lng);
+      mapOptions.zoom = 12;
+
+      newMap(mapOptions);
+    }, function() {
+      //handle potential error
+      newMap(mapOptions);
+    });
+  }else{
+    //no location available
+    newMap(mapOptions);
+  }
+
+
+
+}
+
+function newMap(mapOptions){
   // create a new Google map with the options in the map element
   var map = new google.maps.Map($('#map_canvas')[0], mapOptions);
-
   bind_controls(map);
 }
 
