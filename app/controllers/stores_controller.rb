@@ -9,7 +9,7 @@ class StoresController < ApplicationController
   end
 
   def search
-    parameters = { term: params[:term], limit: 20, location: params[:location] }
+    parameters = { term: params[:term], limit: 5, location: params[:location] }
     render json: Yelp.client.search(params[:location], parameters)
   end
 

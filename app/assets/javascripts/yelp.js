@@ -17,7 +17,7 @@
 
 var markersArray = [];
 var lastOpenedWindow;
-var QUERY_DELAY = 1500;
+var QUERY_DELAY = 1400;
 var inactive = false;
 var mapCreated = false;
 
