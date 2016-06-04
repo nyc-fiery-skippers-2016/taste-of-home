@@ -159,7 +159,7 @@ var capture = function(i, map, business) {
       inactive = false;
     }
 
-    $('#results').append(build_results_container(business));
+    $('#results').append(build_results_container(business, i));
 
     // get the geocoded address for the business's location
     geocode_address(map, business);
@@ -171,9 +171,9 @@ var capture = function(i, map, business) {
  *
  * param: business - object of the business response
  */
-var build_results_container = function(business) {
+var build_results_container = function(business, i) {
   var storeResult = [
-    '<div class="result">',
+    '<div class="result" id="' + i +  '">',
       '<img class="biz_img" src="', business['image_url'], '">',
       '<h5>', business['name'], '</h5>',
       '<img src="', business['rating_img_url'], '">',
