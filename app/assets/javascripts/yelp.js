@@ -118,14 +118,15 @@ var search = function(map) {
 
   // TODO TODO TODO do not hard code location, get it from a zip code field
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
-    console.log(data)
 
     // do some clean up
     $('#results').show();
     $('#results').empty();
     clearMarkers();
 
-      // debugger;
+    map.setCenter(new google.maps.LatLng(data.region.center.latitude, data.region.center.longitude));
+    map.setZoom(15);
+
     // iterate through each business in the response capture the data
     // within a closure.
     data['businesses'].forEach(function(business, index) {
