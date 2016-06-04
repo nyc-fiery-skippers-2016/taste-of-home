@@ -124,8 +124,16 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
 
-    map.setCenter(new google.maps.LatLng(data.region.center.latitude, data.region.center.longitude));
-    map.setZoom(15);
+    // map.setCenter(new google.maps.LatLng(data.region.center.latitude, data.region.center.longitude));
+    // map.setZoom(15);
+    // debugger;
+    var region = data.region;
+    map.fitBounds(
+      new google.maps.LatLngBounds(
+        new google.maps.LatLng(region.center.latitude - region.span.latitude_delta, region.center.longitude - region.span.longitude_delta),
+        new google.maps.LatLng(region.center.latitude + region.span.latitude_delta, region.center.longitude + region.span.longitude_delta)
+      )
+    );
 
     // iterate through each business in the response capture the data
     // within a closure.
