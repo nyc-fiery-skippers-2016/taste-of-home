@@ -118,7 +118,6 @@ var search = function(map) {
 
   // TODO TODO TODO do not hard code location, get it from a zip code field
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
-    console.log(data)
 
     // do some clean up
     $('#results').show();
@@ -162,7 +161,7 @@ var capture = function(i, map, business) {
  * param: business - object of the business response
  */
 var build_results_container = function(business) {
-  return [
+  var storeResult = [
     '<div class="result">',
       '<img class="biz_img" src="', business['image_url'], '">',
       '<h5>', business['name'], '</h5>',
@@ -171,6 +170,9 @@ var build_results_container = function(business) {
       '<p class="clear-fix"></p>',
     '</div>'
   ].join('');
+
+  return storeResult;
+
 };
 
 /**
