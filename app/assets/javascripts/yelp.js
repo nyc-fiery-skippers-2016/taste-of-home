@@ -165,7 +165,7 @@ var build_results_container = function(business) {
   return [
     '<div class="result">',
       '<img class="biz_img" src="', business['image_url'], '">',
-      '<h5><a href="', business['url'] ,'" target="_blank">', business['name'], '</a></h5>',
+      '<h5>', business['name'], '</h5>',
       '<img src="', business['rating_img_url'], '">',
       '<p>', business['review_count'], ' reviews</p>',
       '<p class="clear-fix"></p>',
