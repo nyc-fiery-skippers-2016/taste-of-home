@@ -16,6 +16,7 @@
 //= require_tree .
 
 var markersArray = [];
+var lastOpenedWindow;
 var NY_LAT = 40.706059;
 var NY_LNG = -74.009082;
 var QUERY_DELAY = 1500;
@@ -167,9 +168,10 @@ var geocode_address = function(map, business) {
   geocoder.geocode({address: address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
 
-      var content = "<b>"+business['name']+"</b><br>"
+      var content = "<b>"+business['name']+"</b><br>";
       if(business['image_url'] !== undefined)
-        content += "<img src=\""+business['image_url']+"\">"
+        content += "<img src=\""+business['image_url']+"\"><br>";
+      content += "<a id=\""+business['id']+"\" href=\"#\">Details</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content
@@ -183,7 +185,20 @@ var geocode_address = function(map, business) {
       });
 
       marker.addListener('click', function() {
+        if(lastOpenedWindow !== undefined)
+          lastOpenedWindow.close();
+        lastOpenedWindow = infowindow;
         infowindow.open(map, marker);
+
+        document.getElementById(business['id']).onclick = function() {
+
+
+          $('#map_search ul').html('');
+          $('#map_search ul').append("<li>" + business['name'] + "</li>");
+          $('#map_search ul').append("<li>" + business['location']['address'][0] + "</li>");
+          $('#map_search ul').append("<li>" + business['location']['city'] + ", " + business['location']['state_code'] + "</li>");
+          $('#map_search ul').append("<li>" + business['display_phone'] + "</li>");
+          }
       });
 
       // save the marker object so we can delete it later
@@ -192,6 +207,7 @@ var geocode_address = function(map, business) {
       console.log("Geocode was not successful for the following reason: " + status);
     }
   });
+
 };
 
 /**
