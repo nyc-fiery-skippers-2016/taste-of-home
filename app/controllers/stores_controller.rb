@@ -5,12 +5,13 @@ class StoresController < ApplicationController
   end
 
   def show
-    @store = Store.find(params[:id])
+    @store = Store.find_or_create_by(params[:display_address])
   end
 
   def search
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
-    render json: Yelp.client.search(params[:location], parameters)
+    results = Yelp.client.search(params[:location], parameters)
+    render json: results
   end
 
 end
