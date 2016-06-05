@@ -138,7 +138,7 @@ var search = function(map) {
     }
     // iterate through each business in the response capture the data
     // within a closure.
-    data['businesses'].forEach(function(business, index) {
+    data.businesses.forEach(function(business, index) {
       capture(index, map, business);
     });
   });
@@ -174,10 +174,10 @@ var capture = function(i, map, business) {
 var build_results_container = function(business, i) {
   var storeResult = [
     '<div class="result" id="' + i +  '">',
-      '<img class="biz_img" src="', business['image_url'], '">',
-      '<h5>', business['name'], '</h5>',
-      '<img src="', business['rating_img_url'], '">',
-      '<p>', business['review_count'], ' reviews</p>',
+      '<img class="biz_img" src="', business.image_url, '">',
+      '<h5>', business.name, '</h5>',
+      '<img src="', business.rating_img_url, '">',
+      '<p>', business.review_count, ' reviews</p>',
       '<p class="clear-fix"></p>',
     '</div>'
   ].join('');
@@ -199,19 +199,20 @@ var geocode_address = function(map, business) {
   var geocoder = new google.maps.Geocoder();
 
   var address = [
-    business['location']['address'][0],
-    business['location']['city'],
-    business['location']['country_code']
+    business.location.address[0],
+    business.location.city,
+    business.location.country_code
   ].join(', ');
 
   // geocode the address and get the lat/lng
   geocoder.geocode({address: address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
 
-      var content = "<b>"+business['name']+"</b><br>";
-      if(business['image_url'] !== undefined)
-        content += "<img src=\""+business['image_url']+"\"><br>";
-      content += "<a id=\""+business['id']+"\" href=\"#\">Details</a>";
+      var content = "<b>"+business.name+"</b><br>";
+      if(business.image_url !== undefined)
+        content += "<img src=\""+business.image_url+"\"><br>";
+      //content += "<a id=\""+business.id+"\" href=\"#\">Details</a><br>";
+      content += "<a href=\"storeusers/create/"+business.id+"\">Favorite</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content
@@ -221,7 +222,7 @@ var geocode_address = function(map, business) {
         animation: google.maps.Animation.DROP,
         map: map,
         position: results[0].geometry.location,
-        title: business['name']
+        title: business.name
       });
 
       marker.addListener('click', function() {
@@ -230,15 +231,15 @@ var geocode_address = function(map, business) {
         lastOpenedWindow = infowindow;
         infowindow.open(map, marker);
 
-        document.getElementById(business['id']).onclick = function() {
+      //   document.getElementById(business['id']).onclick = function() {
 
+      //     $('#map_search ul').html('');
+      //     $('#map_search ul').append("<li>" + business.name + "</li>");
+      //     $('#map_search ul').append("<li>" + business.location.address[0] + "</li>");
+      //     $('#map_search ul').append("<li>" + business.location.city + ", " + business.location.state_code + "</li>");
+      //     $('#map_search ul').append("<li>" + business.display_phone + "</li>");
+      //     }
 
-          $('#map_search ul').html('');
-          $('#map_search ul').append("<li>" + business['name'] + "</li>");
-          $('#map_search ul').append("<li>" + business['location']['address'][0] + "</li>");
-          $('#map_search ul').append("<li>" + business['location']['city'] + ", " + business['location']['state_code'] + "</li>");
-          $('#map_search ul').append("<li>" + business['display_phone'] + "</li>");
-          }
       });
 
       // save the marker object so we can delete it later
