@@ -23,16 +23,10 @@
       </form>
 
       <br>
-      <div id="results">
-      </div>
 
       <br>
       <hr>
-      <ul>
-        <%@stores.each do |store|%>
-          <li><a href="/stores/<%=store.id%>"><%=store.name%></a></li>
-        <%end%>
-      </ul>
+
       <div id="contentFooter">
         <% if logged_in? %>
           <p>Welcome <%= current_user.username %>!</p>
