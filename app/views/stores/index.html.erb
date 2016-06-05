@@ -35,7 +35,7 @@
       </ul>
       <div id="contentFooter">
         <% if logged_in? %>
-          <p>  Welcome <%= link_to current_user.id, user_path %>!</p>
+          <p>  Welcome <%= link_to "My page", "/users/#{current_user.id}" %>!</p>
           <%= link_to "Home", root_path %>
           <%= link_to "Logout", logout_path %>
         <% else %>
