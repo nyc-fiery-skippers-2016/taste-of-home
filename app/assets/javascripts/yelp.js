@@ -116,7 +116,6 @@ var search = function(map) {
   // post to the search with the search term, take the response data
   // and process it
 
-  // TODO TODO TODO do not hard code location, get it from a zip code field
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
 
     // do some clean up
