@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'stores#index'
   get '/search' => 'stores#search'
-  
+
+  get '/storeusers/create/:address' => 'storeusers#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -22,7 +24,9 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-    resources :users, only:[:show, :edit, :new, :create, :update, :destroy]
+  resources :users, only:[:show, :edit, :new, :create, :update, :destroy]
+  resources :lists, only:[:show, :edit, :create, :update, :destroy]
+  resources :store_lists, only:[:show, :create]
 
   # Example resource route with options:
   #   resources :products do
