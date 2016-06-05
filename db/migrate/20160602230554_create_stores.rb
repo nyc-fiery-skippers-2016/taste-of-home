@@ -6,7 +6,7 @@ class CreateStores < ActiveRecord::Migration
       t.string :address, null: false
       t.integer :phone
       t.string :email
-      t.text :reviews
+      t.boolean :favorite, default: false
 
       t.timestamps null: false
     end

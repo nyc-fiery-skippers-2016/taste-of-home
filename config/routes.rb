@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/search' => 'stores#search'
 
   get '/storeusers/create/:address' => 'storeusers#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
