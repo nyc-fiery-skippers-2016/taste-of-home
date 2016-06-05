@@ -7,7 +7,9 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find_or_create_by(params[:display_address])
+    @comments = Comment.all
   end
+
 
   def search
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
@@ -17,10 +19,9 @@ class StoresController < ApplicationController
         unless store
           Store.create(name: business.name, address: business.location.display_address[0])
         end
-      # if StoreUser.where(user_id: current_user.id, store_id: store.id).empty?
-      #   StoreUser.create(user_id: current_user.id, store_id: store.id)
-      # end
       end
+    byebug
+    # hybrid_results = results.businesses.map do |business|
     render json: results
   end
 

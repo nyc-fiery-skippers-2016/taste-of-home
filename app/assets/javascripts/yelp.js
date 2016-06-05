@@ -175,7 +175,7 @@ var build_results_container = function(business, i) {
   var storeResult = [
     '<div class="result" id="' + i +  '">',
       '<img class="biz_img" src="', business['image_url'], '">',
-      '<h5>', business['name'], '</h5>',
+      '<a href="/stores/' + business['id'] + '""><h5>', business['name'], '</h5></a>',
       '<img src="', business['rating_img_url'], '">',
       '<p>', business['review_count'], ' reviews</p>',
       '<p class="clear-fix"></p>',
