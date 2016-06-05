@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to stores_path #update with the proper routes
+      redirect_to root_path #update with the proper routes
     else
       render "new"
     end
