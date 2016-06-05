@@ -1,7 +1,5 @@
 <h1>Login</h1>
-<div>
-  <%= link_to "Home", root_path %>
-</div>
+
 
   <%= form_for(:session, url: login_path) do |f| %>
   <% if @errors %>
@@ -15,17 +13,19 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :username %><br>
-      <%= f.text_field :username %>
+    <div class="row">
+      <div class="small-5">
+        <%= f.label :username %><br>
+        <%= f.text_field :username %>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="small-5">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="actions">
+    <div class="submit">
       <%= f.submit 'Login' %>
     </div>
 

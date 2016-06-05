@@ -28,14 +28,7 @@
       <hr>
 
       <div id="contentFooter">
-        <% if logged_in? %>
-          <p>  Welcome <%= link_to "My page", "/users/#{current_user.id}" %>!</p>
-          <%= link_to "Home", root_path %>
-          <%= link_to "Logout", logout_path %>
-        <% else %>
-          <%= link_to "Sign Up", '/users/new'%>
-          <%= link_to "Login", login_path %>
-        <% end %>
+        
       </div>
     </div>
   </body>
