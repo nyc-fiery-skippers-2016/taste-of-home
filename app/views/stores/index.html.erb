@@ -23,13 +23,13 @@
       </form>
 
       <br>
-
+      <div id="results"></div>
       <br>
       <hr>
 
       <div id="contentFooter">
         <% if logged_in? %>
-          <p>Welcome <%= current_user.username %>!</p>
+          <p>  Welcome <%= link_to "My page", "/users/#{current_user.id}" %>!</p>
           <%= link_to "Home", root_path %>
           <%= link_to "Logout", logout_path %>
         <% else %>

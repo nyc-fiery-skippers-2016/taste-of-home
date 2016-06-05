@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
     @stores = []
     if logged_in?
       StoreUser.where(user_id: current_user.id).each do |store_user|
         @stores.push(Store.find_by(id: store_user.store_id))
       end
     end
-
   end
 
   def destroy

@@ -1,5 +1,14 @@
-<h1> This is the user show <h1>
+<h1> Welcome <%= @user.username %>! <h1>
 
+<aside id='user-nav'>
+	<ul> 
+		<li><%= link_to "Currated Lists", root_path %></li>
+		<li><%= link_to "Forum", root_path %></li>
+	</ul>
+</aside>
+
+<div><h3>Curated Lists</h3></div>
+<div><h3>Saved Searches</h3></div>
 <div>
   <%= link_to "Home", root_path %>
-</div>
+</div> 
