@@ -1,0 +1,11 @@
+<h1><%=@list.name%></h1><br>
+<h2><%=@list.description%></h2><br>
+
+<h2>Created by <%=@user.username%></h2>
+
+<%@list.stores.each do |store| %>
+  <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
+<% end %>
+
+
+

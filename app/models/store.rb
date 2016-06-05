@@ -4,4 +4,8 @@ class Store < ActiveRecord::Base
   has_many :store_users
   has_many :users, through: :store_users
   has_many :comments
+
+  has_many :store_lists
+  has_many :lists, through: :store_lists
+
 end
