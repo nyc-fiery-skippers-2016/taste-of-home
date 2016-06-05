@@ -23,7 +23,7 @@ var mapCreated = false;
 
 $(document).ready(function() {
   // initialize the map on load
-  if(!mapCreated){
+  if(!mapCreated && $('#map_canvas')[0] !== undefined){
     initialize(); //can happen twice and create more than one map.
     mapCreated = true;
   }
