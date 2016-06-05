@@ -1,7 +1,8 @@
 class StoresController < ApplicationController
 
   def show
-    @store = Store.find_or_create_by(params[:display_address])
+    @store = Store.find_by(id: params[:id])
+    @store_list = StoreList.new
   end
 
   def search

@@ -3,3 +3,13 @@
 <div>
   <%= link_to "Home", root_path %>
 </div>
+
+<%= form_for(@store_list) do |f| %>
+  <input type="text" name="name" placeholder="Name">
+
+  <input type="hidden" name="store_list[store_id]" value="<%=@store.id%>">
+
+  <div class="actions">
+    <%= f.submit "Add this business to your list"%>
+  </div>
+<% end %>

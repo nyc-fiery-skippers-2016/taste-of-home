@@ -3,3 +3,23 @@
 <div>
   <%= link_to "Home", root_path %>
 </div>
+
+<% if logged_in? && current_user.id == @user.id %>
+  <%= form_for (@list) do |f| %>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %><br>
+    </div>
+
+    <div class="actions">
+      <!-- <%= f.hidden_field :user_id %> -->
+      <input type="hidden" name="list[user_id]" value="<%=@user.id%>">
+      <%= f.submit 'Create a new curated list'%>
+    </div>
+  <% end %>
+<% end %>

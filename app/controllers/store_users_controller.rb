@@ -1,4 +1,4 @@
-class StoreusersController < ApplicationController
+class StoreUsersController < ApplicationController
 
   def create
     store = Store.find_by(address: params["address"])
