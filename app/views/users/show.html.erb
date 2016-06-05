@@ -1,7 +1,7 @@
 <h1> Welcome <%= @user.username %>! <h1>
 
 <aside id='user-nav'>
-	<ul> 
+	<ul>
 		<li><%= link_to "Currated Lists", root_path %></li>
 		<li><%= link_to "Forum", root_path %></li>
 	</ul>
@@ -11,4 +11,25 @@
 <div><h3>Saved Searches</h3></div>
 <div>
   <%= link_to "Home", root_path %>
-</div> 
+</div>
+
+<% if logged_in? && current_user.id == @user.id %>
+  <%= form_for (@list) do |f| %>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %><br>
+    </div>
+
+    <div class="actions">
+      <!-- <%= f.hidden_field :user_id %> -->
+      <input type="hidden" name="list[user_id]" value="<%=@user.id%>">
+      <%= f.submit 'Create a new curated list'%>
+    </div>
+  <% end %>
+<% end %>
+

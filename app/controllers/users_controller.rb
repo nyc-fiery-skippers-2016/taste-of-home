@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       StoreUser.where(user_id: current_user.id).each do |store_user|
         @stores.push(Store.find_by(id: store_user.store_id))
       end
+      @list = List.new
     end
   end
 
