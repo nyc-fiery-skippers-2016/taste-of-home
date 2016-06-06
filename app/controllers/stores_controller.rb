@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
 
   def show
-    @store = Store.find_or_create_by(params[:display_address])
+    @store = Store.find_by(set_store)
     @comments = Comment.all
 
     @store = Store.find_by(id: params[:id])
@@ -18,12 +18,13 @@ class StoresController < ApplicationController
     stores = results.businesses.map do |business|
       {name: business.name, address: business.location.display_address.push(business.location.country_code), phone: business.display_phone, description: business.categories.flatten, longitude: business.location.coordinate.longitude, latitude: business.location.coordinate.latitude, img_url: business.image_url, rating_url: business.rating_img_url, yelp_id: business.id, longitude_delta: results.region.span.longitude_delta, latitude_delta: results.region.span.latitude_delta, review_count: business.review_count}
     end
-
+# creating or finding the store by results
     stores.each do |store|
-
-     unless Store.exists?(yelp_id: store[:yelp_id])
-      Store.create(store)
-     end
+      unless Store.exists?(yelp_id: store[:yelp_id])
+        Store.create(store)
+      end
+    end
+    render json: stores
 
     end
   #   new_results = {}
@@ -37,13 +38,12 @@ class StoresController < ApplicationController
   #     new_results[:businesses] << {address: business.location.address[0], city: business.location.city, country_code: business.location.country_code, name: business.name, id: business.id, image_url: business.image_url, rating_img_url: business.rating_img_url, review_count: business.review_count}
   #   end
 
-    render json: stores
-  end
+
 
   private
-    # def set_store
-    #   @store = Store.find(params[:id])
-    # end
+    def set_store
+      @store = Store.find_by(yelp_id: params[:yelp_id])
+    end
 
     def store_params
       params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)

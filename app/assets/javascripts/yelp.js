@@ -123,7 +123,7 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
 
-    if (data.businesses.length === 1) {
+      data.forEach()
       map.setCenter(new google.maps.LatLng(data.region.center.latitude, data.region.center.longitude));
       map.setZoom(16);
     } else {
@@ -136,7 +136,7 @@ var search = function(map) {
     }
     // iterate through each business in the response capture the data
     // within a closure.
-    data.businesses.forEach(function(business, index) {
+    data.forEach(function(store) {
       capture(index, map, business);
     });
   });
