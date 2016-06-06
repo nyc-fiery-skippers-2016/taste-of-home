@@ -1,13 +1,12 @@
 
 
 <h1 class="large-12"> <%=@store.name%> <h1>
-<div class="medium-12"> <p><%=@store.description%></p></div>
-<div class="medium-6"><%=@store.name%></div>
-
-<h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
-<div id="comment-form">
-
+<div class="medium-12">
+  <p><%=@store.description%></p>
 </div>
+<div class="medium-6"><%=@store.phone%></div>
+
+
 
 <div id="comments-list">
   <% @comments.each do |comment|%>
@@ -17,6 +16,9 @@
    </ul>
   <% end %>
 </div>
+
+<h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
+<div id="comment-form">
 
 
 <% if logged_in? %>
@@ -31,3 +33,4 @@
   <% end %>
 <% end %>
 
+</div>

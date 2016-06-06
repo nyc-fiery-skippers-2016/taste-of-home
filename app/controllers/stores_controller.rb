@@ -35,7 +35,7 @@ class StoresController < ApplicationController
       #   StoreUser.create(user_id: current_user.id, store_id: store.id)
       # end
 
-      end
+      # end
     # hybrid_results = results.businesses.map do |business|
 
     render json: results

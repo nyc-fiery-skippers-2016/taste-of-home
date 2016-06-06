@@ -1,18 +1,17 @@
 
-  <body>
-    <div id="map_canvas"></div>
+    <div class="row" id="map_canvas"></div>
     <div id="control_container"></div>
 
-    <div id="map_search">
+    <div class="medium-10 columns" id="map_search">
       <form>
         <input type="text" name="term" id="search-term", placeholder="Food Search">
         <input type="text" name="location" placeholder="Location Search" id="search-location">
         <input type="hidden" name="category_filter" value="Food" id="search-term">
-        <a href="/" id="map_search_submit">Search</a>
+        <input type="submit" id="map_search_submit" value="submit">
       </form>
 
       <br>
-      <div id="results"></div>
+      <div class="medium-6 columns" id="results"></div>
       <br>
       <hr>
 
