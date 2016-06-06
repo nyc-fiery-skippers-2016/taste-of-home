@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605211708) do
+ActiveRecord::Schema.define(version: 20160606152852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,18 +67,22 @@ ActiveRecord::Schema.define(version: 20160605211708) do
   add_index "store_users", ["user_id"], name: "index_store_users_on_user_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
-    t.string   "name",                        null: false
+    t.string   "name",                            null: false
     t.text     "description"
-    t.string   "address",                     null: false
+    t.string   "address",                         null: false
     t.integer  "phone"
     t.string   "email"
-    t.string   "coordinate",                  null: false
-    t.string   "photo_url"
+    t.float    "longitude",                       null: false
+    t.float    "latitude",                        null: false
+    t.float    "longitude_delta",                 null: false
+    t.float    "latitude_delta",                  null: false
+    t.string   "img_url"
     t.string   "rating_url"
-    t.string   "yelp_id",                     null: false
-    t.boolean  "favorite",    default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "yelp_id",                         null: false
+    t.boolean  "favorite",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "review_count",    default: 0
   end
 
   create_table "tags", force: :cascade do |t|
