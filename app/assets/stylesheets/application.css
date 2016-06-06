@@ -21,4 +21,9 @@ html, body {
   padding: 0;
 }
 
-nav
+header {
+	background-color: #004358;
+	font-family:;
+	margin-bottom: 3em;
+
+}

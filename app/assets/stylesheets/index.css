@@ -3,6 +3,7 @@
   height: 50%;
   width:90%;
   display:block;
+  padding-top: 40%; 
   background-color: rgb(150,150,150);
 }
 #map_search{
@@ -19,11 +20,6 @@
   padding:1em;
 }
 
-#contentFooter{
-  position: absolute;
-  bottom: 1em;
-  right:1em;
-}
 ul{
   padding-left:0;
 }
