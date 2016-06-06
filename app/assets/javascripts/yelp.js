@@ -18,7 +18,6 @@
 var markersArray = [];
 var lastOpenedWindow;
 var QUERY_DELAY = 1400;
-var inactive = false;
 var mapCreated = false;
 
 $(document).ready(function() {
@@ -73,7 +72,7 @@ var initialize = function() {
 
 
 
-}
+};
 
 function newMap(mapOptions){
   // create a new Google map with the options in the map element
@@ -103,19 +102,11 @@ var bind_controls = function(map) {
 
   // push the search controls onto the map
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlContainer);
-}
+};
 
-/**
- * Makes a post request to the server with the search term and
- * populates the map with the response businesses
- *
- * param: map - the Google map object
- */
 var search = function(map) {
-
   // post to the search with the search term, take the response data
   // and process it
-
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
 
     // do some clean up
@@ -123,62 +114,48 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
 
-      if (data.businesses.length ===1) {
-      map.setCenter(new google.maps.LatLng(data.region.center.latitude, data.region.center.longitude));
-      map.setZoom(16);
-    } else {
-      map.fitBounds(
-        new google.maps.LatLngBounds(
-          new google.maps.LatLng(data.latitude - data.latitude_delta, data.longitude - data.longitude_delta),
-          new google.maps.LatLng(data.latitude + data.latitude_delta, data.longitude + data.longitude_delta)
-        )
-      );
-    }
-    // iterate through each business in the response capture the data
-    // within a closure.
-    data.forEach(function(store) {
-      capture(index, map, business);
+
+      if (data.length === 1) {
+        map.setCenter(new google.maps.LatLng(data[0].latitude, data[0].longitude));
+        map.setZoom(16);
+      } else {
+        for(var i = 0; i < (data.length - 1); i ++) {
+          map.fitBounds(
+            new google.maps.LatLngBounds(
+              new google.maps.LatLng(data[i].latitude - data[i].latitude_delta, data[i].longitude - data[i].longitude_delta),
+              new google.maps.LatLng(data[i].latitude + data[i].latitude_delta, data[i].longitude + data[i].longitude_delta)
+              )
+            );
+          }
+        data.forEach(function(store) {
+        populateListMap(map, data);
+        });
+        }
     });
-  });
 };
 
-/**
- * Capture the specific business objects within a closure for setTimeout
- * or else it'll execute only on the last business in the array
- *
- * param: i - the index the business was at in the array, used to the
- *            timeout delay
- * param: map - the Google map object used for geocoding and marker placement
- * param: business - the business object from the response
- */
-var capture = function(i, map, business) {
-  setTimeout(function() {
-    if (i === 15) {
-      inactive = false;
+
+var populateListMap = function(map, data) {
+  for(var i = 0; i < data.length; i++){
+    $('#results').append(buildStoreHTML(data[i]));
+    geocode_address(map, data[i]);
     }
-
-    $('#results').append(build_results_container(business, i));
-
-    // get the geocoded address for the business's location
-    geocode_address(map, business);
-  }, QUERY_DELAY * i); // the delay on the timeout
-};
+  };
 
 /**
  * Builds the div that'll display the business result from the API
  *
  * param: business - object of the business response
  */
-var build_results_container = function(business, i) {
+var buildStoreHTML = function(store) {
   var storeResult =
-    "<div class=\"result\" id=\""+ i + "\">" +
-      "<img class=\"biz_img\" src=\""+ business.image_url +"\">" +
-      "<a href=\"/stores/"+ business.id +"\"><h5>"+ business.name + "</h5></a>" +
-      "<img src=\""+ business.rating_img_url +"\">" +
-      "<p>"+ business.review_count +" reviews</p>" +
+    "<div class=\"result\"" +
+      "<img class=\"biz_img\" src=\""+ store.image_url +"\">" +
+      "<a href=\"/stores/"+ store.id +"\"><h5>"+ store.name + "</h5></a>" +
+      "<img src=\""+ store.rating_img_url +"\">" +
+      "<p>"+ store.review_count +" reviews</p>" +
       "<p class=\"clear-fix\"></p>" +
     "</div>";
-
   return storeResult;
 };
 
@@ -191,24 +168,20 @@ var build_results_container = function(business, i) {
  *               over the dropped marker
  * param: location_object - an object of the businesses address
  */
-var geocode_address = function(map, business) {
+var geocode_address = function(map, store) {
   var geocoder = new google.maps.Geocoder();
 
-  var address = [
-    business.address,
-    business.city,
-    business.country_code
-  ].join(', ');
+  var address = store.address;
 
   // geocode the address and get the lat/lng
   geocoder.geocode({address: address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
 
-      var content = "<b>"+business.name+"</b><br>";
-      if(business.image_url !== undefined)
-        content += "<img src=\""+business.image_url+"\"><br>";
-      //content += "<a id=\""+business.id+"\" href=\"#\">Details</a><br>";
-      content += "<a href=\"storeusers/create/"+business.id+"\">Favorite</a>";
+      var content = "<b>"+store.name+"</b><br>";
+      if(store.image_url !== undefined)
+        content += "<img src=\""+store.image_url+"\"><br>";
+      //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
+      content += "<a href=\"storeusers/create/"+store.id+"\">Favorite</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content
@@ -218,7 +191,7 @@ var geocode_address = function(map, business) {
         animation: google.maps.Animation.DROP,
         map: map,
         position: results[0].geometry.location,
-        title: business.name
+        title: store.name
       });
 
       marker.addListener('click', function() {
@@ -248,4 +221,3 @@ var clearMarkers = function() {
 
   markersArray = [];
 };
-
