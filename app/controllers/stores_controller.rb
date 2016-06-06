@@ -1,9 +1,14 @@
 class StoresController < ApplicationController
 
   def show
+    @store = Store.find_or_create_by(params[:display_address])
+    @comments = Comment.all
+
     @store = Store.find_by(id: params[:id])
     @store_list = StoreList.new
+
   end
+
 
   def search
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
@@ -26,6 +31,7 @@ class StoresController < ApplicationController
           store = Store.new(name: business[:name], address: business[:id])
           store.save
         end
+
       @stores << store
       end
     render json: new_results

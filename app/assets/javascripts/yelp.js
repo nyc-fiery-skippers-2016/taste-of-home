@@ -170,7 +170,6 @@ var capture = function(i, map, business) {
  * param: business - object of the business response
  */
 var build_results_container = function(business, i) {
-  //debugger;
   var storeResult =
     "<div class=\"result\" id=\""+ i + "\">" +
       "<img class=\"biz_img\" src=\""+ business.image_url +"\">" +
@@ -181,7 +180,6 @@ var build_results_container = function(business, i) {
     "</div>";
 
   return storeResult;
-
 };
 
 /**
