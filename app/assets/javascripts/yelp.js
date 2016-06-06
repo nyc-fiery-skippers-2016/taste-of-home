@@ -127,11 +127,10 @@ var search = function(map) {
       map.setCenter(new google.maps.LatLng(data.region.center.latitude, data.region.center.longitude));
       map.setZoom(16);
     } else {
-      var region = data.region;
       map.fitBounds(
         new google.maps.LatLngBounds(
-          new google.maps.LatLng(region.center.latitude - region.span.latitude_delta, region.center.longitude - region.span.longitude_delta),
-          new google.maps.LatLng(region.center.latitude + region.span.latitude_delta, region.center.longitude + region.span.longitude_delta)
+          new google.maps.LatLng(data.latitude - data.latitude_delta, data.longitude - data.longitude_delta),
+          new google.maps.LatLng(data.latitude + data.latitude_delta, data.longitude + data.longitude_delta)
         )
       );
     }
@@ -171,15 +170,15 @@ var capture = function(i, map, business) {
  * param: business - object of the business response
  */
 var build_results_container = function(business, i) {
-  var storeResult = [
-    '<div class="result" id="' + i +  '">',
-      '<img class="biz_img" src="', business.image_url, '">',
-      '<h5>', business.name, '</h5>',
-      '<img src="', business.rating_img_url, '">',
-      '<p>', business.review_count, ' reviews</p>',
-      '<p class="clear-fix"></p>',
-    '</div>'
-  ].join('');
+  //debugger;
+  var storeResult =
+    "<div class=\"result\" id=\""+ i + "\">" +
+      "<img class=\"biz_img\" src=\""+ business.image_url +"\">" +
+      "<a href=\"/stores/"+ business.id +"\"><h5>"+ business.name + "</h5></a>" +
+      "<img src=\""+ business.rating_img_url +"\">" +
+      "<p>"+ business.review_count +" reviews</p>" +
+      "<p class=\"clear-fix\"></p>" +
+    "</div>";
 
   return storeResult;
 
@@ -198,9 +197,9 @@ var geocode_address = function(map, business) {
   var geocoder = new google.maps.Geocoder();
 
   var address = [
-    business.location.address[0],
-    business.location.city,
-    business.location.country_code
+    business.address,
+    business.city,
+    business.country_code
   ].join(', ');
 
   // geocode the address and get the lat/lng
@@ -229,16 +228,6 @@ var geocode_address = function(map, business) {
           lastOpenedWindow.close();
         lastOpenedWindow = infowindow;
         infowindow.open(map, marker);
-
-      //   document.getElementById(business['id']).onclick = function() {
-
-      //     $('#map_search ul').html('');
-      //     $('#map_search ul').append("<li>" + business.name + "</li>");
-      //     $('#map_search ul').append("<li>" + business.location.address[0] + "</li>");
-      //     $('#map_search ul').append("<li>" + business.location.city + ", " + business.location.state_code + "</li>");
-      //     $('#map_search ul').append("<li>" + business.display_phone + "</li>");
-      //     }
-
       });
 
       // save the marker object so we can delete it later
