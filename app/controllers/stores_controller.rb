@@ -1,12 +1,11 @@
 class StoresController < ApplicationController
 
   def show
-    @store = Store.find_by(set_store)
     @comments = Comment.all
 
     @store = Store.find_by(id: params[:id])
     @store_list = StoreList.new
-
+    @store_tag = StoreTag.new
   end
 
 

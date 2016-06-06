@@ -19,7 +19,23 @@
   <%= link_to "Home", root_path %>
 </div>
 
+<ul>
+  <%@store.tags.each do |tag|%>
+    <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
+  <%end%>
+</ul>
+
 <% if logged_in? %>
+  <%= form_for(@store_tag) do |f| %>
+    <input type="text" name="name" placeholder="Name">
+
+    <input type="hidden" name="store_id" value="<%=@store.id%>">
+
+    <div class="actions">
+      <%= f.submit "Add tag to this business"%>
+    </div>
+  <% end %>
+
   <%= form_for(@store_list) do |f| %>
     <input type="text" name="name" placeholder="Name">
 
