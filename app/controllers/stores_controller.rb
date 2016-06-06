@@ -15,6 +15,8 @@ class StoresController < ApplicationController
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
     results = Yelp.client.search(params[:location], parameters)
 
+    map_data = {}
+
     map_data[:businesses] = []
     map_data[:latitude] = results.region.center.latitude
     map_data[:longitude] = results.region.center.longitude
