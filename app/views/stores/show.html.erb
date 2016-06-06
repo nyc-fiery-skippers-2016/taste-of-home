@@ -1,8 +1,22 @@
 
+
 <h1 class="large-12"> <%=@store.name%> <h1>
 <div class="medium-12"> <p><%=@store.description%></p></div>
 <div class="medium-6"><%=@store.name%></div>
 
+<h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
+<div id="comment-form">
+
+</div>
+
+<div id="comments-list">
+  <% @comments.each do |comment|%>
+   <ul>
+    <li><h4> <%= comment.title %> </h4></li>
+    <li><h5> <%= comment.body %> </h5></li>
+   </ul>
+  <% end %>
+</div>
 
 
 <% if logged_in? %>
