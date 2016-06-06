@@ -1,10 +1,10 @@
 class StoresController < ApplicationController
 
   def show
-    @store = Store.find_by(set_store)
+    @store = Store.find_by(yelp_id: params[:yelp_id])
     @comments = Comment.all
 
-    @store = Store.find_by(id: params[:id])
+    @store = Store.find_by(yelp_id: params[:yelp_id])
     @store_list = StoreList.new
 
   end
@@ -14,13 +14,6 @@ class StoresController < ApplicationController
     # using the search term to find the business from yelp
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
     results = Yelp.client.search(params[:location], parameters)
-
-    map_data = {}
-    map_data[:latitude] = results.region.center.latitude
-    map_data[:longitude] = results.region.center.longitude
-    map_data[:latitude_delta] = results.region.span.latitude_delta
-    map_data[:longitude_delta] = results.region.span.longitude_delta
-
 
     stores = results.businesses.map do |business|
       {name: business.name, address: business.location.display_address.push(business.location.country_code).join(", "), phone: business.display_phone, description: business.categories.flatten.join(", "), longitude: business.location.coordinate.longitude, latitude: business.location.coordinate.latitude, img_url: business.image_url, rating_url: business.rating_img_url, yelp_id: business.id, longitude_delta: results.region.span.longitude_delta, latitude_delta: results.region.span.latitude_delta, review_count: business.review_count}
