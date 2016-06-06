@@ -1,15 +1,9 @@
-<<<<<<< HEAD
+
 <h1 class="large-12"> <%=@store.name%> <h1>
 <div class="medium-12"> <p><%=@store.description%></p></div>
 <div class="medium-6"><%=@store.name%></div>
 
-=======
-<h1> This is the store show <h1>
-<p><%=@store.name%></p>
 
-<div>
-  <%= link_to "Home", root_path %>
-</div>
 
 <% if logged_in? %>
   <%= form_for(@store_list) do |f| %>
@@ -22,4 +16,4 @@
     </div>
   <% end %>
 <% end %>
->>>>>>> master
+

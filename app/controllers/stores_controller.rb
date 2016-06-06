@@ -11,19 +11,22 @@ class StoresController < ApplicationController
   end
 
   def search
-    parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
-    results = Yelp.client.search(params[:location], parameters)
-    @stores = []
+    # parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
+    results = Yelp.client.search(params[:location], store_parameters)
+    byebug
     results.businesses.each do |business|
-      store = Store.find_by(address: business.id)
-        unless store
-          store = Store.new(name: business.name, address: business.id)
-          store.save
-        end
-      @stores << store
-
-      end
+      Store.create_or_find_by(store_params)
+    end
+   
     render json: results
   end
 
+
+private 
+    def set_store
+      @store = Store.find(params[:id])
+    end
+    def store_params
+      params.require(:store).permit(:name, :description, :address, :email, :phone)
+    end
 end
