@@ -17,3 +17,9 @@
   <%=render partial: "lists/list", locals: {list: @list}%>
 <% end %>
 
+<p><%= @user.username %>'s Favorite Places:</p>
+<ul>
+  <%@user.stores.each do |store|%>
+    <li><a href="/store/<%=store.id%>"><%=store.name%></a></li>
+  <%end%>
+</ul>
