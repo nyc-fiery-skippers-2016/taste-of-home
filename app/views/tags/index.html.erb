@@ -1,5 +1,6 @@
 <h2>All tags:</h2>
 
+
 <div class="subheading" class="search-bar">
 	<div class="small-4 columns">
   <form action="/tags" method="get">
@@ -11,6 +12,7 @@
 
   <ul class="list">
     <%@tags.each do |tag|%>
-      <li><a href="/stores/<%=tag.id%>"><%=tag.name%></a></li>
+      <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
     <%end%>
   </ul>
+
