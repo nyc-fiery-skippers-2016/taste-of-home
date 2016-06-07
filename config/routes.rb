@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/' => 'stores#index'
 
-  get '/stores/:id' => 'stores#show'
+  get '/stores/:yelp_id' => 'stores#show'
   get '/stores/:id/comments/:id' => 'stores#show'
 
   get 'login' => 'sessions#new'
