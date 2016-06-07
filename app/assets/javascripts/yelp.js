@@ -78,9 +78,9 @@ function newMap(mapOptions){
 }
 
 function getFavorites(map){
-  $.get('/search', { just_favorites: true }, function(data) {
+  $.get('/favorites', {}, function(data) {
     data.forEach(function(place){
-      geocode_address(map, place);
+      geocode_address(map, place, true);
     });
   });
 }
@@ -171,7 +171,7 @@ var buildStoreHTML = function(store) {
  *               over the dropped marker
  * param: location_object - an object of the businesses address
  */
-var geocode_address = function(map, store) {
+var geocode_address = function(map, store, favorite) {
   var geocoder = new google.maps.Geocoder();
 
   var address = store.address;
@@ -184,28 +184,44 @@ var geocode_address = function(map, store) {
       if(store.img_url !== undefined)
         content += "<img src=\""+store.img_url+"\"><br>";
       //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
-      content += "<a href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
+      content += "<a id=\"favoriteLink\" href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content
       });
       // create a marker and drop it on the name on the geocoded location
-      var marker = new google.maps.Marker({
+
+      var markerAttributes = {
         animation: google.maps.Animation.DROP,
         map: map,
         position: results[0].geometry.location,
         title: store.name
-      });
+      }
+
+      if (favorite)
+        markerAttributes['icon'] = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+
+      var marker = new google.maps.Marker(markerAttributes);
 
       marker.addListener('click', function() {
         if(lastOpenedWindow !== undefined)
           lastOpenedWindow.close();
         lastOpenedWindow = infowindow;
         infowindow.open(map, marker);
+        $('#favoriteLink').click(function(e){
+          e.preventDefault();
+          $.ajax({
+            url: e.target.href
+          });
+          $('#favoriteLink').parent().append(':)');
+          e.target.remove();
+        });
       });
 
       // save the marker object so we can delete it later
-      markersArray.push(marker);
+      if (!favorite)
+        markersArray.push(marker);
+
     } else {
       console.log("Geocode was not successful for the following reason: " + status);
     }
