@@ -74,6 +74,15 @@ function newMap(mapOptions){
   // create a new Google map with the options in the map element
   var map = new google.maps.Map($('#map_canvas')[0], mapOptions);
   bindControls(map);
+  getFavorites(map);
+}
+
+function getFavorites(map){
+  $.get('/search', { just_favorites: true }, function(data) {
+    data.forEach(function(place){
+      geocode_address(map, place);
+    });
+  });
 }
 
 /**
@@ -104,7 +113,6 @@ var search = function(map) {
   // post to the search with the search term, take the response data
   // and process it
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
-
     // do some clean up
     $('#results').show();
     $('#results').empty();
@@ -131,11 +139,12 @@ var search = function(map) {
 
 
 var populateListMap = function(map, data) {
-  for(var i = 0; i < data.length; i++){
-    $('#results').append(buildStoreHTML(data[i]));
+  for(var i = data.length - 1; i >= 0; i--){//reverse order to exclude favorites
+    if (i > (data.length-1) - 5)//only display 5 results
+      $('#results').append(buildStoreHTML(data[i]));
     geocode_address(map, data[i]);
-    }
-  };
+  }
+};
 
 /**
  * Builds the div that'll display the business result from the API
