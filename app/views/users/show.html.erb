@@ -1,8 +1,9 @@
 <h2>Welcome<%= @user.username.capitalize %>!</h2>
+
   <div class="row">
-    <aside id='user-nav'>
+    <aside id='user-left-nav'>
     	<ul>
-    		<li><%= link_to "Currated Lists", root_path %></li>
+    		<li><%= link_to "Curated Lists", root_path %></li>
     		<li><%= link_to "Forum", root_path %></li>
     	</ul>
     </aside>
@@ -14,8 +15,9 @@
   <% end %>
 </div>
 
+
 <div class="small-8 columns">
-  <h3><%= @user.username.capitalize %>'s Favorite Places:</h3>
+  <h3>Favorite Places:</h3>
     <div class="small-6 columns">
       <ul>
         <%@user.stores.each do |store|%>
