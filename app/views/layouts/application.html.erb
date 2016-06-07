@@ -21,7 +21,7 @@
             <ul class='left'>
               <li class="divider"></li>              
               <% if logged_in? %>
-                <li class="divider"><%= link_to "My Page", "/users/#{@user.id}" %></li>
+                <li class="divider"><%= link_to "My Page", "/users/#{current_user.id}" %></li>
                 <li class="divider"><%= link_to "Logout", logout_path %></li>
               <% else %>
                 <li class="divider"><%= link_to "Sign Up", '/users/new'%></li>
