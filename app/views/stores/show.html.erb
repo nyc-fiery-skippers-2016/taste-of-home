@@ -2,16 +2,20 @@
 
 
 <h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
-<div id="comment-form">
 
-</div>
+
+  <%= link_to 'Write a Comment', "/stores/#{@store.yelp_id}/comments/new" %>
+
+
 
 <div id="comments-list">
-  <% @comments.each do |comment|%>
-   <ul>
-    <li><h4> <%= comment.title %> </h4></li>
-    <li><h5> <%= comment.body %> </h5></li>
-   </ul>
+  <% if @comments %>
+    <% @comments.each do |comment|%>
+     <ul>
+      <li><h4> <%= comment.title %> </h4></li>
+      <li><h5> <%= comment.body %> </h5></li>
+     </ul>
+    <% end %>
   <% end %>
 </div>
 
@@ -49,7 +53,9 @@
 
   <%if logged_in?%>
     <%if StoreUser.where(store_id: @store.id, user_id: current_user.id).empty?%>
-        <a href="/storeusers/create/<%=@store.yelp_id%>">Favorite</a>
+      <form action="/storeusers/create/<%=@store.yelp_id%>">
+        <input type="submit" value="Favorite">
+      </form>
     <%else%>
       <p>This place is on your favorites</p>
     <%end%>

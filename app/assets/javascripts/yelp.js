@@ -130,9 +130,7 @@ var search = function(map) {
               )
             );
           }
-
         populateListMap(map, data);
-
         }
     });
 };
