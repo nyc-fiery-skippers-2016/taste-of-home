@@ -3,7 +3,7 @@ class StoreListsController < ApplicationController
   def create
     params['store_list']['list_id'] = List.where(user_id: current_user.id).find_by(name: params['name']).id
     StoreList.create(store_list_params)
-    redirect_to "/"
+    redirect_to "/lists/#{params['store_list']['list_id']}"
   end
 
   private

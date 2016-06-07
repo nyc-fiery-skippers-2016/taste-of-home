@@ -4,13 +4,13 @@
   <ul class="list">
     <% if !@lists.empty? %>
       <% @lists.each do |list| %>
-        <li><a href="/lists/list.id"><%=list.name%></a></li>
+        <li><a href="/lists/<%=list.id%>"><%=list.name%></a></li>
         <li><%=list.description%></li>
       <%end%>
     <%end%>
     <% if logged_in? && current_user.id == @user.id %>
     <h5>Create a New List</h5>
-    <%=render partial: "lists/list", locals: {list: @list}%>
+    <%=render partial: "lists/list", locals: {list: @list, user: @user}%>
   <% end %>
   </ul>
 </div>
