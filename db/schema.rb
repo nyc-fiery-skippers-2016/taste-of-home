@@ -72,10 +72,17 @@ ActiveRecord::Schema.define(version: 20160606152852) do
     t.string   "address",                      null: false
     t.integer  "phone"
     t.string   "email"
-    t.boolean  "favorite",     default: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "review_count", default: 0
+    t.float    "longitude",                       null: false
+    t.float    "latitude",                        null: false
+    t.float    "longitude_delta",                 null: false
+    t.float    "latitude_delta",                  null: false
+    t.text     "img_url"
+    t.text     "rating_url"
+    t.string   "yelp_id",                         null: false
+    t.boolean  "favorite",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "review_count",    default: 0
   end
 
   create_table "tags", force: :cascade do |t|
