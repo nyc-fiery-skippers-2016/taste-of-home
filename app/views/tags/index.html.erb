@@ -3,10 +3,11 @@
   <input type="submit" value="Search">
 </form>
 
-<%if @stores%>
-  <ul>
-    <%@stores.each do |store|%>
-      <li><a href="/stores/<%=store.yelp_id%>"><%=store.name%></a></li>
-    <%end%>
-  </ul>
-<%end%>
+<h2>All tags:</h2>
+
+<ul>
+  <%@tags.each do |tag|%>
+    <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
+  <%end%>
+</ul>
+
