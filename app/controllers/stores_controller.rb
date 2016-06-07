@@ -1,12 +1,11 @@
 class StoresController < ApplicationController
 
   def show
-    @store = Store.find_by(yelp_id: params[:yelp_id])
     @comments = Comment.all
 
-    @store = Store.find_by(yelp_id: params[:yelp_id])
-    @store_list = StoreList.new
-
+    @store = Store.find_by(set_store)
+    @store_list = StoreList.all
+    @store_tag = StoreTag.all
   end
 
 

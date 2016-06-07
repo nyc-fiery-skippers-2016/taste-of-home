@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 20160606152852) do
 
   create_table "store_tags", force: :cascade do |t|
     t.integer  "store_id"
-    t.integer  "user_id"
+    t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "store_tags", ["store_id"], name: "index_store_tags_on_store_id", using: :btree
-  add_index "store_tags", ["user_id"], name: "index_store_tags_on_user_id", using: :btree
+  add_index "store_tags", ["tag_id"], name: "index_store_tags_on_tag_id", using: :btree
 
   create_table "store_users", force: :cascade do |t|
     t.integer  "store_id"
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 20160606152852) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20160606152852) do
   add_foreign_key "store_lists", "lists"
   add_foreign_key "store_lists", "stores"
   add_foreign_key "store_tags", "stores"
-  add_foreign_key "store_tags", "users"
+  add_foreign_key "store_tags", "tags"
   add_foreign_key "store_users", "stores"
   add_foreign_key "store_users", "users"
 end
