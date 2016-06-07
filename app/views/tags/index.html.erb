@@ -1,20 +1,15 @@
-<form action="/tags" method="get">
-  <input type="text" name="tag" placeHolder="Search A Tag">
-  <input type="submit" value="Search">
-</form>
-
-<%if @stores%>
-  <ul>
-    <%@stores.each do |store|%>
-      <li><a href="/stores/<%=store.yelp_id%>"><%=store.name%></a></li>
-    <%end%>
-  </ul>
-<%end%>
-
 <h2>All tags:</h2>
 
-<ul>
-  <%@tags.each do |tag|%>
-    <li><a href="/stores/<%=tag.id%>"><%=tag.name%></a></li>
-  <%end%>
-</ul>
+<div class="subheading" class="search-bar">
+  <form action="/tags" method="get">
+    <input type="text" name="tag" placeHolder="Search A Tag">
+    <input type="submit" value="Search">
+  </form>
+</div>
+
+
+  <ul class="list">
+    <%@tags.each do |tag|%>
+      <li><a href="/stores/<%=tag.id%>"><%=tag.name%></a></li>
+    <%end%>
+  </ul>

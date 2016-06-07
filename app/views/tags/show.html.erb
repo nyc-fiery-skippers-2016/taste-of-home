@@ -1,7 +1,9 @@
-<h1><%=@tag.name%></h1>
+<h1><%=@tag.name.capitalize%></h1>
 
-<ul>
-  <%@tag.stores.each do |store|%>
-    <li><a href="/stores/<%=store.id%>"><%=store.name%></a></li>
-  <%end%>
-</ul>
+<div class="list">
+	<ul>
+	  <%@stores.each do |store|%>
+	    <li><a href="/stores/<%=store.id%>"><%=store.name%></a></li>
+	  <%end%>
+	</ul>
+</div>
