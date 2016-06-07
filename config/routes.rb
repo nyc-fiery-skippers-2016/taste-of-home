@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root 'stores#index'
   get '/search' => 'stores#search'
 
-  get '/storeusers/create/:address' => 'storeusers#create'
+  get '/storeusers/create/:yelp_id' => 'store_users#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
