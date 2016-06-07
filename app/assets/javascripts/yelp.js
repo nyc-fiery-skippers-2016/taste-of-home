@@ -64,19 +64,16 @@ var initialize = function() {
       //handle potential error
       newMap(mapOptions);
     });
-  }else{
+  } else {
     //no location available
     newMap(mapOptions);
   }
-
-
-
 };
 
 function newMap(mapOptions){
   // create a new Google map with the options in the map element
   var map = new google.maps.Map($('#map_canvas')[0], mapOptions);
-  bind_controls(map);
+  bindControls(map);
 }
 
 /**
@@ -84,7 +81,7 @@ function newMap(mapOptions){
  *
  * param: map - the Google map object
  */
-var bind_controls = function(map) {
+var bindControls = function(map) {
   // get the container for the search control and bind and event to it on submit
   var controlContainer = $('#control_container')[0];
   google.maps.event.addDomListener(controlContainer, 'submit', function(e) {
@@ -113,12 +110,11 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
 
-
       if (data.length === 1) {
         map.setCenter(new google.maps.LatLng(data[0].latitude, data[0].longitude));
         map.setZoom(16);
       } else {
-        for(var i = 0; i < (data.length - 1); i ++) {
+        for(var i = 0; i < data.length; i ++) {
           map.fitBounds(
             new google.maps.LatLngBounds(
               new google.maps.LatLng(data[i].latitude - data[i].latitude_delta, data[i].longitude - data[i].longitude_delta),
@@ -126,9 +122,9 @@ var search = function(map) {
               )
             );
           }
-        data.forEach(function(store) {
+
         populateListMap(map, data);
-        });
+
         }
     });
 };
@@ -148,13 +144,14 @@ var populateListMap = function(map, data) {
  */
 var buildStoreHTML = function(store) {
   var storeResult =
-    "<div class=\"result\"" +
-      "<img class=\"biz_img\" src=\""+ store.img_url +"\">" +
+    "<div class=\"result\">" +
+      "<img src=\""+ store.img_url +"\">" +
       "<a href=\"/stores/"+ store.yelp_id +"\"><h5>"+ store.name + "</h5></a>" +
       "<img src=\""+ store.rating_url +"\">" +
       "<p>"+ store.review_count +" reviews</p>" +
       "<p class=\"clear-fix\"></p>" +
     "</div>";
+
   return storeResult;
 };
 
@@ -177,8 +174,8 @@ var geocode_address = function(map, store) {
     if (status === google.maps.GeocoderStatus.OK) {
 
       var content = "<b>"+store.name+"</b><br>";
-      if(store.image_url !== undefined)
-        content += "<img src=\""+store.image_url+"\"><br>";
+      if(store.img_url !== undefined)
+        content += "<img src=\""+store.img_url+"\"><br>";
       //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
       content += "<a href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
 

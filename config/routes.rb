@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   get '/' => 'stores#index'
 
   get '/stores/:yelp_id' => 'stores#show'
-  get '/stores/:id/comments/:id' => 'stores#show'
+  get '/stores/:yelp_id/comments/:id' => 'stores#show'
+
+  get '/stores/:yelp_id/comments/new' => 'comments#new'
+  post '/stores/:yelp_id/comments' => 'comments#create'
 
   get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
+  post 'login' => 'sessions#cresate'
   get 'logout' => 'sessions#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

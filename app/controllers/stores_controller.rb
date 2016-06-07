@@ -2,6 +2,7 @@ class StoresController < ApplicationController
 
   def show
     @comments = Comment.all
+    @comment = Comment.new
 
     @store = Store.find_by(yelp_id: params[:yelp_id])
     @store_list = StoreList.new
