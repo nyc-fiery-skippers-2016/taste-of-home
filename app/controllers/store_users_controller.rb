@@ -5,6 +5,8 @@ class StoreUsersController < ApplicationController
     if logged_in? && StoreUser.where(user_id: current_user.id, store_id: store.id).empty?
       StoreUser.create(user_id: current_user.id, store_id: store.id)
     end
+    # PanSamPanSam
+    # Look into respond_to to refactor
     if request.xhr?
       # byebug
       render json: ""

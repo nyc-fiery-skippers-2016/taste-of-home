@@ -1,4 +1,6 @@
 
+# PanSamPanSam
+# Should not need to require Faker
 require 'faker'
 
 User.create!( :username => "tasteofhome",
