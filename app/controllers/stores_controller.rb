@@ -6,7 +6,6 @@ class StoresController < ApplicationController
   end
 
   def show
-    # put in 404 error
     @store = Store.find_by(yelp_id: params[:yelp_id])
     @store_list = StoreList.new
     @store_tag = StoreTag.new
@@ -16,9 +15,15 @@ class StoresController < ApplicationController
 
 
   def search
+    # byebug
     # using the search term to find the business from yelp
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
-    results = Yelp.client.search(params[:location], parameters)
+
+    begin
+      results = Yelp.client.search(params[:location], parameters)
+    rescue
+      return render json: []
+    end
 
     stores = results.businesses.map do |business|
       {name: business.name, address: business.location.display_address.push(business.location.country_code).join(", "), phone: business.display_phone, description: business.categories.flatten.join(", "), longitude: business.location.coordinate.longitude, latitude: business.location.coordinate.latitude, img_url: business.image_url, rating_url: business.rating_img_url, yelp_id: business.id, longitude_delta: results.region.span.longitude_delta, latitude_delta: results.region.span.latitude_delta, review_count: business.review_count}
