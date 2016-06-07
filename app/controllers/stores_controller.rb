@@ -18,7 +18,7 @@ class StoresController < ApplicationController
     stores = results.businesses.map do |business|
       {name: business.name, address: business.location.display_address.push(business.location.country_code).join(", "), phone: business.display_phone, description: business.categories.flatten.join(", "), longitude: business.location.coordinate.longitude, latitude: business.location.coordinate.latitude, img_url: business.image_url, rating_url: business.rating_img_url, yelp_id: business.id, longitude_delta: results.region.span.longitude_delta, latitude_delta: results.region.span.latitude_delta, review_count: business.review_count}
     end
-# creating or finding the store by results
+    # creating or finding the store by results
     stores.each do |store|
       unless Store.exists?(yelp_id: store[:yelp_id])
         Store.create(store)
@@ -30,8 +30,8 @@ class StoresController < ApplicationController
 
 
   private
-    def store_params
-      params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)
-    end
+  def store_params
+    params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)
+  end
 
 end

@@ -177,7 +177,7 @@ var geocode_address = function(map, store) {
       if(store.img_url !== undefined)
         content += "<img src=\""+store.img_url+"\"><br>";
       //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
-      content += "<a href=\"storeusers/create/"+store.id+"\">Favorite</a>";
+      content += "<a href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content
