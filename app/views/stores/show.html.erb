@@ -46,7 +46,9 @@
 
   <%if logged_in?%>
     <%if StoreUser.where(store_id: @store.id, user_id: current_user.id).empty?%>
-        <a href="/storeusers/create/<%=@store.yelp_id%>">Favorite</a>
+      <form action="/storeusers/create/<%=@store.yelp_id%>">
+        <input type="submit" value="Favorite">
+      </form>
     <%else%>
       <p>This place is on your favorites</p>
     <%end%>
