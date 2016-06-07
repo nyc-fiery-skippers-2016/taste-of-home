@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   get '/' => 'stores#index'
 
   get '/stores/:yelp_id' => 'stores#show'
-  get '/stores/:id/comments/:id' => 'stores#show'
+  get '/stores/:yelp_id/comments/:id' => 'stores#show'
+
+  get '/stores/:yelp_id/comments/new' => 'comments#new'
+  post '/stores/:yelp_id/comments' => 'comments#create'
+
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

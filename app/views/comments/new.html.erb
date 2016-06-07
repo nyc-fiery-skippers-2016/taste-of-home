@@ -1,0 +1,9 @@
+Let us know what you found!
+
+<div id="new-comment-form">
+  <%= form_for (@comment) do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :body %>
+    <%= f.submit "Post a Comment"%>
+  <% end %>
+</div>
