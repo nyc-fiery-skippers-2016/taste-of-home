@@ -36,7 +36,7 @@ gem 'foundation-rails'
 # gem 'capistrano-rails', group: :development
 # Env token integration
 gem 'slim'
-
+gem 'rails_12factor'
 
 # Yelp gem!
 gem 'yelp'
