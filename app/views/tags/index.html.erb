@@ -10,3 +10,11 @@
     <%end%>
   </ul>
 <%end%>
+
+<h2>All tags:</h2>
+
+<ul>
+  <%@tags.each do |tag|%>
+    <li><a href="/stores/<%=tag.id%>"><%=tag.name%></a></li>
+  <%end%>
+</ul>

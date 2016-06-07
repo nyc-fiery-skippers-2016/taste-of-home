@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
 
   def index
+    @tags = Tag.all
     if params[:tag]
       tag = Tag.find_by(name: params[:tag])
       @stores = tag.stores if tag
