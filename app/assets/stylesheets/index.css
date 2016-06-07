@@ -6,19 +6,7 @@
   padding-top: 40%; 
   background-color: rgb(150,150,150);
 }
-#map_search{
-  width:90%;
-  height:25%;
-  position:fixed;
-  bottom:0;
-  right:0;
-  text-align: center;
-  /* So padding doesn't affect size */
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-  padding:1em;
-}
+
 
 ul{
   padding-left:0;

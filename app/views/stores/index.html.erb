@@ -1,19 +1,22 @@
-<!-- map -->
-    <div id="control_container"><div class="small-11 columns" class="map" id="map_canvas">
+
+    <div class="row" >
+      <div class="large-10 columns" class="map" id="map_canvas">
+       
       </div>
     </div>
 
-<!-- search bar -->
+
     <div class="small-6 columns" id="map_search">
-      <form class='form'>
-        <input type="text" name="term" id="search-term", placeholder="Food Search">
-        <input type="text" name="location" placeholder="Location Search" id="search-location">
-        <input type="hidden" name="category_filter" value="Food" id="search-term">
-        <input type="submit" id="map_search_submit" value="submit">
-      </form>
+      <div class="row">
+        <form class='form'>
+          <input type="text" name="term" id="search-term", placeholder="Food Search">
+          <input type="text" name="location" placeholder="Location Search" id="search-location">
+          <input type="hidden" name="category_filter" value="Food" id="search-term">
+          <input type="submit" id="map_search_submit" value="submit">
+        </form>
+      </div>
     </div>
 
-     <!-- results  -->
       <div class="medium-6 columns" id="results"></div>
   
     

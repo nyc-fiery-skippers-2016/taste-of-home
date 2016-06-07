@@ -39,6 +39,7 @@
 //  34. Title Bar
 //  35. Tooltip
 //  36. Top Bar
+//  37. Map
 
 @import 'util/util';
 
@@ -146,9 +147,10 @@ $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
 $hr-border: 1px solid $medium-gray;
 $hr-margin: rem-calc(20) auto;
-$list-lineheight: $paragraph-lineheight;
+$list-lineheight:
+$paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
-$list-style-type: disc;
+$list-style-type: none;
 $list-style-position: outside;
 $list-side-margin: 1.25rem;
 $list-nested-side-margin: 1.25rem;
@@ -565,3 +567,13 @@ $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
+// 37. Map
+// -------------
+
+$map-width:90%;
+$map-height:25%;
+$map-position:relative;
+$map-bottom:0;
+$map-right:0;
+$map-text-align: center;
+$map-padding:1em;
