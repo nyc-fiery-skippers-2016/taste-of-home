@@ -73,6 +73,15 @@ function newMap(mapOptions){
   // create a new Google map with the options in the map element
   var map = new google.maps.Map($('#map_canvas')[0], mapOptions);
   bindControls(map);
+  getFavorites(map);
+}
+
+function getFavorites(map){
+  $.get('/favorites', {}, function(data) {
+    data.forEach(function(place){
+      geocode_address(map, place, true);
+    });
+  });
 }
 
 /**
@@ -103,7 +112,6 @@ var search = function(map) {
   // post to the search with the search term, take the response data
   // and process it
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
-
     // do some clean up
     $('#results').show();
     $('#results').empty();
@@ -128,11 +136,12 @@ var search = function(map) {
 
 
 var populateListMap = function(map, data) {
-  for(var i = 0; i < data.length; i++){
-    $('#results').append(buildStoreHTML(data[i]));
+  for(var i = data.length - 1; i >= 0; i--){//reverse order to exclude favorites
+    if (i > (data.length-1) - 5)//only display 5 results
+      $('#results').append(buildStoreHTML(data[i]));
     geocode_address(map, data[i]);
-    }
-  };
+  }
+};
 
 /**
  * Builds the div that'll display the business result from the API
@@ -161,7 +170,7 @@ var buildStoreHTML = function(store) {
  *               over the dropped marker
  * param: location_object - an object of the businesses address
  */
-var geocode_address = function(map, store) {
+var geocode_address = function(map, store, favorite) {
   var geocoder = new google.maps.Geocoder();
 
   var address = store.address;
@@ -174,29 +183,45 @@ var geocode_address = function(map, store) {
       if(store.img_url !== undefined)
         content += "<img src=\""+store.img_url+"\"><br>";
       //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
-      content += "<a href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
+      content += "<a id=\"favoriteLink\" href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content
       });
       // create a marker and drop it on the name on the geocoded location
-      var marker = new google.maps.Marker({
+
+      var markerAttributes = {
         animation: google.maps.Animation.DROP,
         map: map,
         position: results[0].geometry.location,
         title: store.name,
         icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFC0lEQVRYR8WWbUxVdRzHP+denuRimCSizKaiFjg1m4npXC2RmW65tcWKXlS65bRZW85Vzg1Cy2d8keYgJmW6RLEAwWw5tVVrZvYCBQ0fkASEywUu3HvPPc+n/a/XZg5R8qJn++/cF3fn+/n9/t/fg8SDf2Kmrp6sCtnaLXWx0oPXZ+j43LErElJdG2u31A1/GACu1KyURUnTk8pqt9SNfBgAMWmvjs11jXGVPiyAuCnvpZ8kWso4u7V+wmBmICr93UnljgTnYkuysEwLyQZLtnqiY6IT/Rf9K5uqmvcNFkBU2qr0ikdS4hbtWlaMKgexNBPTtnGYEis+X8aFrQ2TgGuDBTA0Nzu57ZfMpPhR6cOJinai+VX0oIahWtCuc25j/WigbTAAHGWw+pnpmRs9b7/Ea+dLiUsbxrARLoyAhqbomK0KtRvOjQTckQZwHIQ3Rsa7ds+troGiEmi7zisZHZxJNhmemoitmuiNPs4W1kccQCqEtGlwcc6BA8SePg3i4ATFZHdKD/lTdIZGO7HcypkLO/56EeiIWAaWw6OLoWtOSQkJlgV792I7neimia5oRKk6J69doCAnlRavvq5pf2Mh4I0UQMxRaJqel5eSPHEiFBVhR0WhmSZBVUU3dDzNLbjb293PQw7wN3AdUCIB4PwONo3LzFw1raAAtm3D1jRUy0JRVTRdC70v19WzHl4+Dn8AnUIcsCIB4PoB/FmVlThKS8HrDYmLyFVdRG/SfPESfwaDe96BPKAV0G4OwfsFcJbD5vTs7Pcz5s+Hw4dRbZugyICmohkGPq+XlmvNWjbMABqBAGBHCkBE35FVVTXEsXMnaiBAUNdD4qquoykKzZeu8CX2kq/gCOABzFtXgPvJgPMgbMrIzl6VMW8eWmUlsmGg6lpIXNc02ptbuCrLP70OS4FmILSIRAJAWgdPzob65yoqsIqLCbjdqKaBqmlouo6ntZVuf8CzELKBK0Dvram/3yuI+R6uPp2XN2pEdDS9h75FsUX0NwACvl4629xkweywuHC90df29X+uwFkBX4ybOfOtqR/n0fPhGhTbQjVNVFF2hk5nSysndKMgH0rEwAH0O61+AwWQiuHZNPj1hWPH8H36CXJHR6jshLi4f9nnx9fVrWXBU8BVINjf3jkQAGk7jMuAy3PLypB+P03P0SOhshNpFzWvKBo+t5uvbZaUQnW44ViRAHDWwLo4+Gjq5s0kxsXStWtXyNLC8TfF5c4uWgzj51xYEna96Hb9PnfLgFQKE0bDuZQZM2LS8/ORerrpLtxOMBBADZddUA7g93TRaFO9FNaGU9+n6wdShtJnMHYyXJm8di3JCxcSrKmm99ChG5EbRqjPy8EgfreH47BhPewPt1rvnVx/rwDOKihwwZrQbI+LxVdYGDKcJgxnGMiyTMDnQ/H5OGmzoQD2hB3vu73b3YsHHEfgTRsmOGCmA+aNWbCAJ5YvR6qtxVdeHio1IR6QZTwt1wmoSrAJjv8GNaWIBISGjOjz/ZqurwzEnAA1Kj6ex3NySJo1C1dCAjQ0wKlTBLxeFFOnw91BT1c3fr+f87B/JRSJhQLoCh95oOICRpjwkX2wIxHmDIHxAl+MqpvjSvxBHD80NsCPH8A34aEiups/3N9Fo/l3wt3N+bfPggRArMiPAbGAo48PCC7RUHqAbkDcsyix/0y2gQjfOgucQFxYXPzuqzRFdKKXC1FRBAO65/7A/gFUyHqyzlXYtAAAAABJRU5ErkJggg=="
-      });
+      }
+
+      if (favorite)
+        markerAttributes['icon'] = "data:image/png;base64,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";
+
+      var marker = new google.maps.Marker(markerAttributes);
 
       marker.addListener('click', function() {
         if(lastOpenedWindow !== undefined)
           lastOpenedWindow.close();
         lastOpenedWindow = infowindow;
         infowindow.open(map, marker);
+        $('#favoriteLink').click(function(e){
+          e.preventDefault();
+          $.ajax({
+            url: e.target.href
+          });
+          $('#favoriteLink').parent().append('<span>Favorited</span>');
+          e.target.remove();
+        });
       });
 
       // save the marker object so we can delete it later
-      markersArray.push(marker);
+      if (!favorite)
+        markersArray.push(marker);
+
     } else {
       console.log("Geocode was not successful for the following reason: " + status);
     }

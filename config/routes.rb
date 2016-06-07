@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'stores#index'
   get '/search' => 'stores#search'
+  get '/favorites' => 'stores#favorites'
 
   get '/storeusers/create/:yelp_id' => 'store_users#create'
 

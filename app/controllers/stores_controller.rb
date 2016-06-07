@@ -29,10 +29,28 @@ class StoresController < ApplicationController
         Store.create(store)
       end
     end
-    render json: stores
 
+    #does not add to list if it is in favorites because it will be already shown
+    if logged_in?
+      StoreUser.where(user_id: current_user.id).each do |store_user|
+        store = Store.find_by(id: store_user.store_id)
+        store_in_list = stores.find do |store_in_list|
+          store_in_list[:yelp_id] == store.yelp_id
+        end
+        stores.delete(store_in_list)
+      end
+    end
+
+    render json: stores
   end
 
+  def favorites
+    stores = []
+    current_user.stores.each do |favorite|
+      stores << favorite
+    end
+    render json: stores
+  end
 
   private
 
