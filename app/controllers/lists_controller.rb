@@ -11,7 +11,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
-    @user = @list.user
+    @user = User.find_by(id: @list.id)
   end
 
   private
