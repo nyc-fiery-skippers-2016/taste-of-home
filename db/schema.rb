@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 20160606152852) do
 
   create_table "store_tags", force: :cascade do |t|
     t.integer  "store_id"
-    t.integer  "tag_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "store_tags", ["store_id"], name: "index_store_tags_on_store_id", using: :btree
-  add_index "store_tags", ["tag_id"], name: "index_store_tags_on_tag_id", using: :btree
+  add_index "store_tags", ["user_id"], name: "index_store_tags_on_user_id", using: :btree
 
   create_table "store_users", force: :cascade do |t|
     t.integer  "store_id"
@@ -67,28 +67,21 @@ ActiveRecord::Schema.define(version: 20160606152852) do
   add_index "store_users", ["user_id"], name: "index_store_users_on_user_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
-    t.string   "name",                            null: false
+    t.string   "name",                         null: false
     t.text     "description"
-    t.string   "address",                         null: false
+    t.string   "address",                      null: false
     t.integer  "phone"
     t.string   "email"
-    t.float    "longitude",                       null: false
-    t.float    "latitude",                        null: false
-    t.float    "longitude_delta",                 null: false
-    t.float    "latitude_delta",                  null: false
-    t.string   "img_url"
-    t.string   "rating_url"
-    t.string   "yelp_id",                         null: false
-    t.boolean  "favorite",        default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "review_count",    default: 0
+    t.boolean  "favorite",     default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "review_count", default: 0
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -105,7 +98,7 @@ ActiveRecord::Schema.define(version: 20160606152852) do
   add_foreign_key "store_lists", "lists"
   add_foreign_key "store_lists", "stores"
   add_foreign_key "store_tags", "stores"
-  add_foreign_key "store_tags", "tags"
+  add_foreign_key "store_tags", "users"
   add_foreign_key "store_users", "stores"
   add_foreign_key "store_users", "users"
 end
