@@ -1,42 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Taste of Home Home Page</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
 
-  </head>
-  <body>
-    <div id="map_canvas"></div>
+    <div class="row height">
+
+        <div id="map_canvas" style="height: 400px"></div>
+
+    </div>
     <div id="control_container"></div>
 
-    <div id="map_search">
-      <form>
-        <input type="text" name="term" id="search-term", placeholder="Food Search">
-        <input type="text" name="location" placeholder="Location Search" id="search-location">
-        <input type="hidden" name="category_filter" value="Food" id="search-term">
-        <a href="/" id="map_search_submit">Search</a>
-      </form>
-
-      <br>
-      <div id="results"></div>
-      <br>
-      <hr>
-
-      <div id="contentFooter">
-        <% if logged_in? %>
-          <p>  Welcome <%= link_to "My page", "/users/#{current_user.id}" %>!</p>
-          <%= link_to "Home", root_path %>
-          <%= link_to "Logout", logout_path %>
-        <% else %>
-          <%= link_to "Sign Up", '/users/new'%>
-          <%= link_to "Login", login_path %>
-        <% end %>
+    <div class="small-6 columns" id="map_search">
+      <div class="row">
+        <form class='form'>
+          <input type="text" name="term" id="search-term", placeholder="Food Search">
+          <input type="text" name="location" placeholder="Location Search" id="search-location">
+          <input type="hidden" name="category_filter" value="Food" id="search-term">
+          <input type="submit" id="map_search_submit" value="submit">
+        </form>
       </div>
     </div>
-  </body>
-</html>
+
+      <div class="medium-6 columns" id="results"></div>
+
+
+
+

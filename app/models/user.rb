@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :lists
 
-
   validates :username, presence: true
   validates :username, uniqueness: true
 

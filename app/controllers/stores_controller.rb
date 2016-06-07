@@ -1,6 +1,12 @@
 class StoresController < ApplicationController
 
+  def index
+    @stores = Store.all
+    @user = current_user
+  end
+
   def show
+    # put in 404 error
     @store = Store.find_by(yelp_id: params[:yelp_id])
     @store_list = StoreList.new
     @store_tag = StoreTag.new
@@ -29,8 +35,9 @@ class StoresController < ApplicationController
 
 
   private
-  def store_params
-    params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)
-  end
+
+    def store_params
+      params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)
+    end
 
 end

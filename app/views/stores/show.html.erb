@@ -1,11 +1,15 @@
-<h1><%=@store.name%><h1>
+
+<h1 class="large-12"> <%=@store.name%> <h1>
+<div class="medium-12">
+  <p><%=@store.description%></p>
+</div>
+<div class="medium-6"><%=@store.phone%></div>
 
 
 <h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
 
 
   <%= link_to 'Write a Comment', "/stores/#{@store.yelp_id}/comments/new" %>
-
 
 
 <div id="comments-list">
@@ -17,11 +21,6 @@
      </ul>
     <% end %>
   <% end %>
-</div>
-
-
-<div>
-  <%= link_to "Home", root_path %>
 </div>
 
 <ul>
@@ -54,3 +53,5 @@
     <%end%>
   <%end%>
 <% end %>
+
+</div>

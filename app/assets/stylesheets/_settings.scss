@@ -39,6 +39,7 @@
 //  34. Title Bar
 //  35. Tooltip
 //  36. Top Bar
+//  37. Map
 
 @import 'util/util';
 
@@ -53,7 +54,7 @@ $foundation-palette: (
   secondary: #777,
   success: #3adb76,
   warning: #ffae00,
-  alert: #ec5840,
+  alert: rgb(253,116,0),
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -124,7 +125,7 @@ $header-sizes: (
     'h6': 16,
   ),
 );
-$header-color: inherit;
+$header-color: #004358;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-text-rendering: optimizeLegibility;
@@ -146,9 +147,10 @@ $anchor-text-decoration-hover: none;
 $hr-width: $global-width;
 $hr-border: 1px solid $medium-gray;
 $hr-margin: rem-calc(20) auto;
-$list-lineheight: $paragraph-lineheight;
+$list-lineheight:
+$paragraph-lineheight;
 $list-margin-bottom: $paragraph-margin-bottom;
-$list-style-type: disc;
+$list-style-type: none;
 $list-style-position: outside;
 $list-side-margin: 1.25rem;
 $list-nested-side-margin: 1.25rem;
@@ -565,3 +567,27 @@ $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
+// 37. Map
+// -------------
+ #map-canvas{
+    margin: 0px;
+    padding: 0px;
+    min-height: 250px;
+    height: 350px;
+    width: 500px;
+    max-height: 750px;
+}
+
+$map-width:90%;
+$map-height:100%;
+$map-position:relative;
+$map-top:10;
+$map-right:0;
+$map-text-align: center;
+$map-padding:1em;
+$map-display:block;
+$map-padding-top: 40rem;
+$map-background-color: rgb(150,150,150);
+.height {
+  height: 500px
+}

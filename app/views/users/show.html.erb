@@ -1,25 +1,28 @@
-<h1> Welcome <%= @user.username %>! <h1>
+<h2>Welcome <%= @user.username.capitalize %>!</h2>
 
-<aside id='user-nav'>
-	<ul>
-		<li><%= link_to "Curated Lists", root_path %></li>
-		<li><%= link_to "Forum", root_path %></li>
-	</ul>
-</aside>
-
-<div><h3>Curated Lists</h3></div>
-<div><h3>Saved Searches</h3></div>
-<div>
-  <%= link_to "Home", root_path %>
+<div class="small-8 columns"><h3>Curated Lists</h3>
+  <ul class="list">
+    <% if !@lists.empty? %>
+      <% @lists.each do |list| %>
+        <li><a href="/lists/list.id"><%=list.name%></a></li>
+        <li><%=list.description%></li>
+      <%end%>
+    <%end%>
+    <% if logged_in? && current_user.id == @user.id %>
+    <h5>Create a New List</h5>
+    <%=render partial: "lists/list", locals: {list: @list}%>
+  <% end %>
+  </ul>
 </div>
 
-<% if logged_in? && current_user.id == @user.id %>
-  <%=render partial: "lists/list", locals: {list: @list}%>
-<% end %>
 
-<p><%= @user.username %>'s Favorite Places:</p>
-<ul>
-  <%@user.stores.each do |store|%>
-    <li><a href="/stores/<%=store.yelp_id%>"><%=store.name%></a></li>
-  <%end%>
-</ul>
+<div class="small-8 columns">
+  <h3>Favorite Places:</h3>
+    <div class="small-6 columns" class="list">
+      <ul>
+        <% @user.stores.each do |store| %>
+          <li><a href="/store/<%=store.id%>"><%=store.name%></a></li>
+        <%end%>
+      </ul>
+    </div>
+</div>
