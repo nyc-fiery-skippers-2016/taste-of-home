@@ -114,12 +114,11 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
 
-
       if (data.length === 1) {
         map.setCenter(new google.maps.LatLng(data[0].latitude, data[0].longitude));
         map.setZoom(16);
       } else {
-        for(var i = 0; i < (data.length - 1); i ++) {
+        for(var i = 0; i < data.length; i ++) {
           map.fitBounds(
             new google.maps.LatLngBounds(
               new google.maps.LatLng(data[i].latitude - data[i].latitude_delta, data[i].longitude - data[i].longitude_delta),
@@ -127,9 +126,9 @@ var search = function(map) {
               )
             );
           }
-        data.forEach(function(store) {
+        // data.forEach(function(store) {
         populateListMap(map, data);
-        });
+        // });
         }
     });
 };
