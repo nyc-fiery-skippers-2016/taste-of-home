@@ -1,3 +1,6 @@
+// PanSamPanSam
+// All of these things below should be in application.js and is repeated here, which you should avoid.
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -60,10 +63,15 @@ var initialize = function() {
 
       newMap(mapOptions);
     }, function() {
+      // PanSamPanSam
+      // What does this callback function do????
+      // Considering looking it up. Maybe you don't need to do this.
+      // This may also be causing the map to run twice.
+
       //handle potential error
       newMap(mapOptions);
     });
-  } else {
+  } else { 
     //no location available
     newMap(mapOptions);
   }
@@ -190,6 +198,9 @@ var geocode_address = function(map, store, favorite) {
       });
       // create a marker and drop it on the name on the geocoded location
 
+      // PanSamPanSam
+      // Consider referencing the actual image rather than the base64 version
+      
       var markerAttributes = {
         animation: google.maps.Animation.DROP,
         map: map,
