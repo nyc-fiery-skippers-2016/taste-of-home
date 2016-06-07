@@ -17,7 +17,6 @@
 
 var markersArray = [];
 var lastOpenedWindow;
-var QUERY_DELAY = 1400;
 var mapCreated = false;
 
 $(document).ready(function() {
@@ -180,7 +179,7 @@ var geocode_address = function(map, store) {
       if(store.image_url !== undefined)
         content += "<img src=\""+store.image_url+"\"><br>";
       //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
-      content += "<a href=\"storeusers/create/"+store.id+"\">Favorite</a>";
+      content += "<a href=\"storeusers/create/"+store.yelp_id+"\">Favorite</a>";
 
       var infowindow = new google.maps.InfoWindow({
         content: content

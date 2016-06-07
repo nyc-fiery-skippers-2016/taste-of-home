@@ -20,6 +20,6 @@
 <p><%= @user.username %>'s Favorite Places:</p>
 <ul>
   <%@user.stores.each do |store|%>
-    <li><a href="/store/<%=store.id%>"><%=store.name%></a></li>
+    <li><a href="/stores/<%=store.yelp_id%>"><%=store.name%></a></li>
   <%end%>
 </ul>
