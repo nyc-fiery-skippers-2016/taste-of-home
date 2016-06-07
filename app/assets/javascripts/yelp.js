@@ -148,13 +148,14 @@ var populateListMap = function(map, data) {
  */
 var buildStoreHTML = function(store) {
   var storeResult =
-    "<div class=\"result\"" +
-      "<img class=\"biz_img\" src=\""+ store.img_url +"\">" +
+    "<div class=\"result\">" +
+      "<img src=\""+ store.img_url +"\">" +
       "<a href=\"/stores/"+ store.yelp_id +"\"><h5>"+ store.name + "</h5></a>" +
       "<img src=\""+ store.rating_url +"\">" +
       "<p>"+ store.review_count +" reviews</p>" +
       "<p class=\"clear-fix\"></p>" +
     "</div>";
+
   return storeResult;
 };
 
@@ -177,8 +178,8 @@ var geocode_address = function(map, store) {
     if (status === google.maps.GeocoderStatus.OK) {
 
       var content = "<b>"+store.name+"</b><br>";
-      if(store.image_url !== undefined)
-        content += "<img src=\""+store.image_url+"\"><br>";
+      if(store.img_url !== undefined)
+        content += "<img src=\""+store.img_url+"\"><br>";
       //content += "<a id=\""+store.id+"\" href=\"#\">Details</a><br>";
       content += "<a href=\"storeusers/create/"+store.id+"\">Favorite</a>";
 
