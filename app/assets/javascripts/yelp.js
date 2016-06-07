@@ -214,7 +214,7 @@ var geocode_address = function(map, store, favorite) {
           $.ajax({
             url: e.target.href
           });
-          $('#favoriteLink').parent().append('<p>Favorited</p>');
+          $('#favoriteLink').parent().append('<span>Favorited</span>');
           e.target.remove();
         });
       });
