@@ -23,11 +23,6 @@
   <% end %>
 </div>
 
-
-<h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
-<div id="comment-form">
-
-
 <ul>
   <% @store.tags.each do |tag|%>
     <li><a href="/tags/<%= tag.id%>"><%= tag.name%></a></li>

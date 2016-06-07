@@ -4,7 +4,7 @@ class CreateStores < ActiveRecord::Migration
       t.string  :name, null: false
       t.text    :description
       t.string  :address, null: false
-      t.integer :phone
+      t.string  :phone
       t.string  :email
       t.float   :longitude, null: false
       t.float   :latitude, null: false

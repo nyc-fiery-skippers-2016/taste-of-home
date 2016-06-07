@@ -569,14 +569,25 @@ $topbar-unstack-breakpoint: medium;
 
 // 37. Map
 // -------------
+ #map-canvas{
+    margin: 0px;
+    padding: 0px;
+    min-height: 250px;
+    height: 350px;
+    width: 500px;
+    max-height: 750px;
+}
 
 $map-width:90%;
-$map-height:35%;
+$map-height:100%;
 $map-position:relative;
-$map-bottom:0;
+$map-top:10;
 $map-right:0;
 $map-text-align: center;
 $map-padding:1em;
 $map-display:block;
-$map-padding-top: 40%; 
+$map-padding-top: 40rem;
 $map-background-color: rgb(150,150,150);
+.height {
+  height: 500px
+}
