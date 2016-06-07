@@ -112,7 +112,7 @@ var bindControls = function(map) {
 var search = function(map) {
   // post to the search with the search term, take the response data
   // and process it
-  $.get('/search', { term: $("#search-term").val(), category_filter: 'food', location: $("#search-location").val() }, function(data) {
+  $.get('/search', { term: $("#search-term").val(), category_filter: 'food,restaurants', location: $("#search-location").val() }, function(data) {
     // do some clean up
     $('#results').show();
     $('#results').empty();
