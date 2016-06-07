@@ -17,7 +17,6 @@
 
 var markersArray = [];
 var lastOpenedWindow;
-var QUERY_DELAY = 1400;
 var mapCreated = false;
 
 $(document).ready(function() {
@@ -65,19 +64,16 @@ var initialize = function() {
       //handle potential error
       newMap(mapOptions);
     });
-  }else{
+  } else {
     //no location available
     newMap(mapOptions);
   }
-
-
-
 };
 
 function newMap(mapOptions){
   // create a new Google map with the options in the map element
   var map = new google.maps.Map($('#map_canvas')[0], mapOptions);
-  bind_controls(map);
+  bindControls(map);
 }
 
 /**
@@ -85,7 +81,7 @@ function newMap(mapOptions){
  *
  * param: map - the Google map object
  */
-var bind_controls = function(map) {
+var bindControls = function(map) {
   // get the container for the search control and bind and event to it on submit
   var controlContainer = $('#control_container')[0];
   google.maps.event.addDomListener(controlContainer, 'submit', function(e) {
@@ -126,9 +122,9 @@ var search = function(map) {
               )
             );
           }
-        // data.forEach(function(store) {
+
         populateListMap(map, data);
-        // });
+
         }
     });
 };
