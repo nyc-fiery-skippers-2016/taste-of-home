@@ -1,5 +1,8 @@
 class ListsController < ApplicationController
 
+  def new
+    @list = List.new
+  end
 
   def create
     List.create(list_params)

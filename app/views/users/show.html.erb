@@ -1,26 +1,27 @@
 <h2>Welcome <%= @user.username.capitalize %>!</h2>
 
-  <div class="row">
-    <aside id='user-left-nav'>
-    	<ul>
-    		<li><%= link_to "New Lists", list_path %></li>
-    		<li><%= link_to "New ", root_path %></li>
-    	</ul>
-    </aside>
-  </div>
 
 <div class="small-8 columns"><h3>Curated Lists</h3>
-  <% if logged_in? && current_user.id == @user.id %>
+  <ul class="list">
+    <% if !@lists.empty? %>
+      <% @lists.each do |list| %>
+        <li><a href="/lists/list.id"><%=list.name%></a></li>
+        <li><%=list.description%></li>
+      <%end%>
+    <%end%>
+    <% if logged_in? && current_user.id == @user.id %>
+    <h5>Create a New List</h5>
     <%=render partial: "lists/list", locals: {list: @list}%>
   <% end %>
+  </ul>
 </div>
 
 
 <div class="small-8 columns">
   <h3>Favorite Places:</h3>
-    <div class="small-6 columns">
+    <div class="small-6 columns" class="list">
       <ul>
-        <%@user.stores.each do |store|%>
+        <% @user.stores.each do |store| %>
           <li><a href="/store/<%=store.id%>"><%=store.name%></a></li>
         <%end%>
       </ul>

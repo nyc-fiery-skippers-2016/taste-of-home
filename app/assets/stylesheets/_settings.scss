@@ -571,9 +571,12 @@ $topbar-unstack-breakpoint: medium;
 // -------------
 
 $map-width:90%;
-$map-height:25%;
+$map-height:35%;
 $map-position:relative;
 $map-bottom:0;
 $map-right:0;
 $map-text-align: center;
 $map-padding:1em;
+$map-display:block;
+$map-padding-top: 40%; 
+$map-background-color: rgb(150,150,150);
