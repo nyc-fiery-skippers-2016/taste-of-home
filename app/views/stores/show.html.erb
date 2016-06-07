@@ -33,13 +33,12 @@
 
   <%=render partial: "tags/tag", locals: {store_tag: @store_tag, store: @store}%>
 
-  <%= form_for(@store_list) do |f| %>
-    <input type="text" name="name" placeholder="Name">
-
-    <input type="hidden" name="store_list[store_id]" value="<%=@store.id%>">
+  <%= form_tag(store_lists_path) do %>
+    <%= hidden_field_tag("store_list[store_id]", @store.id) %>
+    <%= collection_select(:store_list,:list_id, current_user.lists, :id, :name) %>
 
     <div class="actions">
-      <%= f.submit "Add this business to your list"%>
+      <%= submit_tag "Add this business to your list"%>
     </div>
   <% end %>
 
