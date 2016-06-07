@@ -6,9 +6,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    @comments = Comment.all
-    @comment = Comment.new
-
+    # put in 404 error
     @store = Store.find_by(yelp_id: params[:yelp_id])
     @store_list = StoreList.new
     @store_tag = StoreTag.new

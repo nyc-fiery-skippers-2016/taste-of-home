@@ -53,7 +53,7 @@ $foundation-palette: (
   secondary: #777,
   success: #3adb76,
   warning: #ffae00,
-  alert: #ec5840,
+  alert: rgb(253,116,0),
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -124,7 +124,7 @@ $header-sizes: (
     'h6': 16,
   ),
 );
-$header-color: #1F8A70;
+$header-color: #004358;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-text-rendering: optimizeLegibility;
