@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/' => 'stores#index'
 
-  get '/stores/:yelp_id' => 'stores#show'
+  get '/stores/:id' => 'stores#show'
   get '/stores/:id/comments/:id' => 'stores#show'
 
   get 'login' => 'sessions#new'
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :users, only:[:show, :edit, :new, :create, :update, :destroy]
   resources :lists, only:[:show, :edit, :create, :update, :destroy]
   resources :store_lists, only:[:show, :create]
+  resources :store_tags, only:[:show, :create]
+  resources :tags, only:[:show]
 
   # Example resource route with options:
   #   resources :products do

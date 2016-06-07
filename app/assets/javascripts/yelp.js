@@ -150,9 +150,9 @@ var populateListMap = function(map, data) {
 var buildStoreHTML = function(store) {
   var storeResult =
     "<div class=\"result\"" +
-      "<img class=\"biz_img\" src=\""+ store.image_url +"\">" +
-      "<a href=\"/stores/"+ store.id +"\"><h5>"+ store.name + "</h5></a>" +
-      "<img src=\""+ store.rating_img_url +"\">" +
+      "<img class=\"biz_img\" src=\""+ store.img_url +"\">" +
+      "<a href=\"/stores/"+ store.yelp_id +"\"><h5>"+ store.name + "</h5></a>" +
+      "<img src=\""+ store.rating_url +"\">" +
       "<p>"+ store.review_count +" reviews</p>" +
       "<p class=\"clear-fix\"></p>" +
     "</div>";
