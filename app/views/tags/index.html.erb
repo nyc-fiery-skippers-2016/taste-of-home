@@ -1,0 +1,12 @@
+<form action="/tags" method="get">
+  <input type="text" name="tag" placeHolder="Search A Tag">
+  <input type="submit" value="Search">
+</form>
+
+<%if @stores%>
+  <ul>
+    <%@stores.each do |store|%>
+      <li><a href="/stores/<%=store.yelp_id%>"><%=store.name%></a></li>
+    <%end%>
+  </ul>
+<%end%>
