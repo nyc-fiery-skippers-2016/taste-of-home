@@ -10,12 +10,10 @@ class StoresController < ApplicationController
     @store_list = StoreList.new
     @store_tag = StoreTag.new
     @comments = @store.comments
-
   end
 
 
   def search
-    # byebug
     # using the search term to find the business from yelp
     parameters = { term: params[:term], category_filter: params[:category_filter], limit: 5, location: params[:location] }
 
@@ -58,9 +56,8 @@ class StoresController < ApplicationController
   end
 
   private
-
-    def store_params
-      params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)
-    end
+  def store_params
+    params.require(:store).permit(:name, :address, :description, :email, :phone, :longitude, :latitude, :image_url, :rating_url, :yelp_id, :favorite, :longitude_delta, :latitude_delta, :review_count)
+  end
 
 end

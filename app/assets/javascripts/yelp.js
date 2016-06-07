@@ -125,6 +125,7 @@ var search = function(map) {
         map.setCenter(new google.maps.LatLng(data[0].latitude, data[0].longitude));
         map.setZoom(16);
         $('#search-error').remove();
+        populateListMap(map, data);
       } else {
         for(var i = 0; i < data.length; i ++) {
           map.fitBounds(
