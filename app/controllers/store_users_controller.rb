@@ -5,7 +5,12 @@ class StoreUsersController < ApplicationController
     if logged_in? && StoreUser.where(user_id: current_user.id, store_id: store.id).empty?
       StoreUser.create(user_id: current_user.id, store_id: store.id)
     end
-    redirect_to "/stores/#{store.yelp_id}"
+    if request.xhr?
+      # byebug
+      render json: ""
+    else
+      redirect_to "/stores/#{store.yelp_id}"
+    end
   end
 
 end
