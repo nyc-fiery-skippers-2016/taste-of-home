@@ -1,9 +1,8 @@
 Let us know what you found!
+  <div>
+    <%= link_to "#{@store.name} Home", "/stores/#{@store.yelp_id}" %>
+  </div>
 
-<div id="new-comment-form">
-  <%= form_for (@comment) do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_area :body %>
-    <%= f.submit "Post a Comment"%>
-  <% end %>
-</div>
+  <div id="new-comment-form">
+    <%= render partial: '/comments/new_comment'  %>
+  </div>

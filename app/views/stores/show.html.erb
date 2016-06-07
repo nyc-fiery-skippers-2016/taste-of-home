@@ -2,16 +2,20 @@
 
 
 <h3> Found a great product at <%=@store.name%>? Let us know below: </h3>
-<div id="comment-form">
 
-</div>
+
+  <%= link_to 'Write a Comment', "/stores/#{@store.yelp_id}/comments/new" %>
+
+
 
 <div id="comments-list">
-  <% @comments.each do |comment|%>
-   <ul>
-    <li><h4> <%= comment.title %> </h4></li>
-    <li><h5> <%= comment.body %> </h5></li>
-   </ul>
+  <% if @comments %>
+    <% @comments.each do |comment|%>
+     <ul>
+      <li><h4> <%= comment.title %> </h4></li>
+      <li><h5> <%= comment.body %> </h5></li>
+     </ul>
+    <% end %>
   <% end %>
 </div>
 
