@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Taste of Home Home Page</title>
+    <title>Taste of Home</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -15,26 +15,34 @@
 
   <body>
     <header>
+    <nav class="top-bar-section">
       <div class="row" id="header">
         <div class="large-12 columns">
           <a href="/"><h1>Taste of Home</h1></a>              
         </div>
 
         <div class="medium-4 columns">
+          <h1>Taste of Home</h1>
           <ul class="row">
             <% if logged_in? %>
               <li><%= link_to "My Page", "/users/#{@user.id}" %></li>
               <li><%= link_to "Logout", logout_path %></li>
-              <li><%= link_to "Lists", "/lists" %></li>
+              <li><%= link_to "Favorite Lists", "/lists" %></li>
+              <li><%= link_to "Search by Tags", "/tags" %></li>
             <% else %>
               <li><%= link_to "Sign Up", '/users/new'%></li>
               <li><%= link_to "Login", login_path %></li>
+              <li><%= link_to "Favorite Lists", "/lists" %></li>
+              <li><%= link_to "Search by Tags", "/tags" %></li>
             <% end %>
           </ul>
         </div>
       </div>
+    </nav>
     </header>
     <%= yield %>
-
+    <footer class="small-12 columns">
+      
+    </footer>
   </body>
 </html>
