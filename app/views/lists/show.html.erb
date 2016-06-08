@@ -4,7 +4,7 @@
 <h4>Created by <%= current_user.username.capitalize %></h4>
 
 <%@list.stores.each do |store| %>
-  <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
+  <p><a href="/stores/<%=store.yelp_id%>"><%= store.name %></a></p>
 <% end %>
 
 
