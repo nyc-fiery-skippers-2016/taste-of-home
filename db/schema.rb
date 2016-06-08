@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160606152852) do
     t.text     "img_url"
     t.text     "rating_url"
     t.string   "yelp_id",                         null: false
+    t.string   "neighborhoods"
     t.boolean  "favorite",        default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
