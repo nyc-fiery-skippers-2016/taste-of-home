@@ -1,5 +1,6 @@
+<div class="row collapse">
 <div class="small-8 columns">
-  <%= form_for (list) do |f| %>
+  <form class="form"><%= form_for (list) do |f| %>
     <div class="field">
       <%= f.label :name %><br>
       <%= f.text_field :name %><br>
@@ -16,4 +17,5 @@
       <%= f.submit 'Create a new curated list',  class: "button radius"%>
     </div>
   <% end %>
+</div>
 </div>
