@@ -70,7 +70,7 @@ $global-margin: 1rem;
 $global-padding: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0;
+$global-radius: 5px;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
@@ -194,24 +194,7 @@ $input-error-color: map-get($foundation-palette, alert);
 $input-error-font-size: rem-calc(12);
 $input-error-font-weight: $global-weight-bold;
 
-// 7. Accordion
-// ------------
 
-$accordion-background: $white;
-$accordion-plusminus: true;
-$accordion-item-color: foreground($accordion-background, $primary-color);
-$accordion-item-background-hover: $light-gray;
-$accordion-item-padding: 1.25rem 1rem;
-$accordion-content-background: $white;
-$accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: foreground($accordion-content-background, $body-font-color);
-$accordion-content-padding: 1rem;
-
-// 8. Accordion Menu
-// -----------------
-
-$accordionmenu-arrows: true;
-$accordionmenu-arrow-color: $primary-color;
 
 // 9. Badge
 // --------
@@ -536,6 +519,7 @@ $tooltip-radius: $global-radius;
 
 $topbar-padding: 0.5rem;
 $topbar-submenu-background: #BEDB39;
+$topbar-background: none;
 $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
@@ -583,7 +567,7 @@ $map-padding-top: 40rem;
   border-color: rgb(0,67,88);
   background-color: rgb(0,67,88);
   }
-#header { 
+#header {
   margin-bottom: 10px;
   background: image-url('header_img.jpg');
   background-size: cover;
