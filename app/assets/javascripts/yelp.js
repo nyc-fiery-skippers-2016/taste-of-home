@@ -148,9 +148,8 @@ var search = function(map) {
 
 
 var populateListMap = function(map, data) {
-  for(var i = data.length - 1; i >= 0; i--){//reverse order to exclude favorites
-    if (i > (data.length-1) - 5)//only display 5 results
-      $('#results').append(buildStoreHTML(data[i]));
+  for(var i = 0; i < data.length; i++){//excludes favorites
+ +   $('#results').append(buildStoreHTML(data[i]));
     geocode_address(map, data[i]);
   }
 };
