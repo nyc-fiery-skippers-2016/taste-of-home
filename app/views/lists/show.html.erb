@@ -1,11 +1,17 @@
-<h1><%=@list.name%></h1><br>
-<h2><%=@list.description%></h2><br>
+<h1 class="name-header"><%=@list.name%></h1>
+  <br>
+    <h3><%=@list.description%></h3>
+  <br>
 
-<h4>Created by <%= current_user.username.capitalize %></h4>
 
-<%@list.stores.each do |store| %>
-  <p><a href="/stores/<%=store.yelp_id%>"><%= store.name %></a></p>
-<% end %>
+  <%@list.stores.each do |store| %>
+    <div class="currated-list-items">
+      <p>
+        <a href="/stores/<%=store.yelp_id%>"><%= store.name %></a>
+      </p>
+    </div>
+  <% end %>
+
 
 
 <%if logged_in? && @user == current_user%>
@@ -15,5 +21,8 @@
     <input type="submit" value="Delete this list">
   </form>
 <%end%>
+
+<br>
+  <h5>Created by <%= current_user.username.capitalize %></h5>
 
 

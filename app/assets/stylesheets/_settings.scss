@@ -74,7 +74,6 @@ $global-radius: 5px;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
-
 @include add-foundation-colors;
 
 // 2. Breakpoints
@@ -573,7 +572,7 @@ $map-padding-top: 40rem;
   background: image-url('header_img.jpg');
   background-size: cover;
 }
-img {
+.img {
   height: 50px;
   width: 50px;
   }
@@ -606,13 +605,15 @@ img {
   height: 75px;
 }
 
-// 39. Store Show
+// 39. Store and User Show
 // -------------
-.store-name {
+.name-header {
   font: bold 50px arial, serif;
   color: rgb(253,116,0);
 }
 .store-details {
   padding-left: 50px;
 }
-
+.currated-list-items {
+  padding-left: 50px;
+}
