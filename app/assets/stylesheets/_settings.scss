@@ -584,19 +584,24 @@ img {
 // 39. Comment
 // -------------
 .complete-comment {
-  border-bottom: solid
+  border-bottom: solid 1px rgb(192,192,192);
 }
-
-.comment-title h4 {
-  background: rgba(31,138,112,0.4);
-  padding-left: 20px;
+.comment-title {
+  padding-left: 50px;
   height: 75px;
   font: bold;
 }
-
 .comment-body {
-  background: rgba(31,138,112,0.4);
-  padding-left: 20px;
+  padding-left: 50px;
   height: 75px;
 }
 
+// 39. Store Show
+// -------------
+.store-name {
+  font: bold 50px arial, serif;
+  color: rgb(253,116,0);
+}
+.store-details {
+  padding-left: 50px;
+}
