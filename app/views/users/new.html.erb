@@ -2,39 +2,39 @@
 
 
 <div class="errors alert">
-<form<%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 </div>
 
-  <div class="form row">
-    <div class="fieldset large-12 columns center">
-      <div class="field large-4 columns center">
-        <%= f.label :username %><br>
-        <%= f.text_field :username %>
-      </div>
-      <div class="field large-4 columns center">
-        <%= f.label :password %><br>
-        <%= f.password_field :password %>
-      </div>
-      <div class="field large-4 columns center">
-        <%= f.label :email %><br>
-        <%= f.text_field :email %>
-      </div>
-      <div class="field large-2 columns center">
-        <div class="actions center">
-          <%= f.submit 'Sign Up'%>
-        </div>
-    <% end %>
+<%= form_for(@user) do |f| %>
+<div class="form row">
+  <div class="fieldset large-12 columns center">
+    <div class="field large-4 columns center">
+      <%= f.label :username %><br>
+      <%= f.text_field :username %>
+    </div>
+    <div class="field large-4 columns center">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field large-4 columns center">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field large-2 columns center">
+      <div class="actions center">
+        <%= f.submit 'Sign Up'%>
       </div>
     </div>
   </div>
+</div>
+<% end %>
