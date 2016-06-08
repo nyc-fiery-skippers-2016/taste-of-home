@@ -1,18 +1,32 @@
 
-<h1 class="large-12"> <%=@store.name%> <h1>
-<div class="medium-12">
-  <p><%=@store.description%></p>
-</div>
-<div class="medium-6"><%=@store.phone%></div>
+<h1 class="name-header text-center"> <%=@store.name%> <h1>
 
+<div class="favorite">
+  <%if logged_in?%>
+    <%if StoreUser.where(store_id: @store.id, user_id: current_user.id).empty?%>
+      <form action="/storeusers/create/<%=@store.yelp_id%>">
+        <input type="image" src="data:image/png;base64,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" alt="Add this business to your favorites" />
+      </form>
+    <%else%>
+      <p>This place is on your favorites</p>
+    <%end%>
+  <%end%>
+</div>
+
+  <div class="medium-6"><h5 class="store-details"><img src="<%=@store.img_url%>" style="200px" width="200px"></h5></div>
+  <div class="medium-6"><h5 class="store-details"><%=@store.phone%></h5></div>
+  <div class="medium-6"><h5 class="store-details"><%=@store.address%></h5></div>
+<div class="medium-12">
+  <p><h5 class="store-details">Categories: <%=@store.description.chomp.split(",").uniq.join(",")%></h5></p>
+</div>
 
 <section id="comment">
-  <%= render template: '/comments/index', locals: { comment: @comment } %>
+  <h4><%= render template: '/comments/index', locals: { comment: @comment } %></h4>
 </section>
 
 <div id="form"></div>
 
-<ul>
+<ul id="tags">
   <% @store.tags.each do |tag|%>
     <li><a href="/tags/<%= tag.id%>"><%= tag.name%></a></li>
   <% end%>
@@ -30,16 +44,4 @@
       <%= submit_tag "Add this business to your list"%>
     </div>
   <% end %>
-
-  <%if logged_in?%>
-    <%if StoreUser.where(store_id: @store.id, user_id: current_user.id).empty?%>
-      <form action="/storeusers/create/<%=@store.yelp_id%>">
-        <input type="image" src="data:image/png;base64,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" alt="Add this business to your favorites" />
-      </form>
-    <%else%>
-      <p>This place is on your favorites</p>
-    <%end%>
-  <%end%>
 <% end %>
-
-</div>

@@ -62,7 +62,7 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-$body-background: $white;
+$body-background: rgba(255,204,0,0.4);
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
@@ -74,7 +74,6 @@ $global-radius: 5px;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
-
 @include add-foundation-colors;
 
 // 2. Breakpoints
@@ -106,19 +105,19 @@ $block-grid-max: 8;
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: $global-weight-bold;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
   small: (
-    'h1': 24,
+    'h1': 20,
     'h2': 20,
     'h3': 19,
     'h4': 18,
     'h5': 17,
     'h6': 16,
   ),
-  medium: (
+   large: (
     'h1': 48,
     'h2': 40,
     'h3': 31,
@@ -305,6 +304,7 @@ $dropdownmenu-border: 1px solid $medium-gray;
 // ---------
 
 $fieldset-border: 1px solid $medium-gray;
+$fieldset-background-color: $medium-gray;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
@@ -320,7 +320,7 @@ $form-label-color: $black;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $global-weight-normal;
 $form-label-line-height: 1.8;
-$select-background: $white;
+$select-background: $dark-gray;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
 $input-color: $black;
@@ -411,7 +411,7 @@ $orbit-control-zindex: 10;
 
 $reveal-background: $white;
 $reveal-width: 600px;
-$reveal-max-width: $global-width;
+$reveal-max-width: 100%;
 $reveal-padding: $global-padding;
 $reveal-border: 1px solid $medium-gray;
 $reveal-radius: $global-radius;
@@ -448,22 +448,7 @@ $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
 
-// 31. Table
-// ---------
 
-$table-background: $white;
-$table-color-scale: 5%;
-$table-border: 1px solid smart-scale($table-background, $table-color-scale);
-$table-padding: rem-calc(8 10 10);
-$table-hover-scale: 2%;
-$table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
-$table-striped-background: smart-scale($table-background, $table-color-scale);
-$table-stripe: even;
-$table-head-background: smart-scale($table-background, $table-color-scale / 2);
-$table-foot-background: smart-scale($table-background, $table-color-scale);
-$table-head-font-color: $body-font-color;
-$show-header-for-stacked: false;
 
 // 32. Tabs
 // --------
@@ -518,6 +503,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
+$topbar-border-bottom: 5px solid rgb(0,67,88);
 $topbar-submenu-background: #BEDB39;
 $topbar-background: none;
 $topbar-title-spacing: 1rem;
@@ -548,7 +534,7 @@ $map-padding:1em;
 $map-display: block;
 $map-padding-top: 40rem;
 .height {
-  height: 500px
+  height: 700px;
 }
 
 // 38. Header/Footer
@@ -558,13 +544,11 @@ $map-padding-top: 40rem;
   float:left;
   padding:0 0 15px 0;
   width:100%;
-  width: 100%;
   display: block;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 0;
-  max-width: 62 rem;
   border-color: rgb(0,67,88);
   background-color: rgb(0,67,88);
   }
@@ -572,9 +556,75 @@ $map-padding-top: 40rem;
   margin-bottom: 10px;
   background: image-url('header_img.jpg');
   background-size: cover;
+  background-color: white;
 }
-img {
+
+#img {
   height: 50px;
   width: 50px;
-
   }
+.name {
+  text-align: center;
+
+}
+
+.subheader {
+  height: 100px;
+  min-width: 100%;
+  background-color: rgba(0,67,88, 0.9);
+  position: absolute;
+  display: block;
+  margin-top:70px;
+}
+
+#results {
+  margin: 0 0 20px 300px;
+  width: 60%;
+  text-align: left;
+  border: 4px solid;
+  border-color: rgb(31, 138, 112);
+  background-color: rgba(190,219,57, 0.5);
+}
+
+// 39. Comment
+// -------------
+
+.complete-comment {
+  border-bottom: solid 1px rgb(192,192,192);
+}
+.comment-title {
+  padding-left: 50px;
+  height: 75px;
+  font: bold;
+}
+.comment-body {
+  padding-left: 50px;
+  height: 75px;
+}
+
+// 40. Store and User Show
+// -------------
+
+.name-header {
+  font: bold 50px arial, serif;
+  color: rgb(253,116,0);
+}
+.store-details {
+  padding-left: 50px;
+}
+.currated-list-items {
+  padding-left: 50px;
+}
+
+//41. Favorite
+// --------------
+.favorite {
+  width: 15px;
+  height: 15px;
+}
+
+//42. Forms
+.form {
+  background-color: rgba(31,138,112, 0.9);
+
+}

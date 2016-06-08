@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
+
 <body>
   <div class="contain-to-grid sticky" id="header">
     <div class="small-12 columns" class="row">
@@ -45,42 +46,41 @@
         </div>
 
 
-        <section class="subheader" style:'width=100%'>
+        <section class="subheader">
           <ul class="right">
             <li class="has-form">
               <div class="row collapse">
                 <form id='search' action="/">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
-                    <label for='term'>Search
+                    <label for='term'>Search</label>
                       <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-                    </label>
                   </div>
                   <div class="large-5 small-4 columns">
-                    <label for='location'>Location
+                    <label for='location'>Location</label>
                       <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
-                    </label>
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">
                     <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
                   </div>
+                    <% end %>
                 </div>
               </form>
             </li>
-            <% end %>
           </ul>
-        </section>
-      </div>
+        </div>
+      </section>
+    </nav>
     </div>
-  </nav>
 </div>
 
 <%= yield %>
 
 
-<footer class="row sticky" id="footer">
-  <div class="row"></div>
-</footer>
+
+  <footer class="footer sticky" id="footer">
+      <div class="large-12 columns"></div>
+  </footer>
 </body>
 </html>
