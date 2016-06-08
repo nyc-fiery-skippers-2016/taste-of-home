@@ -1,76 +1,75 @@
 <!DOCTYPE html>
-  <head>
-    <html lang="en">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    <title>Taste of Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+<head>
+  <html lang="en">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <title>Taste of Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
-  <body>
+<body>
   <div class="contain-to-grid sticky" id="header">
-  <div class="small-12 columns" class="row">
-    <nav class="top-bar" data-topbar role="navigation">
-          <ul class="title-area">
-            <li class="name">
-              <a href="/"><h1>Taste of Home</h1></a>
-            </li>
-            <li class="media" style="height: 200px width: 200px "><%= image_tag "logo.jpg"%> </li>
-          </ul>
+    <div class="small-12 columns" class="row">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <a href="/"><h1>Taste of Home</h1></a>
+          </li>
+          <li class="media" style="height: 200px width: 200px "><%= image_tag "logo.jpg"%> </li>
+        </ul>
         <section class="top-bar-section">
           <ul class='right'>
-            <li class="divider"></li>      
-              <% if logged_in? %>
-                <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
-                <li><%= link_to "Logout", logout_path %></li>
-              <% else %>
-                <li><%= link_to "Sign Up", '/users/new'%></li>
-                <li><%= link_to "Login", login_path %></li>
-              <% end %>
-              <li><%= link_to "Search by Tags", "/tags" %></li>
-            </ul>
-          </section>
-
-          <section class="subheader">
-          <ul class="right">
-          <li class="has-form">
-            <div class="row collapse">
-            <form id='search'>
-            <div class="large-5 small-4 columns">
-              <% unless url_for == root_path %>
-              <label for='term'>Search
-                <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-              </label>
-            </div>
-            <div class="large-5 small-4 columns">
-              <label for='location'>Location
-                <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
-              </label>
-            </div>
-            <div class="large-2 small-3 columns">
-              <input type="hidden" name="category_filter" value="Food" id="search-term">
-              <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
-            </div>
-            </div>
-          </form>
-          </li>
-        <% end %>
-        </ul>
+            <li class="divider"></li>
+            <% if logged_in? %>
+            <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
+            <li><%= link_to "Logout", logout_path %></li>
+            <% else %>
+            <li><%= link_to "Sign Up", '/users/new'%></li>
+            <li><%= link_to "Login", login_path %></li>
+            <% end %>
+            <li><%= link_to "Search by Tags", "/tags" %></li>
+          </ul>
         </section>
-        </div>
-      </div>
-    </nav>
-  </div>
 
-    <%= yield %>
+        <section class="subheader">
+          <ul class="right">
+            <li class="has-form">
+              <div class="row collapse">
+                <form id='search' action="/">
+                  <div class="large-5 small-4 columns">
+                    <% unless url_for == root_path %>
+                    <label for='term'>Search
+                      <input type="text" name="term" id="search-term", placeholder="Missing Home?">
+                    </label>
+                  </div>
+                  <div class="large-5 small-4 columns">
+                    <label for='location'>Location
+                      <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
+                    </label>
+                  </div>
+                  <div class="large-2 small-3 columns">
+                    <input type="hidden" name="category_filter" value="Food" id="search-term">
+                    <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
+                  </div>
+                </div>
+              </form>
+            </li>
+            <% end %>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<%= yield %>
 
 
 <footer class="row sticky" id="footer">
-  <div></div>
 </footer>
-  </body>
+</body>
 </html>

@@ -1,8 +1,8 @@
 class StoresController < ApplicationController
 
   def index
-    @stores = Store.all
-    @user = current_user
+    @search_term = params[:term]
+    @search_location = params[:location]
   end
 
   def show
