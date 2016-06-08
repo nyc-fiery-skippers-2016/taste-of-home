@@ -11,31 +11,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
-  <div class="contain-to-grid sticky" id="header">
-    <div class="small-12 columns" class="row">
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-            <a href="/"><h1>Taste of Home</h1></a>
-          </li>
-          <li class="media" style="height: 200px width: 200px "><%= image_tag "logo.jpg"%> </li>
-        </ul>
+  <body>
+    <div class="contain-to-grid sticky" id="header">
+      <div class="small-12 columns" class="row">
+        <nav class="top-bar" data-topbar role="navigation">
+          <ul class="title-area">
+            <li class="name">
+              <a href="/"><h1>Taste of Home</h1></a>
+            </li>
+            <li class="media" style="height: 200px width: 200px"><%= image_tag "logo.jpg"%> </li>
+          </ul>
         <section class="top-bar-section">
           <ul class='right'>
             <li class="divider"></li>
-            <% if logged_in? %>
-            <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
-            <li><%= link_to "Logout", logout_path %></li>
-            <% else %>
-            <li><%= link_to "Sign Up", '/users/new'%></li>
-            <li><%= link_to "Login", login_path %></li>
-            <% end %>
-            <li><%= link_to "Search by Tags", "/tags" %></li>
-          </ul>
-        </section>
+              <% if logged_in? %>
+                <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
+                <li><%= link_to "Logout", logout_path %></li>
+              <% else %>
+                <li><%= link_to "Sign Up", '/users/new'%></li>
+                <li><%= link_to "Login", login_path %></li>
+              <% end %>
+              <li><%= link_to "Search by Tags", "/tags" %></li>
+            </ul>
+          </section>
 
-        <section class="subheader">
+          <section class="subheader row">
+
           <ul class="right">
             <li class="has-form">
               <div class="row collapse">
