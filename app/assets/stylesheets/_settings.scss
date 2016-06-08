@@ -40,6 +40,7 @@
 //  35. Tooltip
 //  36. Top Bar
 //  37. Map
+//  38. Header
 
 @import 'util/util';
 
@@ -96,6 +97,7 @@ $grid-column-count: 12;
 $grid-column-gutter: (
   small: 20px,
   medium: 30px,
+  large: 60px,
 );
 $grid-column-align-edge: true;
 $block-grid-max: 8;
@@ -125,7 +127,7 @@ $header-sizes: (
     'h6': 16,
   ),
 );
-$header-color: #004358;
+
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-text-rendering: optimizeLegibility;
@@ -242,6 +244,7 @@ $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
+$button-display: inline-block;
 $button-radius: $global-radius;
 $button-sizes: (
   tiny: 0.6rem,
@@ -314,12 +317,6 @@ $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
 
-// 18. Flex Video
-// --------------
-
-$flexvideo-margin-bottom: rem-calc(16);
-$flexvideo-ratio: 4 by 3;
-$flexvideo-ratio-widescreen: 16 by 9;
 
 // 19. Forms
 // ---------
@@ -374,6 +371,8 @@ $label-radius: $global-radius;
 $mediaobject-margin-bottom: $global-margin;
 $mediaobject-section-padding: $global-padding;
 $mediaobject-image-width-stacked: 100%;
+$mediaobject-image-height-stacked: 100%;
+
 
 // 22. Menu
 // --------
@@ -423,31 +422,6 @@ $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
 
-// 26. Pagination
-// --------------
-
-$pagination-font-size: rem-calc(14);
-$pagination-margin-bottom: $global-margin;
-$pagination-item-color: $black;
-$pagination-item-padding: rem-calc(3 10);
-$pagination-item-spacing: rem-calc(1);
-$pagination-radius: $global-radius;
-$pagination-item-background-hover: $light-gray;
-$pagination-item-background-current: $primary-color;
-$pagination-item-color-current: foreground($pagination-item-background-current);
-$pagination-item-color-disabled: $medium-gray;
-$pagination-ellipsis-color: $black;
-$pagination-mobile-items: false;
-$pagination-arrows: true;
-
-// 27. Progress Bar
-// ----------------
-
-$progress-height: 1rem;
-$progress-background: $medium-gray;
-$progress-margin-bottom: $global-margin;
-$progress-meter-background: $primary-color;
-$progress-radius: $global-radius;
 
 // 28. Reveal
 // ----------
@@ -561,33 +535,61 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: $light-gray;
-$topbar-submenu-background: $topbar-background;
+$topbar-submenu-background: #BEDB39;
 $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
+
 // 37. Map
 // -------------
  #map-canvas{
-    margin: 0px;
-    padding: 0px;
-    min-height: 250px;
+    margin: 5px;
+    padding: 5px;
+    display: block;
+    position: absolute;
+    min-height: 300px;
     height: 350px;
     width: 500px;
     max-height: 750px;
+    background-color: rgb(0,67,88);
 }
-
-$map-width:90%;
-$map-height:100%;
+$map-border: 3px solid;
 $map-position:relative;
 $map-top:10;
 $map-right:0;
 $map-text-align: center;
 $map-padding:1em;
-$map-display:block;
+$map-display: block;
 $map-padding-top: 40rem;
-$map-background-color: rgb(150,150,150);
 .height {
   height: 500px
 }
+
+// 38. Header/Footer
+// ---------------
+
+#header, #footer {
+  float:left;
+  padding:0 0 15px 0;
+  width:100%;
+  width: 100%;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  max-width: 62 rem;
+  border-color: rgb(0,67,88);
+  background-color: rgb(0,67,88);
+  }
+#header { 
+  margin-bottom: 10px;
+  background: image-url('header_img.jpg');
+  background-size: cover;
+}
+img {
+  height: 50px;
+  width: 50px;
+
+  }
