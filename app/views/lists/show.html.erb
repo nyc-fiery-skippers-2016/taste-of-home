@@ -1,8 +1,19 @@
 <h1><%=@list.name%></h1><br>
 <h2><%=@list.description%></h2><br>
 
-<h2>Created by <%= current_user.username %></h2>
+<h4>Created by <%= current_user.username.capitalize %></h4>
 
 <%@list.stores.each do |store| %>
   <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
 <% end %>
+
+
+<%if logged_in? && @user == current_user%>
+  <form action="/lists/<%=@list.id%>" method="post">
+    <%=token_tag%>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete this list">
+  </form>
+<%end%>
+
+
