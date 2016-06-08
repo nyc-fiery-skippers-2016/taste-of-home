@@ -19,23 +19,33 @@
           <li class="name">
             <a href="/"><h1>Taste of Home</h1></a>
           </li>
-          <li class="media" style="height: 200px width: 200px "><%= image_tag "logo.jpg"%> </li>
+        <!--   <li class="media" style="height: 200px width: 200px ">#<%= image_tag "logo.jpg"%> </li> -->
         </ul>
-        <section class="top-bar-section">
-          <ul class='right'>
-            <li class="divider"></li>
-            <% if logged_in? %>
-            <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
-            <li><%= link_to "Logout", logout_path %></li>
-            <% else %>
-            <li><%= link_to "Sign Up", '/users/new'%></li>
-            <li><%= link_to "Login", login_path %></li>
-            <% end %>
-            <li><%= link_to "Search by Tags", "/tags" %></li>
-          </ul>
-        </section>
 
-        <section class="subheader">
+
+        <div class="off-canvas-wrap" data-offcanvas>
+          <div class="inner-wrap">
+            <nav class='left-off-canvas-menu'>
+              <ul class="left">
+                <li class="toggle-topbar menu-icon left-off-canvas-toggle" href="#">Menu</a></li>
+                    <% if logged_in? %>
+                    <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
+                    <li><%= link_to "Logout", logout_path %></li>
+                    <% else %>
+                    <li><%= link_to "Sign Up", '/users/new'%></li>
+                    <li><%= link_to "Login", login_path %></li>
+                    <% end %>
+                    <li><%= link_to "Search by Tags", "/tags" %></li>
+                    <li><%= link_to "A Curated List", "/lists/3" %></li>
+                  </ul>
+              </ul>
+            </nav>
+            <a class="exit-off-canvas"></a>
+          </div>
+        </div>
+
+
+        <section class="subheader" style:'width=100%'>
           <ul class="right">
             <li class="has-form">
               <div class="row collapse">
@@ -70,6 +80,7 @@
 
 
 <footer class="row sticky" id="footer">
+  <div class="row"></div>
 </footer>
 </body>
 </html>
