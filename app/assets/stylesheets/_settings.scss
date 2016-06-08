@@ -581,5 +581,14 @@ img {
   }
 .name {
   text-align: center;
-  text-color: white;
+}
+
+.subheader {
+  height: 50px;
+  width: 110%;
+  background-color: rgb(0,67,88);
+  position: absolute;
+  display: block;
+  margin-left: 0;
+  margin-top:50px;
 }
