@@ -1,9 +1,6 @@
-Let us know what you found!
+<div id="new-comment-form">
+  <h3> Let us know what you found at </h3>
+    <%= link_to "#{@store.name} Home", "/stores/#{@store.yelp_id}" %>!
 
-  <div>
-    <%= link_to "#{@store.name} Home", "/stores/#{@store.yelp_id}" %>
-  </div>
-
-  <div id="new-comment-form">
-    <%= render partial: '/comments/new_comment'  %>
-  </div>
+    <%= render template: '/comments/_new_comment', layout: false, locals: { comment: @comment, store: @store }  %>
+</div>
