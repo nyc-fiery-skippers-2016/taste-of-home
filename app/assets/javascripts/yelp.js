@@ -116,6 +116,7 @@ var search = function(map) {
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food,restaurants', location: $("#search-location").val() }, function(data) {
     // do some clean up
     $('#results').show();
+    $('#index-icons').hide();
     $('#results').empty();
     clearMarkers();
       if (data.length <= 0){
