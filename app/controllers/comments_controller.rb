@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
     @comment = Comment.create(comment_params)
 
     if request.xhr?
-      binding.pry
       render partial: '/comments/comments_display', layout: false, locals: { comment: @comment }
     else
       redirect_to "/stores/#{@comment.store.yelp_id}"
