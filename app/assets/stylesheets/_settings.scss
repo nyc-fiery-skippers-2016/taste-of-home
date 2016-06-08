@@ -547,12 +547,12 @@ $topbar-unstack-breakpoint: medium;
     margin: 5px;
     padding: 5px;
     display: block;
-    position: relative;
+    position: absolute;
     min-height: 300px;
     height: 350px;
     width: 500px;
     max-height: 750px;
-    background-color: rgb(31,138,112);
+    background-color: rgb(0,67,88);
 }
 $map-border: 3px solid;
 $map-position:relative;
@@ -566,7 +566,7 @@ $map-padding-top: 40rem;
   height: 500px
 }
 
-// 38. Header
+// 38. Header/Footer
 // ---------------
 
 #header, #footer {
@@ -574,17 +574,22 @@ $map-padding-top: 40rem;
   padding:0 0 15px 0;
   width:100%;
   width: 100%;
+  display: block;
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
-  margin-bottom: 10px;
   max-width: 62 rem;
+  border-color: rgb(0,67,88);
   background-color: rgb(0,67,88);
   }
 #header { 
+  margin-bottom: 10px;
+  background: image-url('header_img.jpg');
   background-size: cover;
 }
 img {
   height: 50px;
   width: 50px;
+
   }
