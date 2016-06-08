@@ -76,6 +76,7 @@ function newMap(mapOptions){
   var map = new google.maps.Map($('#map_canvas')[0], mapOptions);
   bindControls(map);
   getFavorites(map);
+  search(map);
 }
 
 function getFavorites(map){
@@ -113,6 +114,9 @@ var bindControls = function(map) {
 var search = function(map) {
   // post to the search with the search term, take the response data
   // and process it
+  if($("#search-term").val() === '' || $("#search-location").val() === '')
+    return;
+
   $.get('/search', { term: $("#search-term").val(), category_filter: 'food,restaurants', location: $("#search-location").val() }, function(data) {
     // do some clean up
     $('#results').show();
