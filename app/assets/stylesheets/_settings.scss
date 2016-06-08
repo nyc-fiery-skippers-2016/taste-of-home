@@ -106,19 +106,19 @@ $block-grid-max: 8;
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: $global-weight-bold;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
   small: (
-    'h1': 24,
+    'h1': 20,
     'h2': 20,
     'h3': 19,
     'h4': 18,
     'h5': 17,
     'h6': 16,
   ),
-  medium: (
+   large: (
     'h1': 48,
     'h2': 40,
     'h3': 31,
@@ -518,6 +518,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
+$topbar-border-bottom: 5px solid rgb(0,67,88);
 $topbar-submenu-background: #BEDB39;
 $topbar-background: none;
 $topbar-title-spacing: 1rem;
@@ -575,11 +576,20 @@ $map-padding-top: 40rem;
 img {
   height: 50px;
   width: 50px;
-
   }
+.name {
+  text-align: center;
+}
 
-
-
+.subheader {
+  height: 50px;
+  width: 110%;
+  background-color: rgb(0,67,88);
+  position: absolute;
+  display: block;
+  margin-left: 0;
+  margin-top:50px;
+}
 
 // 39. Comment
 // -------------
@@ -605,3 +615,4 @@ img {
 .store-details {
   padding-left: 50px;
 }
+
