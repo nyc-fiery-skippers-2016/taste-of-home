@@ -1,13 +1,13 @@
 
 <h1 class="large-12"> <%=@store.name%> <h1>
 <div class="medium-12">
-  <p><%=@store.description%></p>
+  <p><h5><%=@store.description%></h5></p>
 </div>
-<div class="medium-6"><%=@store.phone%></div>
+<div class="medium-6"><h5><%=@store.phone%></h5></div>
 
 
 <section id="comment">
-  <%= render template: '/comments/index', locals: { comment: @comment } %>
+  <h4><%= render template: '/comments/index', locals: { comment: @comment } %></h4>
 </section>
 
 <div id="form"></div>
