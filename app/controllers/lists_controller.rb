@@ -11,7 +11,12 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
-    @user = User.find_by(id: @list.id)
+    @user = User.find_by(id: @list.user_id)
+  end
+
+  def destroy
+    List.find_by(id: params[:id]).destroy
+    redirect_to "/"
   end
 
   private
