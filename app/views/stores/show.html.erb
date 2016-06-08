@@ -14,7 +14,7 @@
 
 <div id="form"></div>
 
-<ul>
+<ul id="tags">
   <% @store.tags.each do |tag|%>
     <li><a href="/tags/<%= tag.id%>"><%= tag.name%></a></li>
   <% end%>
