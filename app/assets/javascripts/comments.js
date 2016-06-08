@@ -15,8 +15,6 @@ $(document).ready(function(){
       $('#form').show();
       $('#comment-link').hide();
       $('#comments').prepend(response);
-
-
     });
   });
 });

@@ -27,3 +27,7 @@ html, body {
 	margin-bottom: 3em;
 
 }
+#results {
+  background-color: rgb(190,219,57,.5);
+  text-align: center;
+}
