@@ -62,7 +62,7 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-$body-background: $white;
+$body-background: rgba(255,204,0,0.4);
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
@@ -304,6 +304,7 @@ $dropdownmenu-border: 1px solid $medium-gray;
 // ---------
 
 $fieldset-border: 1px solid $medium-gray;
+$fieldset-background-color: $medium-gray;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
@@ -319,7 +320,7 @@ $form-label-color: $black;
 $form-label-font-size: rem-calc(14);
 $form-label-font-weight: $global-weight-normal;
 $form-label-line-height: 1.8;
-$select-background: $white;
+$select-background: $dark-gray;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
 $input-color: $black;
@@ -410,7 +411,7 @@ $orbit-control-zindex: 10;
 
 $reveal-background: $white;
 $reveal-width: 600px;
-$reveal-max-width: $global-width;
+$reveal-max-width: 100%;
 $reveal-padding: $global-padding;
 $reveal-border: 1px solid $medium-gray;
 $reveal-radius: $global-radius;
@@ -547,7 +548,7 @@ $map-padding:1em;
 $map-display: block;
 $map-padding-top: 40rem;
 .height {
-  height: 500px
+  height: 700px;
 }
 
 // 38. Header/Footer
@@ -557,13 +558,11 @@ $map-padding-top: 40rem;
   float:left;
   padding:0 0 15px 0;
   width:100%;
-  width: 100%;
   display: block;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 0;
-  max-width: 62 rem;
   border-color: rgb(0,67,88);
   background-color: rgb(0,67,88);
   }
@@ -571,27 +570,39 @@ $map-padding-top: 40rem;
   margin-bottom: 10px;
   background: image-url('header_img.jpg');
   background-size: cover;
+  background-color: white;
 }
-.img {
+
+#img {
   height: 50px;
   width: 50px;
   }
 .name {
   text-align: center;
+
 }
 
 .subheader {
-  height: 50px;
-  width: 110%;
-  background-color: rgb(0,67,88);
+  height: 100px;
+  min-width: 100%;
+  background-color: rgba(0,67,88, 0.9);
   position: absolute;
   display: block;
-  margin-left: 0;
-  margin-top:50px;
+  margin-top:70px;
+}
+
+#results {
+  margin: 0 0 20px 300px;
+  width: 60%;
+  text-align: left;
+  border: 4px solid;
+  border-color: rgb(31, 138, 112);
+  background-color: rgba(190,219,57, 0.5);
 }
 
 // 39. Comment
 // -------------
+
 .complete-comment {
   border-bottom: solid 1px rgb(192,192,192);
 }
@@ -605,8 +616,9 @@ $map-padding-top: 40rem;
   height: 75px;
 }
 
-// 39. Store and User Show
+// 40. Store and User Show
 // -------------
+
 .name-header {
   font: bold 50px arial, serif;
   color: rgb(253,116,0);
@@ -616,4 +628,17 @@ $map-padding-top: 40rem;
 }
 .currated-list-items {
   padding-left: 50px;
+}
+
+//41. Favorite
+// --------------
+.favorite {
+  width: 15px;
+  height: 15px;
+}
+
+//42. Forms
+.form {
+  background-color: $medium-gray;
+
 }

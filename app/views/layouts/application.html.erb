@@ -19,7 +19,7 @@
             <li class="name">
               <a href="/"><h1>Taste of Home</h1></a>
             </li>
-            <li class="media" style="height: 200px width: 200px"><%= image_tag "logo.jpg"%> </li>
+            <li class="media" id="img"><%= image_tag "logo.jpg"%> </li>
           </ul>
         <section class="top-bar-section">
           <ul class='right'>
@@ -35,22 +35,21 @@
             </ul>
           </section>
 
-          <section class="subheader row">
-
+        <section class="subheader">
           <ul class="right">
             <li class="has-form">
               <div class="row collapse">
                 <form id='search' action="/">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
-                    <label for='term'>Search
+                    <label for='term'>Search</label>
                       <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-                    </label>
+
                   </div>
                   <div class="large-5 small-4 columns">
-                    <label for='location'>Location
+                    <label for='location'>Location</label>
                       <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
-                    </label>
+
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">
@@ -61,16 +60,17 @@
             </li>
             <% end %>
           </ul>
-        </section>
-      </div>
+        </div>
+      </section>
+    </nav>
     </div>
-  </nav>
 </div>
 
 <%= yield %>
 
 
-<footer class="row sticky" id="footer">
+<footer class="footer sticky" id="footer">
+    <div class="large-12 columns"></div>
 </footer>
 </body>
 </html>
