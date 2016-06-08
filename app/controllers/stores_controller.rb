@@ -48,13 +48,7 @@ class StoresController < ApplicationController
   end
 
   def favorites
-    stores = []
-    if logged_in?
-      current_user.stores.each do |favorite|
-        stores << favorite
-      end
-    end
-    render json: stores
+    logged_in? ? render(json: current_user.stores) : render(json: [])
   end
 
   private
