@@ -1,4 +1,4 @@
-<h1 class="name-header"><%=@list.name%></h1>
+<h1 class="name-header"><%=@list.name.captialize%></h1>
   <br>
     <h3><%=@list.description%></h3>
   <br>
@@ -23,4 +23,4 @@
 <%end%>
 
 <br>
-  <h5>Created by <%= @list.user.username %></h5>
+  <h5>Created by <%= @list.user.username.capitalize %></h5>
