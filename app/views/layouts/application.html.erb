@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-  <head>
-    <html lang="en">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    <title>Taste of Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+<head>
+  <html lang="en">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDBeYbWaWWuljO1H6BL6pA8CUybAAqIMHM" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <title>Taste of Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 
+<<<<<<< HEAD
   <body>
     <div class="contain-to-grid sticky" id="header">
       <div class="small-12 columns" class="row">
@@ -36,41 +37,41 @@
           </section>
 
           <section class="subheader row">
-          <ul class="right">
-          <li class="has-form">
-            <div class="row collapse">
-            <form id='search'>
-            <div class="large-5 small-4 columns">
-              <% unless url_for == root_path %>
-              <label for='term'>Search
-                <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-              </label>
-            </div>
-            <div class="large-5 small-4 columns">
-              <label for='location'>Location
-                <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
-              </label>
-            </div>
-            <div class="large-2 small-3 columns">
-              <input type="hidden" name="category_filter" value="Food" id="search-term">
-              <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
-            </div>
-            </div>
-          </form>
-          </li>
-        <% end %>
-        </ul>
-        </section>
-        </div>
-      </div>
-    </nav>
-  </div>
 
-    <%= yield %>
+          <ul class="right">
+            <li class="has-form">
+              <div class="row collapse">
+                <form id='search' action="/">
+                  <div class="large-5 small-4 columns">
+                    <% unless url_for == root_path %>
+                    <label for='term'>Search
+                      <input type="text" name="term" id="search-term", placeholder="Missing Home?">
+                    </label>
+                  </div>
+                  <div class="large-5 small-4 columns">
+                    <label for='location'>Location
+                      <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
+                    </label>
+                  </div>
+                  <div class="large-2 small-3 columns">
+                    <input type="hidden" name="category_filter" value="Food" id="search-term">
+                    <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
+                  </div>
+                </div>
+              </form>
+            </li>
+            <% end %>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<%= yield %>
 
 
 <footer class="row sticky" id="footer">
-  <div></div>
 </footer>
-  </body>
+</body>
 </html>
