@@ -12,44 +12,55 @@
   </head>
 
   <body>
-  <div class="contain-to-grid">
-    <nav class="top-bar" data-topbar role="navigation" class="sticky">
-        <div class="large-12 columns" class="row">
+  <div class="contain-to-grid sticky" id="header">
+  <div class="small-12 columns" class="row">
+    <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
             <li class="name">
               <a href="/"><h1>Taste of Home</h1></a>
             </li>
-          </ul class="row">
-            <section class="top-bar-section">
-            <ul class='left'>
-              <li class="divider"></li>
-              <% if logged_in? %>
-                <li class="divider"><%= link_to "My Page", "/users/#{current_user.id}" %></li>
-                <li class="divider"><%= link_to "Logout", logout_path %></li>
-              <% else %>
-                <li class="divider"><%= link_to "Sign Up", '/users/new'%></li>
-                <li class="divider"><%= link_to "Login", login_path %></li>
-              <% end %>
-            </ul>
-            <ul class="right" class="row">
-                <li class="divider"><%= link_to "Favorite Lists", "/lists" %></li>
-                <li class="divider"><%= link_to "Search by Tags", "/tags" %></li>
-            </ul>
-          </section>
-          <section class="subheader">
-          <ul class="right" class="row">
-            <% unless url_for == root_path %>
-              <div class="small-4 columns" id="map_search">
-                <form class='form'>
-                  <input type="text" name="term" id="search-term", placeholder="Search">
-                  <input type="text" name="location" placeholder="Location" id="search-location">
-                  <input type="hidden" name="category_filter" value="Food" id="search-term">
-                  <input type="submit" id="map_search_submit" value="submit" class='button'>
-                </form>
-              </div>
-            <% end %>
+            <li class="media" style="height: 200px width: 200px "><%= image_tag "logo.jpg"%> </li>
           </ul>
+        <section class="top-bar-section">
+          <ul class='right'>
+            <li class="divider"></li>      
+              <% if logged_in? %>
+                <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
+                <li><%= link_to "Logout", logout_path %></li>
+              <% else %>
+                <li><%= link_to "Sign Up", '/users/new'%></li>
+                <li><%= link_to "Login", login_path %></li>
+              <% end %>
+              <li><%= link_to "Search by Tags", "/tags" %></li>
+            </ul>
           </section>
+
+          <section class="subheader">
+          <ul class="right">
+          <li class="has-form">
+            <div class="row collapse">
+            <form id='search'>
+            <div class="large-5 small-4 columns">
+              <% unless url_for == root_path %>
+              <label for='term'>Search
+                <input type="text" name="term" id="search-term", placeholder="Missing Home?">
+              </label>
+            </div>
+            <div class="large-5 small-4 columns">
+              <label for='location'>Location
+                <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
+              </label>
+            </div>
+            <div class="large-2 small-3 columns">
+              <input type="hidden" name="category_filter" value="Food" id="search-term">
+              <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
+            </div>
+            </div>
+          </form>
+          </li>
+        <% end %>
+        </ul>
+        </section>
         </div>
       </div>
     </nav>
@@ -57,5 +68,9 @@
 
     <%= yield %>
 
+
+<footer class="row sticky" id="footer">
+  <div></div>
+</footer>
   </body>
 </html>

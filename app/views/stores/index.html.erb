@@ -1,18 +1,23 @@
 
     <div class="row height">
-
-        <div id="map_canvas" style="height: 400px"></div>
-
+      <div class="map-container">
+        <div class="small-10 columns small-offset-1" id="map_canvas" style="height: 400px"></div>
+      </div>
     </div>
     <div id="control_container"></div>
 
-    <div class="small-6 columns" id="map_search">
-      <div class="row">
+    <div class="large-10 small-6 columns offset-1" id="map_search">
+      <div class="row collapse has-form">
         <form class='form'>
-          <input type="text" name="term" id="search-term", placeholder="Food Search">
-          <input type="text" name="location" placeholder="Location Search" id="search-location">
-          <input type="hidden" name="category_filter" value="Food" id="search-term">
-          <input type="submit" id="map_search_submit" value="submit">
+          <div class="large-4 small-4 columns">
+            <input type="text" name="term" id="search-term", placeholder="Food Search">
+          <div class="large-4 small-4 columns">
+            <input type="text" name="location" placeholder="Location Search" id="search-location">
+            <input type="hidden" name="category_filter" value="Food" id="search-term">
+          </div>
+          <div class="large-4 small-2 columns">
+            <input type="submit" id="map_search_submit" value="submit" class="button">
+          </div>
         </form>
       </div>
     </div>
