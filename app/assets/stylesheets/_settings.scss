@@ -74,7 +74,6 @@ $global-radius: 5px;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
-
 @include add-foundation-colors;
 
 // 2. Breakpoints
@@ -572,12 +571,10 @@ $map-padding-top: 40rem;
   margin-bottom: 10px;
   background: image-url('header_img.jpg');
   background-size: cover;
-
 }
-img {
+.img {
   height: 50px;
   width: 50px;
-
   }
 .name {
   text-align: center;
@@ -591,4 +588,32 @@ img {
   display: block;
   margin-left: 0;
   margin-top:50px;
+}
+
+// 39. Comment
+// -------------
+.complete-comment {
+  border-bottom: solid 1px rgb(192,192,192);
+}
+.comment-title {
+  padding-left: 50px;
+  height: 75px;
+  font: bold;
+}
+.comment-body {
+  padding-left: 50px;
+  height: 75px;
+}
+
+// 39. Store and User Show
+// -------------
+.name-header {
+  font: bold 50px arial, serif;
+  color: rgb(253,116,0);
+}
+.store-details {
+  padding-left: 50px;
+}
+.currated-list-items {
+  padding-left: 50px;
 }

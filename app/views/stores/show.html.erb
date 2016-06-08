@@ -1,14 +1,15 @@
 
-<h1 class="large-12"> <%=@store.name%> <h1>
+<h1 class="name-header"> <%=@store.name%> <h1>
+  <div class="medium-6"><h5 class="store-details"><img src="<%=@store.img_url%>" style="200px" width="200px"></h5></div>
+  <div class="medium-6"><h5 class="store-details"><%=@store.phone%></h5></div>
+  <div class="medium-6"><h5 class="store-details"><%=@store.address%></h5></div>
 <div class="medium-12">
-  <p><%=@store.description%></p>
+  <p><h5 class="store-details"><%=@store.description%></h5></p>
 </div>
-<div class="medium-6"><%=@store.phone%></div>
 <div class="medium-6"><%=@store.neighborhoods%></div>
 
-
 <section id="comment">
-  <%= render template: '/comments/index', locals: { comment: @comment } %>
+  <h4><%= render template: '/comments/index', locals: { comment: @comment } %></h4>
 </section>
 
 <div id="form"></div>
