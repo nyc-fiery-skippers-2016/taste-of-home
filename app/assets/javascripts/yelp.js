@@ -127,14 +127,12 @@ var search = function(map) {
         $('#search-error').remove();
         populateListMap(map, data);
       } else {
-        for(var i = 0; i < data.length; i ++) {
-          map.fitBounds(
-            new google.maps.LatLngBounds(
-              new google.maps.LatLng(data[i].latitude - data[i].latitude_delta, data[i].longitude - data[i].longitude_delta),
-              new google.maps.LatLng(data[i].latitude + data[i].latitude_delta, data[i].longitude + data[i].longitude_delta)
-              )
-            );
-          }
+        map.fitBounds(
+          new google.maps.LatLngBounds(
+            new google.maps.LatLng(data[0].latitude - data[0].latitude_delta, data[0].longitude - data[0].longitude_delta),
+            new google.maps.LatLng(data[0].latitude + data[0].latitude_delta, data[0].longitude + data[0].longitude_delta)
+            )
+          );
           populateListMap(map, data);
           $('#search-error').remove();
         }
@@ -143,8 +141,8 @@ var search = function(map) {
 
 
 var populateListMap = function(map, data) {
-  for(var i = data.length - 1; i >= 0; i--){//reverse order to exclude favorites
-    if (i > (data.length-1) - 5)//only display 5 results
+  for(var i = 0; i < data.length; i++){//excludes favorites
+    if (i >= (data.length-1) - 5)//only display 5 results
       $('#results').append(buildStoreHTML(data[i]));
     geocode_address(map, data[i]);
   }
