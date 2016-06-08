@@ -7,5 +7,11 @@
   <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
 <% end %>
 
-
+<%if logged_in? && @user == current_user%>
+  <form action="/lists/<%=@list.id%>" method="post">
+    <%=token_tag%>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete this list">
+  </form>
+<%end%>
 
