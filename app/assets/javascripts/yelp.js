@@ -69,6 +69,7 @@ var initialize = function() {
     //no location available
     newMap(mapOptions);
   }
+  $('#results').css('display', 'none');
 };
 
 function newMap(mapOptions){
@@ -124,12 +125,12 @@ var search = function(map) {
     $('#results').empty();
     clearMarkers();
       if (data.length <= 0){
+        $('#results').css('display', 'none');
         $('#search-error').remove();
         $('#map_search').append("<p id=\"search-error\">No places in <i>"+$('#search-location').val()+"</i> found with <i>"+$('#search-term').val()+"</i>.</p>");
       } else if (data.length === 1) {
         map.setCenter(new google.maps.LatLng(data[0].latitude, data[0].longitude));
         map.setZoom(16);
-        $('#search-error').remove();
         populateListMap(map, data);
       } else {
         for(var i = 0; i < data.length; i ++) {
@@ -141,7 +142,6 @@ var search = function(map) {
             );
           }
           populateListMap(map, data);
-          $('#search-error').remove();
         }
     });
 };
@@ -152,6 +152,8 @@ var populateListMap = function(map, data) {
  +   $('#results').append(buildStoreHTML(data[i]));
     geocode_address(map, data[i]);
   }
+  $('#search-error').remove();
+  $('#results').css('display', 'block');
 };
 
 /**
