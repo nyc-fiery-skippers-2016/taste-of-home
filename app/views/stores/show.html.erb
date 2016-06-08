@@ -4,9 +4,8 @@
   <div class="medium-6"><h5 class="store-details"><%=@store.phone%></h5></div>
   <div class="medium-6"><h5 class="store-details"><%=@store.address%></h5></div>
 <div class="medium-12">
-  <p><h5 class="store-details"><%=@store.description%></h5></p>
+  <p><h5 class="store-details"><%=@store.description.chomp.downcase.split(",").uniq.join(",")%></h5></p>
 </div>
-<div class="medium-6"><%=@store.neighborhoods%></div>
 
 <section id="comment">
   <h4><%= render template: '/comments/index', locals: { comment: @comment } %></h4>
