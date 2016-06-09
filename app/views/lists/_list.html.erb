@@ -1,12 +1,12 @@
 <div class="row collapse">
 <div class="small-8 columns">
   <form class="form"><%= form_for (list) do |f| %>
-    <div class="field">
+    <div class="fieldset">
       <%= f.label :name %><br>
       <%= f.text_field :name %><br>
     </div>
-
-    <div class="field">
+<!-- fix labels -->
+    <div class="fieldset">
       <%= f.label :description %><br>
       <%= f.text_field :description %><br>
     </div>
