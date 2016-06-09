@@ -62,7 +62,7 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-$body-background: rgba(255,204,0,0.4);
+$body-background: rgba(255,204,0,0.2);
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
@@ -116,6 +116,7 @@ $header-sizes: (
     'h4': 18,
     'h5': 17,
     'h6': 16,
+    'p': 13,
   ),
    large: (
     'h1': 48,
@@ -124,6 +125,8 @@ $header-sizes: (
     'h4': 25,
     'h5': 20,
     'h6': 16,
+    'p': 13,
+
   ),
 );
 
@@ -177,8 +180,8 @@ $lead-font-size: $global-font-size * 1.25;
 $lead-lineheight: 1.6;
 $subheader-lineheight: 1.4;
 $subheader-color: $dark-gray;
-$subheader-font-weight: $global-weight-normal;
-$subheader-margin-top: 0.2rem;
+$subheader-font-weight: $global-weight-bold;
+$subheader-margin-top: 1.5rem;
 $subheader-margin-bottom: 0.5rem;
 $stat-font-size: 2.5rem;
 
@@ -305,7 +308,7 @@ $dropdownmenu-border: 1px solid $medium-gray;
 
 $fieldset-border: 1px solid $medium-gray;
 $fieldset-background-color: $medium-gray;
-$fieldset-padding: rem-calc(20);
+$fieldset-padding: rem-calc(0);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
 $form-spacing: rem-calc(16);
@@ -360,7 +363,7 @@ $mediaobject-image-height-stacked: 100%;
 // 22. Menu
 // --------
 
-$menu-margin: 0;
+$menu-margin: 0 auto;
 $menu-margin-nested: 1rem;
 $menu-item-padding: 0.7rem 1rem;
 $menu-item-color-active: $white;
@@ -435,7 +438,7 @@ $slider-radius: $global-radius;
 // 30. Switch
 // ----------
 
-$switch-background: $medium-gray;
+$switch-background: none;
 $switch-background-active: $primary-color;
 $switch-height: 2rem;
 $switch-height-tiny: 1.5rem;
@@ -513,17 +516,6 @@ $topbar-unstack-breakpoint: medium;
 
 // 37. Map
 // -------------
- #map-canvas{
-    margin: 35px 0 10px 0;
-    padding: 5px;
-    display: block;
-    position: absolute;
-    min-height: 300px;
-    height: 350px;
-    width: 500px;
-    max-height: 750px;
-    background-color: rgb(0,67,88);
-}
 
 $map-border: 3px solid;
 $map-position:relative;
@@ -533,10 +525,28 @@ $map-text-align: center;
 $map-padding:1em;
 $map-display: block;
 $map-padding-top: 40rem;
+
 .height {
+  position: relative;
+  display: block;
   height: 700px;
+  margin: 0 auto;
 }
 
+ #map_canvas{
+    margin: 80px 0 15px 215px;
+    padding: 5px;
+    display: inline-block;
+    float: left;
+    min-height: 300px;
+    height: 650px;
+    width: 500px;
+    max-height: 750px;
+    background-color: rgb(0,67,88);
+    border: 1 solid;
+}
+
+    
 // 38. Header/Footer
 // ---------------
 
@@ -558,6 +568,26 @@ $map-padding-top: 40rem;
   background-size: cover;
   background-color: white;
 }
+.top-bar .toggle-topbar.menu-icon a {
+    height: 34px;
+    line-height: 33px;
+    padding: 0;
+    padding-right: 30px;
+    color: #FFF;
+    position: relative;
+}    
+.left-off-canvas-menu {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  display: list-item;
+
+}
+.left {
+    font-size: 1rem;
+    line-height: 1.6;
+    list-style-position: outside;
+    }
 
 #img {
   height: 50px;
@@ -574,15 +604,15 @@ $map-padding-top: 40rem;
 .subheader {
   height: 100px;
   min-width: 100%;
-  background-color: rgba(0,67,88, 0.9);
+  background-color: rgb(0,67,88);
   position: absolute;
   display: block;
   margin-top:80px;
 }
 
 #results {
-  margin: 0 0 20px 300px;
-  width: 60%;
+  margin: 10 auto;
+  width: 80%;
   text-align: left;
   border: 4px solid;
   border-color: rgb(31, 138, 112);
@@ -609,6 +639,7 @@ $map-padding-top: 40rem;
 // -------------
 
 .name-header {
+  margin: 50px 0 0 10px;
   font: bold 50px arial, serif;
   color: rgb(253,116,0);
 }
@@ -618,7 +649,18 @@ $map-padding-top: 40rem;
 .currated-list-items {
   padding-left: 50px;
 }
+.store-info {
+  float: left;
 
+}
+.row.store-name {
+  position: relative;
+  display: block;
+  margin: 50px auto;
+  text-align: left;
+  font: bold 50px arial, serif;
+  color: rgb(253,116,0);
+}
 //41. Favorite
 // --------------
 
@@ -627,10 +669,47 @@ $map-padding-top: 40rem;
   height: 15px;
 }
 
+
 //42. Forms
 //------------------
 
 .form {
   background-color: rgba(31,138,112, 0.9);
+  text-align: left;
+}
+#index-icons {
+  height: 100%;
+  width: 100%;
+  margins: 10px;
+  padding: 5px;
+  border: 4px solid;
+  border-color: rgb(31, 138, 112);
+  background-color: rgba(31,138,112, 0.9);
+}
 
+#index-icon {
+  height: 100px;
+  width: 75px;
+   background-color: rgba(190,219,57, 0.5);
+}
+#map_search {
+  width: 100%;
+  display: inline;
+
+}
+#control_container {
+  background-color: red;
+}
+#search {
+  float: left;
+}
+// 43. Main
+//--------------
+main {
+  width: 70%;
+  min-height: 100px;
+  margin: 0 auto;
+  text-align:left;
+  border-left: 1px solid;
+  border-right: 1px solid;
 }

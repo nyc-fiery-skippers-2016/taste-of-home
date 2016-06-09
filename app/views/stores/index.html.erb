@@ -1,37 +1,47 @@
-<div class="row height">
-
-    <div class="small-10 columns small-offset-1" id="map_canvas" style="height: 400px"></div>
+<div class=" height">
+    <div class="small-10 columns small-offset-1 center" id="map_canvas"></div>
   </div>
 
 
 <div id="control_container"></div>
 
 
-<div class="large-11 columns offset-1" id="map_search">
+<div id="map_search">
   <div class="row has-form">
     <form class='form'>
-      <div class="large-4 small-4 columns">
-        <input type="text" name="term" id="search-term", placeholder="Food Search" value="<%=@search_term%>">
-        <div class="large-4 small-4 columns">
-          <input type="text" name="location" placeholder="Location Search" id="search-location" value="<%=@search_location%>">
-          <input type="hidden" name="category_filter" value="Food" id="search-term">
-        </div>
-        <div class="large-4 small-4 columns">
-          <input type="submit" id="map_search_submit" value="submit" class="button">
-        </div>
+      <div class="large-6 small-6 columns">
+        <input type="text" name="term" id="search-term", placeholder="Enter Food" value="<%=@search_term%>">
+      </div>
+      <div class="large-6 small-6 columns">
+        <input type="text" name="location" placeholder="Enter Location" id="search-location" value="<%=@search_location%>">
+      </div>
+        <input type="hidden" name="category_filter" value="Food" id="search-term">
+      <div class="large-3 small-3 columns">
+        <input type="submit" id="map_search_submit" value="submit" class="button">
       </div>
     </form>
   </div>
 </div>
 
 
-<div id="index-icons">
-  <%= link_to image_tag("uk_food_flag.jpg", height: '100', width: '100'), "/lists/2"%>
-  <%= link_to image_tag("montreal_flag.jpg", height: '100', width: '100'), "/lists/5"%>
-  <%= link_to image_tag("new_zealand_flag.jpg", height: '100', width: '100'), "/lists/4"%>
-  <%= link_to image_tag("minnesota_flag.gif", height: '100', width: '100'), "/lists/1"%>
-  <%= link_to image_tag("chicago_flag.gif", height: '100', width: '100'), "/lists/8"%>
-  <%= link_to image_tag("buffalo_postcard.jpg", height: '100', width: '100'), "/lists/3"%>
+<div class="large-12 columns offset-2" id="index-icons-container">
+  <table id="index-icons">
+  <thead><h3>Favorites from around the world!</h3></thead>
+  <tbody>
+    <tr>
+    <td class="index-icon"><%= link_to image_tag("uk_food_flag.jpg", height: '300', width: '300'), "/lists/2"%></td>
+  
+    <td index="index-icon"><%= link_to image_tag("montreal_flag.jpg", height: '300', width: '300'), "/lists/5"%></td>
+  
+    <td index="index-icon"><%= link_to image_tag("new_zealand_flag.jpg", height: '300', width: '300'), "/lists/4"%></td>
+  </tr>
+  <tr>
+  <td index="index-icon"><%= link_to image_tag("minnesota_flag.gif", height: '300', width: '300'), "/lists/1"%></td>
+  
+    <td index="index-icon"><%= link_to image_tag("chicago_flag.gif", height: '300', width: '300'), "/lists/8"%></td>
+  
+    <td index="index-icon"><%= link_to image_tag("buffalo_postcard.jpg", height: '300', width: '300'), "/lists/3"%></td></tr>
+    </tbody>
 </div>
 
 

@@ -1,18 +1,18 @@
-<h2>All tags:</h2>
+<h2 class="name-header text-center">Popular Categories</h2>
 
-
-<div class="subheading" class="search-bar">
+<div class="subheading" class="search-bar right">
 	<div class="small-4 columns">
-  <form action="/tags" method="get">
-    <input type="text" name="tag" placeHolder="Search A Tag">
-    <input type="submit" value="Search">
-  </form>
+    <form action="/tags" method="get">
+      <input type="text" name="tag" placeHolder="Search A Tag">
+      <input type="submit" class="button medium radius" value="Search">
+    </form>
+  </div>
 </div>
 
-
+<div class="large-5 columns offset-2">
   <ul class="list">
     <%@tags.each do |tag|%>
-      <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
+      <li><a href="/tags/<%=tag.id%>">#<%=tag.name%></a></li>
     <%end%>
   </ul>
 

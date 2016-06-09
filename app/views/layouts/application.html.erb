@@ -15,52 +15,49 @@
   <div class="contain-to-grid sticky" id="header">
     <div class="small-12 columns" class="row">
       <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-            <a href="/"><h1>Taste of Home</h1></a>
-          </li>
-        <!--   <li class="media" style="height: 200px width: 200px ">#<%= image_tag "logo.jpg"%> </li> -->
-        </ul>
-
 
         <div class="off-canvas-wrap" data-offcanvas>
           <div class="inner-wrap">
-            <nav class='left-off-canvas-menu'>
+            <li class="toggle-topbar menu-icon left-off-canvas-toggle"><a href="#"></a>Menu</li>
+              <aside class='left-off-canvas-menu'>
               <ul class="left">
-                <li class="toggle-topbar menu-icon left-off-canvas-toggle" href="#">Menu</a></li>
-                    <% if logged_in? %>
-                    <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
+                  <% if logged_in? %>
+                    <li><a href="users/#{current_user.id}">My Page</a></li>
                     <li><%= link_to "Logout", logout_path %></li>
-                    <% else %>
+                  <% else %>
                     <li><%= link_to "Sign Up", '/users/new'%></li>
                     <li><%= link_to "Login", login_path %></li>
-                    <% end %>
+                  <% end %>
                     <li><%= link_to "Search by Tags", "/tags" %></li>
                     <li><%= link_to "A Curated List", "/lists/3" %></li>
                   </ul>
               </ul>
-            </nav>
+            </aside>
+              <ul class="title-area">
+                <li class="name">
+                  <a href="/"><h1>Taste of Home</h1></a>
+                </li>
+              </ul>
+
             <a class="exit-off-canvas"></a>
           </div>
         </div>
-
+<
 
         <section class="subheader">
           <ul class="right">
-            <li class="has-form">
-              <div class="row collapse">
+            <div class="row">
+              <li class="has-form">
                 <form id='search' action="/">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
-                    <label for='term'>Search
+                    <label for='right-term' class="right">Search</label>
                       <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-
-
                   </div>
-                  <div class="large-5 small-4 columns">
-                    <label for='location'>Location
-                      <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
 
+                  <div class="large-5 small-4 columns">
+                    <label for='right-location' class="right">Location</label>
+                      <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">
@@ -76,13 +73,14 @@
     </div>
   </nav>
 </div>
-
+<div class="row"></div>
+<main>
 <%= yield %>
+</main>
 
 
-
-  <footer class="footer sticky" id="footer">
+<!--   <footer class="footer sticky" id="footer">
       <div class="large-12 columns"></div>
-  </footer>
+  </footer> -->
 </body>
 </html>
