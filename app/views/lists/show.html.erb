@@ -20,9 +20,9 @@
   <form action="/lists/<%=@list.id%>" method="post">
     <%=token_tag%>
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete this list">
+    <input type="submit" value="Delete This List">
   </form>
 <%end%>
 
 <br>
-  <h5>Created by <%= @list.user.username.capitalize %></h5>
+  <h5>Created by <%= @list.user.username %></h5>
