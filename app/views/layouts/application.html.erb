@@ -16,7 +16,7 @@
       <div class="small-12 columns" class="row">
         <nav class="top-bar" data-topbar role="navigation">
           <ul class="title-area">
-            <li class="name">
+            <li class="name-header text-center">
               <a href="/"><h1>Taste of Home</h1></a>
             </li>
             <li class="media" id="img"><%= image_tag "logo.jpg"%> </li>
@@ -36,21 +36,20 @@
           </section>
 
         <section class="subheader">
-
+          <div class="row">
+          <div class="large-10">
           <ul class="right">
+            <div class="row">
             <li class="has-form">
-              <div class="row collapse">
                 <form id='search' action="/">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
-                    <label for='term'>Search</label>
+                    <label for='right-term' class="right">Search</label>
                       <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-
                   </div>
                   <div class="large-5 small-4 columns">
-                    <label for='location'>Location</label>
+                    <label for='right-location' class="right">Location</label>
                       <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
-
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">

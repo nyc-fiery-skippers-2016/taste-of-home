@@ -1,9 +1,14 @@
-<%= form_for (store_tag) do |f| %>
-  <input type="text" id="new_tag_name" name="name" placeholder="Name">
-
-  <input type="hidden" name="store_id" value="<%=store.id%>">
-
-  <div class="actions">
-    <%= f.submit "Add tag to this business"%>
-  </div>
-<% end %>
+<div class="large-11 columns offset-1 has-form" id="tags">
+  <form class='form'>
+	<%= form_for (store_tag) do |f| %>
+		<div class="large-4 small-4 columns">
+		  <input type="text" id="new_tag_name" name="name" placeholder="Name">
+		  <input type="hidden" name="store_id" value="<%=store.id%>">
+		  </div>
+		<div class="large-4 small-4 columns">
+		  <input class="actions" type="submit" id="map_search_submit" value="submit" class="button">
+		    <%= f.submit "Add tag for this business!"%>
+		  </div>
+	<% end %>
+	</form>
+</div>
