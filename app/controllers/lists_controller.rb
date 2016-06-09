@@ -6,7 +6,7 @@ class ListsController < ApplicationController
 
   def create
     List.create(list_params)
-    redirect_to "/"
+    redirect_to "/users/#{current_user.id}"
   end
 
   def show
