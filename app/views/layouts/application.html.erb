@@ -15,23 +15,24 @@
   <div class="contain-to-grid sticky" id="header">
     <div class="large-12 columns" style= "width: 100%">
         <div class="row">
-          <div class="row"></div>
+          <div class="row">
               <ul class="title-area">
                 <li class="name">
                   <a href="/"><h1 id="title-invisible">Taste of Home</h1></a>
                 </li>
               </ul>
             </div>
+          </div>
       <div class="row">
         <section class="subheader">
-          <nav class="subheader" data-subheader role="navigation">
+          <nav class="subheader-nav" data-subheader role="navigation">
             <ul class="left">
               <% if logged_in? %>
               <li>
                 <div class="row">
                   <p><a href="users/#{current_user.id}">My Page</a>  |
                   <%= link_to "Logout", logout_path %>  |
-                  <%= link_to "Search by Tags", "/tags" %>  |
+                  <%= link_to "Search by Tags", tags_path %>  |
                   <%= link_to "A Curated List", "/lists/3" %>  |
                 </div>
               <% else %>
@@ -43,6 +44,7 @@
                 </div>
               <% end %>
                 <form id='search' class="has-form" action="/">
+                <div class="row">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
                     <label for='right-term' class="right">Search</label>
@@ -58,6 +60,8 @@
                   </div>
                     <% end %>
                 </div>
+                </div>
+
               </form>
             </li>
           </ul>
