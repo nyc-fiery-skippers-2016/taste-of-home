@@ -19,15 +19,25 @@ html, body {
   height: 90%;
   margin: 0 auto;
   padding: 0;
+  font-family: 'Convergence', sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Convergence', sans-serif;
 }
 
 #header {
 	background-color: ;
-	font-family:;
+	font-family: 'Convergence', sans-serif;
 	margin-bottom: 3em;
 
 }
 #results {
   background-color: rgb(190,219,57,.5);
   text-align: center;
+}
+
+.name-header {
+  font-family: 'Convergence', sans-serif;
 }
