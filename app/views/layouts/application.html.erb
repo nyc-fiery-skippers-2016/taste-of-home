@@ -11,32 +11,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-  <body>
-    <div class="contain-to-grid sticky" id="header">
-      <div class="small-12 columns" class="row">
-        <nav class="top-bar" data-topbar role="navigation">
-          <ul class="title-area">
-            <li class="name">
-              <a href="/"><h1>Taste of Home</h1></a>
-            </li>
-            <li class="media" id="img"><%= image_tag "logo.jpg"%> </li>
-          </ul>
-        <section class="top-bar-section">
-          <ul class='right'>
-            <li class="divider"></li>
-              <% if logged_in? %>
-                <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
-                <li><%= link_to "Logout", logout_path %></li>
-              <% else %>
-                <li><%= link_to "Sign Up", '/users/new'%></li>
-                <li><%= link_to "Login", login_path %></li>
-              <% end %>
-              <li><%= link_to "Search by Tags", "/tags" %></li>
-            </ul>
-          </section>
+
+<body>
+  <div class="contain-to-grid sticky" id="header">
+    <div class="small-12 columns" class="row">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <a href="/"><h1>Taste of Home</h1></a>
+          </li>
+        <!--   <li class="media" style="height: 200px width: 200px ">#<%= image_tag "logo.jpg"%> </li> -->
+        </ul>
+
+
+        <div class="off-canvas-wrap" data-offcanvas>
+          <div class="inner-wrap">
+            <nav class='left-off-canvas-menu'>
+              <ul class="left">
+                <li class="toggle-topbar menu-icon left-off-canvas-toggle" href="#">Menu</a></li>
+                    <% if logged_in? %>
+                    <li><%= link_to "My Page", "/users/#{current_user.id}" %></li>
+                    <li><%= link_to "Logout", logout_path %></li>
+                    <% else %>
+                    <li><%= link_to "Sign Up", '/users/new'%></li>
+                    <li><%= link_to "Login", login_path %></li>
+                    <% end %>
+                    <li><%= link_to "Search by Tags", "/tags" %></li>
+                    <li><%= link_to "A Curated List", "/lists/3" %></li>
+                  </ul>
+              </ul>
+            </nav>
+            <a class="exit-off-canvas"></a>
+          </div>
+        </div>
+
 
         <section class="subheader">
-
           <ul class="right">
             <li class="has-form">
               <div class="row collapse">
@@ -45,21 +55,19 @@
                     <% unless url_for == root_path %>
                     <label for='term'>Search</label>
                       <input type="text" name="term" id="search-term", placeholder="Missing Home?">
-
                   </div>
                   <div class="large-5 small-4 columns">
                     <label for='location'>Location</label>
                       <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
-
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">
                     <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
                   </div>
+                    <% end %>
                 </div>
               </form>
             </li>
-            <% end %>
           </ul>
         </div>
       </section>
@@ -70,8 +78,9 @@
 <%= yield %>
 
 
-<footer class="footer sticky" id="footer">
-    <div class="large-12 columns"></div>
-</footer>
+
+  <footer class="footer sticky" id="footer">
+      <div class="large-12 columns"></div>
+  </footer>
 </body>
 </html>
