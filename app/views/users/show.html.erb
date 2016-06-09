@@ -1,10 +1,37 @@
+<div class="container">
+
+
+  <div class="row">
+    <h1></h1>
+  </div>
+
+  <div class="row">
+    <div class="large-1 columns"></div>
+    <div class="large-4 columns">
+    </div>
+    <div class="large-7 columns">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <h1 class="name-header">Welcome <%= @user.username.capitalize %>!</h1>
 
 <div class="small-8 columns"><h3>Curated Lists</h3>
   <ul class="list">
     <% if !@lists.empty? %>
       <% @lists.each do |list| %>
-        <li><a href="/lists/<%=list.id%>"><%=list.name%></a></li>
+      <div class="row">
+        <div class="small-2 large-2 columns"><li><a href="/lists/<%=list.id%>"><%=list.name%></a></li></div>
         <li><%=list.description%></li>
       <%end%>
     <%end%>
