@@ -13,48 +13,41 @@
 
 <body>
   <div class="contain-to-grid sticky" id="header">
-    <div class="small-12 columns" class="row">
-      <nav class="top-bar" data-topbar role="navigation">
-
-        <div class="off-canvas-wrap" data-offcanvas>
-          <div class="inner-wrap">
-            <li class="toggle-topbar menu-icon left-off-canvas-toggle"><a href="#"></a>Menu</li>
-              <aside class='left-off-canvas-menu'>
-              <ul class="left">
-                  <% if logged_in? %>
-                    <li><a href="users/#{current_user.id}">My Page</a></li>
-                    <li><%= link_to "Logout", logout_path %></li>
-                  <% else %>
-                    <li><%= link_to "Sign Up", '/users/new'%></li>
-                    <li><%= link_to "Login", login_path %></li>
-                  <% end %>
-                    <li><%= link_to "Search by Tags", "/tags" %></li>
-                    <li><%= link_to "A Curated List", "/lists/3" %></li>
-                  </ul>
-              </ul>
-            </aside>
+    <div class="large-12 columns" style= "width: 100%">
+        <div class="row">
+          <div class="row"></div>
               <ul class="title-area">
                 <li class="name">
-                  <a href="/"><h1>Taste of Home</h1></a>
+                  <a href="/"><h1 id="title-invisible">Taste of Home</h1></a>
                 </li>
               </ul>
-
-            <a class="exit-off-canvas"></a>
-          </div>
-        </div>
-<
-
+            </div>
+      <div class="row">
         <section class="subheader">
-          <ul class="right">
-            <div class="row">
-              <li class="has-form">
-                <form id='search' action="/">
+          <nav class="subheader" data-subheader role="navigation">
+            <ul class="left">
+              <% if logged_in? %>
+              <li>
+                <div class="row">
+                  <p><a href="users/#{current_user.id}">My Page</a>  |
+                  <%= link_to "Logout", logout_path %>  |
+                  <%= link_to "Search by Tags", "/tags" %>  |
+                  <%= link_to "A Curated List", "/lists/3" %>  |
+                </div>
+              <% else %>
+                <div class="row">
+                  <%= link_to "Sign Up", '/users/new'%>  |
+                  <%= link_to "Login", login_path %>  |
+                  <%= link_to "Search by Tags", "/tags" %>  |
+                  <%= link_to "A Curated List", "/lists/3" %>  |</p>
+                </div>
+              <% end %>
+                <form id='search' class="has-form" action="/">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
                     <label for='right-term' class="right">Search</label>
                       <input type="text" name="term" id="search-term", placeholder="Missing Home?">
                   </div>
-
                   <div class="large-5 small-4 columns">
                     <label for='right-location' class="right">Location</label>
                       <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
@@ -68,10 +61,9 @@
               </form>
             </li>
           </ul>
-        </section>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </section>
 </div>
 <div class="row"></div>
 <main>
