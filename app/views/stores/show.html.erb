@@ -27,7 +27,8 @@
     <h4><%= render template: '/comments/index', locals: { comment: @comment } %></h4>
   </div>
   <div class="large-6 columns">
-    <h3>Tags:</h3>
+    <br><br>
+    <h5>Tags:</h5>
     <ul id="tags">
       <% @store.tags.each do |tag|%>
         <li><a href="/tags/<%= tag.id%>">#<%= tag.name%></a></li>
@@ -38,17 +39,16 @@
 <% if logged_in? %>
   <div class="row">
     <div class="large-6 columns text-center">
-      <%=render partial: "tags/tag", locals: {store_tag: @store_tag, store: @store}%>
-    </div>
-    <div class="large-6 columns text-center">
       <%= form_tag(store_lists_path) do %>
       <%= hidden_field_tag("store_list[store_id]", @store.id) %>
       <%= collection_select(:store_list,:list_id, current_user.lists, :id, :name) %>
-
       <% end %>
       <div class="actions">
-        <%= submit_tag "Add this business to your list",  class: "button small radius"%>
+        <%= submit_tag "Add this business to your list",  class: "button radius"%>
       </div>
     </div>
+      <div class="large-6 columns text-center">
+       <%=render partial: "tags/tag", locals: {store_tag: @store_tag, store: @store}%>
+      </div>
   </div>
 <% end %>
