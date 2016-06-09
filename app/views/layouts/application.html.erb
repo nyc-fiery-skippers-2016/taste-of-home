@@ -34,7 +34,7 @@
               <% if logged_in? %>
               <li>
                   <div class="large-12 small-4 columns">
-                <div class="row">   
+                <div class="row">
                 <form id='search' class="has-form" action="/">
                     <% unless url_for == root_path %>
                       <input type="text" name="term" id="search-term", placeholder="Enter Search">
@@ -44,11 +44,11 @@
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">
-                    <input type="submit" id="map_search_submit" value="submit" class='button radius tiny'>
+                    <input type="submit" id="map_search_submit" value="Submit" class='button radius tiny'>
                   </div>
                     <% end %>
                 </form>
-                  <p><a href="users/<%=current_user.id%>">My Page</a>  |
+                  <p><a href="/users/<%=current_user.id%>">My Page</a>  |
                   <%= link_to "Logout", logout_path %>  |
                   <%= link_to "Search by Tags", tags_path %> |
                   <%= link_to "A Curated List", "/lists/3" %>  |
