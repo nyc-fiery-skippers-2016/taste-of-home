@@ -24,12 +24,14 @@
             </div>
           </div>
 
-      <div class="row">
+
+      <div class="row"></div>
         <div class="row"></div>
-      </div>
+        <div class="row"></div>
 
         <section class="subheader">
           <nav class="subheader-nav" data-subheader role="navigation">
+            <div class="row"></div>
             <ul class="left">
               <% if logged_in? %>
               <li>
@@ -48,24 +50,19 @@
                 </div>
               <% end %>
                 <form id='search' class="has-form" action="/">
-                <div class="row">
                   <div class="large-5 small-4 columns">
                     <% unless url_for == root_path %>
-                    <label for='right-term' class="right">Search</label>
-                      <input type="text" name="term" id="search-term", placeholder="Missing Home?">
+                      <input type="text" name="term" id="search-term", placeholder="Enter Search">
                   </div>
                   <div class="large-5 small-4 columns">
-                    <label for='right-location' class="right">Location</label>
-                      <input type="text" name="location" placeholder="Where are you looking?" id="Location" >
+                      <input type="text" name="location" placeholder="Enter Location" id="Location" >
                   </div>
                   <div class="large-2 small-3 columns">
                     <input type="hidden" name="category_filter" value="Food" id="search-term">
-                    <input type="submit" id="map_search_submit" value="submit" class='button radius expand'>
+                    <input type="submit" id="map_search_submit" value="submit" class='button radius tiny'>
                   </div>
                     <% end %>
                 </div>
-                </div>
-
               </form>
             </li>
           </ul>
