@@ -126,7 +126,7 @@ $header-sizes: (
     'h5': 20,
     'h6': 16,
     'p': 13,
-    
+
   ),
 );
 
@@ -639,7 +639,8 @@ $map-padding-top: 40rem;
 // -------------
 
 .name-header {
-  
+  font: bold 50px arial, serif;
+  color: rgb(253,116,0);
 }
 .store-details {
   padding-left: 50px;
@@ -673,7 +674,7 @@ $map-padding-top: 40rem;
 
 .form {
   background-color: rgba(31,138,112, 0.9);
-
+  text-align: left;
 }
 #index-icons {
   height: 100%;
