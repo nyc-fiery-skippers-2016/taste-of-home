@@ -32,9 +32,12 @@
             <ul class="left">
               <% if logged_in? %>
               <li>
+
                   <div class="large-12 small-12 columns">
-                <div class="row">   
-                  <p><a href="users/<%=current_user.id%>">My Page</a>  |
+                <div class="row">
+
+                  <p><a href="/users/<%=current_user.id%>">My Page</a>  |
+
                   <%= link_to "Logout", logout_path %>  |
                   <%= link_to "Search by Tags", tags_path %> |
                   <%= link_to "A Curated List", "/lists/3" %>  |
