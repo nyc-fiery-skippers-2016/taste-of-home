@@ -1,23 +1,23 @@
 <div class=" height">
-    <div class="small-10 columns small-offset-1" id="map_canvas"></div>
+    <div class="small-10 columns small-offset-1 center" id="map_canvas"></div>
   </div>
 
 
 <div id="control_container"></div>
 
 
-<div  id="map_search">
+<div id="map_search">
   <div class="row has-form">
     <form class='form'>
-      <div class="large-5 small-4 columns">
+      <div class="large-6 small-6 columns">
         <input type="text" name="term" id="search-term", placeholder="Enter Food" value="<%=@search_term%>">
-        <div class="large-5 small-4 columns">
-          <input type="text" name="location" placeholder="Enter Location" id="search-location" value="<%=@search_location%>">
-        </div>
-          <input type="hidden" name="category_filter" value="Food" id="search-term">
-        <div class="large-3 small-4 columns">
-          <input type="submit" id="map_search_submit" value="submit" class="button">
-        </div>
+      </div>
+      <div class="large-6 small-6 columns">
+        <input type="text" name="location" placeholder="Enter Location" id="search-location" value="<%=@search_location%>">
+      </div>
+        <input type="hidden" name="category_filter" value="Food" id="search-term">
+      <div class="large-3 small-3 columns">
+        <input type="submit" id="map_search_submit" value="submit" class="button">
       </div>
     </form>
   </div>
