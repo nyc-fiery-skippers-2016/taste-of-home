@@ -1,40 +1,16 @@
-<div class="container">
-
-
-  <div class="row">
-    <h1></h1>
-  </div>
-
-  <div class="row">
-    <div class="large-1 columns"></div>
-    <div class="large-4 columns">
-    </div>
-    <div class="large-7 columns">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
 <h1 class="name-header">Welcome <%= @user.username.capitalize %>!</h1>
-
-<div class="small-8 columns"><h3>Curated Lists</h3>
+<div class="large-8 columns"><h3>Curated Lists</h3>
   <ul class="list">
     <% if !@lists.empty? %>
       <% @lists.each do |list| %>
-      <div class="row">
-        <div class="small-2 large-2 columns"><li><a href="/lists/<%=list.id%>"><%=list.name%></a></li></div>
-        <li><%=list.description%></li>
-      <%end%>
-    <%end%>
+        <div class="row">
+          <div class="small-3 columns"><li><%=list.name%></li></div>
+          <div class="small-3 columns"><li><a href="/lists/<%=list.id%>"><%= image_tag(list.image_filename, width: '200') %></a></li></div>
+          <div class="small-6 columns"><li><%=list.description%></li></div>
+        </div>
+      <% end %>
+    <% end %>
+</div>
     <% if logged_in? && current_user.id == @user.id %>
     <h5>Create a New List</h5>
     <%=render partial: "lists/list", locals: {list: @list, user: @user}%>
