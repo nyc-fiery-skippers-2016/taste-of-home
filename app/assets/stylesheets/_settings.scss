@@ -514,7 +514,7 @@ $topbar-unstack-breakpoint: medium;
 // 37. Map
 // -------------
  #map-canvas{
-    margin: 5px;
+    margin: 35px 0 10px 0;
     padding: 5px;
     display: block;
     position: absolute;
@@ -565,8 +565,11 @@ $map-padding-top: 40rem;
   }
 .name {
   text-align: center;
+  }
+#name {
+  background-color: rgba(255,204,0,0.4);
+  }
 
-}
 
 .subheader {
   height: 100px;
@@ -574,7 +577,7 @@ $map-padding-top: 40rem;
   background-color: rgba(0,67,88, 0.9);
   position: absolute;
   display: block;
-  margin-top:70px;
+  margin-top:80px;
 }
 
 #results {
@@ -618,12 +621,15 @@ $map-padding-top: 40rem;
 
 //41. Favorite
 // --------------
+
 .favorite {
   width: 15px;
   height: 15px;
 }
 
 //42. Forms
+//------------------
+
 .form {
   background-color: rgba(31,138,112, 0.9);
 
