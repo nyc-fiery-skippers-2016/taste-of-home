@@ -6,7 +6,7 @@ $(document).ready(function(){
       method: e.target.method,
       data: $(e.target).serialize()
     }).done(function(response){
-      $('#tags').append("<li><a href=\"/tags/"+response.id+"\">"+response.name+"</a></li>");
+      $('#tags').append("<li><a href=\"/tags/"+response.id+"\">#"+response.name+"</a></li>");
       $('#new_tag_name').val('');
     });
   });
