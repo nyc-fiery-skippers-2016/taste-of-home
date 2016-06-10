@@ -4,15 +4,15 @@
   <br>
 <div class="row">
     <div class="large-6 columns">
-      <img src="<%= asset_path('meal.jpg') %>" height="200px">
+      <img src="<%= asset_path('comment_photo.png') %>" height="200px">
     </div>
+    <div><h4>Try these places:</h4></div>
   <div class="large-6 columns">
       <%@list.stores.each do |store| %>
         <div class="curated-list-items">
           <p>
-            <a href="/stores/<%=store.yelp_id%>"><%= store.name.capitalize %></a>
-            <br>
-            <img src="#{store.img_url}" class="image">
+            <h5><a href="/stores/<%=store.yelp_id%>"><%= store.name.capitalize %></a></h5>
+              <img class="img" src="<%=store.img_url%>" height="50px">
           </p>
         </div>
       <% end %>
