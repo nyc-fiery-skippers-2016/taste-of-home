@@ -23,21 +23,13 @@
     <section class="top-bar-section">
     <!-- Right Nav Section -->
 
-      <ul class="right inline-list">
-        <li class="has-form">
-          <div class="row collapse">
-            <div class="large-8 small-9 columns">
-             <% unless url_for == root_path %>
-              <input type="text" name="term" id="search-term" placeholder="Enter Search">
-            </div>
-            <input type="text" name="location" placeholder="Enter Location" id="Location" >
-            <div class="large-4 small-3 columns">
-              <input type="hidden" name="category_filter" value="Food">
-              <input type="submit" id="map_search_submit" value="Submit" class='button radius tiny'>
-            </div>
-            <% end %>
-          </div>
-        </li>
+      <ul id="jasons-stubborn-inline-list" class="menu right">
+        <% unless url_for == root_path %>
+          <li><input type="text" name="term" id="search-term" placeholder="Enter Search"></li>
+          <li><input type="text" name="location" placeholder="Enter Location" id="Location" ></li>
+            <input type="hidden" name="category_filter" value="Food">
+          <li><input type="submit" id="map_search_submit" value="Submit" class='button radius tiny'></li>
+        <% end %>
         </ul>
       
     <!-- Left Nav Section -->
