@@ -170,7 +170,6 @@ var buildStoreHTML = function(store) {
       "<p>"+ store.review_count +" reviews</p>" +
       "<p class=\"clear-fix\"></p>" +
     "</div>";
-
   return storeResult;
 };
 
