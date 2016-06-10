@@ -2,18 +2,18 @@
   <br>
     <p><%=@list.description%></p>
   <br>
-
+<div class="large">
   <div id="img">
-    <img src="/comment_photo.png">
+    <img src="<%= asset_path('meal.jpg') %>" height="200px">
   </div>
   <%@list.stores.each do |store| %>
-    <div class="currated-list-items">
+    <div class="curated-list-items">
       <p>
         <a href="/stores/<%=store.yelp_id%>"><%= store.name %></a>
       </p>
     </div>
   <% end %>
-
+</div>
 
 
 <%if logged_in? && @user == current_user%>
