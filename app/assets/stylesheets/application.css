@@ -19,10 +19,17 @@ html, body {
   height: 90%;
   margin: 0 auto;
   padding: 0;
+  font-family: 'Convergence', sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Convergence', sans-serif;
 }
 
 #header {
-	font-family:;
+	background-color: ;
+	font-family: 'Convergence', sans-serif;
 	margin-bottom: 3em;
 
 }
@@ -31,7 +38,12 @@ html, body {
   text-align: center;
 }
 
+.name-header {
+  font-family: 'Convergence', sans-serif;
+}
+
 #jasons-stubborn-inline-list {
 	list-style-type: none;
 	display: inline;
 }
+

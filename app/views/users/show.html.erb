@@ -1,5 +1,5 @@
-<h1 class="name-header">Welcome <%= @user.username.capitalize %>!</h1>
-<div class="large-8 columns"><h3>Curated Lists</h3>
+<h1 class="name-header">Welcome <%= @user.username.capitalize %>!</h1><br>
+<div class="large-12 columns"><h3>Curated Lists</h3><br>
   <ul class="list">
     <% if !@lists.empty? %>
       <% @lists.each do |list| %>
@@ -8,17 +8,19 @@
           <div class="small-3 columns"><li><a href="/lists/<%=list.id%>"><%= image_tag(list.image_filename, width: '200') %></a></li></div>
           <div class="small-6 columns"><li><%=list.description%></li></div>
         </div>
+          <hr>
       <% end %>
     <% end %>
+    </ul>
 </div>
-    <% if logged_in? && current_user.id == @user.id %>
-    <h5>Create a New List</h5>
-    <%=render partial: "lists/list", locals: {list: @list, user: @user}%>
+
+
+<div class="small-6 columns">
+  <% if logged_in? && current_user.id == @user.id %>
+  <h5>Create a New List</h5>
+  <%=render partial: "lists/list", locals: {list: @list, user: @user}%>
   <% end %>
-  </ul>
 </div>
-
-
 <div class="small-8 columns">
   <h3>Favorite Places:</h3>
     <div class="small-6 columns" class="list">
