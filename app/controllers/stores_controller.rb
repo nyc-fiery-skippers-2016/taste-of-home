@@ -24,7 +24,19 @@ class StoresController < ApplicationController
     end
 
     stores = results.businesses.map do |business|
-      {name: business.name, address: business.location.display_address.push(business.location.country_code).join(", "), neighborhoods: business.location.neighborhoods, phone: business.display_phone, description: business.categories.flatten.join(", "), longitude: business.location.coordinate.longitude, latitude: business.location.coordinate.latitude, img_url: business.image_url, rating_url: business.rating_img_url, yelp_id: business.id, longitude_delta: results.region.span.longitude_delta, latitude_delta: results.region.span.latitude_delta, review_count: business.review_count}
+      {name: business.name, 
+       address: business.location.display_address.push(business.location.country_code).join(", "), 
+       neighborhoods: business.location.neighborhoods, 
+       phone: business.display_phone, 
+       description: business.categories.flatten.join(", "), 
+       longitude: business.location.coordinate.longitude, 
+       latitude: business.location.coordinate.latitude, 
+       img_url:"#{business.image_url.slice!(-6..-1)}" + "o.jpg", 
+       rating_url: business.rating_img_url, 
+       yelp_id: business.id, 
+       longitude_delta: results.region.span.longitude_delta, 
+       latitude_delta: results.region.span.latitude_delta, 
+       review_count: business.review_count}
     end
     # creating or finding the store by results
     stores.each do |store|

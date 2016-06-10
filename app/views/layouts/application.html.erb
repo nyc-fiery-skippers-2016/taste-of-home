@@ -12,70 +12,54 @@
 </head>
 
 <body>
-  <div class="contain-to-grid sticky" id="header">
-    <div class="large-12 columns" style= "width: 100%">
-        <div class="row">
-          <div class="row">
+  <nav class="top-bar" data-topbar role="navigation" style="border:black 1px solid;">
+    <ul class="title-area">
+      <li class="name">
+        <a href="/"><img src="<%= asset_path('header_img.jpg') %>"
+          style="width:100%; height:220px;"
+        /></a>
+      </li>
+    </ul>
+    <section class="top-bar-section">
+    <!-- Right Nav Section -->
 
-              <ul class="title-area">
-                <li class="name">
-                  <a href="/"><h1 id="title-invisible">Taste of Home</h1></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-          <div class="row"></div>
-          </div>
-        <section class="subheader">
-          <nav class="subheader-nav" data-subheader role="navigation">
-            <div class="row"></div>
-            <ul class="left">
-              <% if logged_in? %>
-              <li>
-                  <div class="large-12 small-4 columns">
-                <div class="row">
-                <form id='search' class="has-form" action="/">
-                    <% unless url_for == root_path %>
-                      <input type="text" name="term" id="search-term", placeholder="Enter Search">
-                  </div>
-                  <div class="large-5 small-4 columns">
-                      <input type="text" name="location" placeholder="Enter Location" id="Location" >
-                  </div>
-                  <div class="large-2 small-3 columns">
-                    <input type="hidden" name="category_filter" value="Food" id="search-term">
-                    <input type="submit" id="map_search_submit" value="Submit" class='button radius tiny'>
-                  </div>
-                    <% end %>
-                </form>
-                  <p><a href="/users/<%=current_user.id%>">My Page</a>  |
-                  <%= link_to "Logout", logout_path %>  |
-                  <%= link_to "Search by Tags", tags_path %> |
-                  <%= link_to "A Curated List", "/lists/3" %>  |
-                </div>
-              <% else %>
-                <div class="row">
-                  <%= link_to "Sign Up", '/users/new'%>  |
-                  <%= link_to "Login", login_path %>  |
-                  <%= link_to "Search by Tags", "/tags" %>  |
-                  <%= link_to "A Curated List", "/lists/3" %>  |</p>
-                </div>
-              <% end %>
-                </div>
-            </li>
-          </ul>
-      </div>
-    </nav>
+      <ul id="jasons-stubborn-inline-list" class="menu right">
+        <% unless url_for == root_path %>
+          <li><input type="text" name="term" id="search-term" placeholder="Enter Search"></li>
+          <li><input type="text" name="location" placeholder="Enter Location" id="Location" ></li>
+            <input type="hidden" name="category_filter" value="Food">
+          <li><input type="submit" id="map_search_submit" value="Submit" class='button radius tiny'></li>
+        <% end %>
+        </ul>
+      
+    <!-- Left Nav Section -->
+      <ul class="menu left text-center">
+      <% if logged_in? %>
+        <li><a href="/users/<%=current_user.id%>">My Page</a></li>
+        <li>|</li>
+        <li><a href="/logout">Logout</a></li>
+        <li>|</li>
+        <li><a href="/tags">Search by Tag</a></li>
+        <li>|</li>
+        <li><a href="/lists/3">A Curated List</a></li>
+        <li>|</li>
+      <% else %>
+        <li><a href="users/new">Register</a></li>
+        <li>|</li>
+        <li><a href="/tags">Search by Tag</a></li>
+        <li>|</li>
+        <li><a href="/lists/3">A Curated List</a></li>
+        <li>|</li>
+      <% end %>
+      </ul>
+    <div class="row"></div>
+    </ul>
   </section>
-</div>
-<div class="row"></div>
-<main>
-<%= yield %>
-</main>
+</nav>
 
+  <main>
+    <%= yield %>
+  </main>
 
-<!--   <footer class="footer sticky" id="footer">
-      <div class="large-12 columns"></div>
-  </footer> -->
 </body>
 </html>

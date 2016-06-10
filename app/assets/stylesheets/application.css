@@ -22,7 +22,6 @@ html, body {
 }
 
 #header {
-	background-color: ;
 	font-family:;
 	margin-bottom: 3em;
 
@@ -30,4 +29,9 @@ html, body {
 #results {
   background-color: rgb(190,219,57,.5);
   text-align: center;
+}
+
+#jasons-stubborn-inline-list {
+	list-style-type: none;
+	display: inline;
 }

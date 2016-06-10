@@ -534,12 +534,14 @@ $map-padding-top: 40rem;
 }
 
  #map_canvas{
-    margin: 80px 0 15px 215px;
+    margin-left: 6%;
+    margin-top: 10%;
     padding: 5px;
+    position:relative;
     display: inline-block;
     float: left;
     min-height: 300px;
-    height: 650px;
+    height: 90%;
     width: 500px;
     max-height: 750px;
     background-color: rgb(0,67,88);
@@ -582,6 +584,7 @@ $map-padding-top: 40rem;
   float: right;
     }
 #title-invisible {
+  padding: 30px;
   color: rgba(0,0,0,0);
 }
 #img {
@@ -598,9 +601,10 @@ section.subheader {
   height: 80px;
   min-width: 100%;
   background-color: rgb(0,67,88);
-  position: fixed;
+  position: relative;
   display: block;
-  margin: 140px 0 10px 0;
+  margin-top: 10%;
+  margin-left: .5%;
 }
 
 #results {
@@ -640,7 +644,7 @@ section.subheader {
   color: rgb(253,116,0);
 }
 .store-details {
-  padding-left: 50px;
+  //padding-left: 50px;
 }
 .currated-list-items {
   padding-left: 50px;
@@ -722,3 +726,5 @@ main {
 .login-header {
   margin-top: 85px;
 }
+
+
