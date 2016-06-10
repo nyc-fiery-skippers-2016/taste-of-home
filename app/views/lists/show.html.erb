@@ -2,19 +2,22 @@
   <br>
     <p><%=@list.description%></p>
   <br>
-
-  <div id="img">
-    <img src="/comment_photo.png">
-  </div>
-  <%@list.stores.each do |store| %>
-    <div class="currated-list-items">
-      <p>
-        <a href="/stores/<%=store.yelp_id%>"><%= store.name %></a>
-      </p>
+<div class="row">
+    <div class="large-6 columns">
+      <img src="<%= asset_path('comment_photo.png') %>" height="200px">
     </div>
-  <% end %>
-
-
+    <div><h4>Try these places:</h4></div>
+  <div class="large-6 columns">
+      <%@list.stores.each do |store| %>
+        <div class="curated-list-items">
+          <p>
+            <h5><a href="/stores/<%=store.yelp_id%>"><%= store.name.capitalize %></a></h5>
+              <img class="img" src="<%=store.img_url%>" height="50px">
+          </p>
+        </div>
+      <% end %>
+    </div>
+</div>
 
 <%if logged_in? && @user == current_user%>
   <form action="/lists/<%=@list.id%>" method="post">
@@ -25,4 +28,6 @@
 <%end%>
 
 <br>
-  <h5>Created by <%= @list.user.username %></h5>
+<div class="footer sticky">
+  <p>Created by <%= @list.user.username.capitalize %></>
+</div>

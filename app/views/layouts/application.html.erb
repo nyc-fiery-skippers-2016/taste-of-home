@@ -25,12 +25,16 @@
     <!-- Right Nav Section -->
 
       <ul id="jasons-stubborn-inline-list" class="menu right">
+        <li class="has-form">
+          <form id='search' action="/">
         <% unless url_for == root_path %>
           <li><input type="text" name="term" id="search-term" placeholder="Enter Search"></li>
           <li><input type="text" name="location" placeholder="Enter Location" id="Location" ></li>
             <input type="hidden" name="category_filter" value="Food">
           <li><input type="submit" id="map_search_submit" value="Submit" class='button radius tiny'></li>
         <% end %>
+        </form>
+        </li>
         </ul>
       
     <!-- Left Nav Section -->
